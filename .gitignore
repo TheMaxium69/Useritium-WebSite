@@ -5,6 +5,7 @@
 
 # file/
 db.php
+salt.php
 
 # Other files and folders
 
