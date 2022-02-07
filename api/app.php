@@ -33,3 +33,4 @@ if(isset($_POST['modeDeco']) && $_POST['modeDeco']== "on"){
     session_unset();
     $isLogged = false;
 }
+
