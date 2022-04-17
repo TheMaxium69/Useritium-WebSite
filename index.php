@@ -3,7 +3,6 @@
 
 <main>
 
-
     <?php
 
     var_dump($_SESSION);
@@ -12,7 +11,10 @@
 
     ?>
 
-    <form action="" method="post"><button class="btn btn-outline-red" name="modeDeco" value="on">Se déconnecter</button></form>
+    <form action="" method="post"><button class="btn btn-success" name="modeDeco" value="on">Se déconnecter</button></form>
+
+    <a class="btn btn-primary" href="home.php">Panel</a>
+
 
     <h3>Ah tu na pas de compte pas grave créer toi le ici</h3>
     <form method="post">
