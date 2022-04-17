@@ -2,6 +2,7 @@
 .idea/
 
 # Lib
+fontawesome-5.15.4/
 
 # file/
 db.php
