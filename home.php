@@ -1,4 +1,4 @@
-<?php include "app/app.php"; $page = 2; head($page); ?>
+<?php include "app/app.php"; $page = 3; head($page); ?>
 <body>
 <?php
 

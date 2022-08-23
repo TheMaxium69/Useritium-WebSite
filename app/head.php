@@ -5,8 +5,18 @@ function head($page)
 
     //Page
     if ($page == 1) {
-        $title = "Exemple";
-    } else {
+        $title = "Accueil";
+    } else if ($page == 2) {
+        $title = "Connect";
+    } else if ($page == 3) {
+        $title = "Home Panel";
+    } else
+
+
+
+
+
+    {
         $title = "404 | Exemple";
     }
 
