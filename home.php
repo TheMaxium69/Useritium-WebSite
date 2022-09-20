@@ -2,11 +2,13 @@
 <body>
 <?php
 
-if($page == 2 && $isLogged == null){
+if($page == 3 && $isLogged == null){
     header("location: index.php");
+} else {
+    echo "LOGGER";
 }
-/*var_dump($_SESSION);
-var_dump($isLogged);*/
+var_dump($_SESSION);
+var_dump($isLogged);
 ?>
 
 <sidebar><?php sidebar($page); ?></sidebar>
