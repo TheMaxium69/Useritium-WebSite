@@ -1,8 +1,22 @@
+<?php if($page != 3){ ?>
+    
+<!-- NO PANEL -->
 <link rel="stylesheet" type="text/css" media="screen" href="css/normalize.css">
 <link rel="stylesheet" type="text/css" media="screen" href="css/base.css">
 
+<?php } ?>
+
+
+<!-- ALL -->
 <link rel="stylesheet" type="text/css" media="screen" href="css/all.css">
+
+
+<!-- PAR PAGE -->
+<?php if($page == 1 || $page == 2){ ?>
+    
 <link rel="stylesheet" type="text/css" media="screen" href="css/index.css">
+
+<?php } ?>
 
 <link rel='stylesheet' href='https://unpkg.com/css-pro-layout@1.1.0/dist/css/css-pro-layout.css'>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css'>
