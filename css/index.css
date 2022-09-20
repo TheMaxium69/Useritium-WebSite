@@ -1,0 +1,115 @@
+h1 {
+    font-family: 'Playfair Display', Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 1060px;
+    margin: 10px auto;
+}
+
+
+img {
+    width: auto;
+}
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/wallpaper.jpg');
+    background-position: center;
+    background-size: cover;
+    padding: 20px;
+    color: white;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav img {
+    height: 50px;
+    width: auto;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+    color: white;
+}
+
+
+header h1 {
+    text-align: center;
+    padding: 150px 0;
+    text-transform: none;
+    font-size: 4rem;
+    letter-spacing: 5px;
+}
+
+#fabrication {
+    background: linear-gradient(#3678A5, #144794);
+    padding: 50px 0;
+    color: white;
+}
+
+#fabrication ul {
+    padding: 0;
+}
+
+#fabrication ul li {
+    text-align: center;
+    margin: 80px auto;
+}
+
+
+
+#items ul {
+    padding: 50px 0;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+
+
+footer {
+    background: #144794;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+}
+
+@media (max-width:768px) {
+    .container {
+        max-width: 90%;
+    }
+
+    #devise {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #devise img {
+        width: 50%;
+        margin: 0;
+    }
+
+    #items ul {
+        flex-direction: column;
+    }
+
+    #items ul li {
+        width: 100%
+    }
+}
