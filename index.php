@@ -5,12 +5,16 @@
     
     <section id="devise" class="container my-5">
         <div class="row align-items-center">
-            <img class="col-3" src="assets/" alt="Lorem Ispu">
-            <article class="col-8 offset-1">
-                <h2 class="text-uppercase text-center fw-bold">Lorem Ispu</h2>
-                Consequat dolore dolore pariatur veniam nulla proident. Do ut aute dolor id reprehenderit ut aliquip qui.
-                Voluptate ullamco non minim et. Sit amet cillum non quis amet esse sint ad nulla commodo exercitation cillum
-                anim.
+            <img class="col-4" src="assets/Information flow_Monochromatic.png" alt="Lorem Ispu">
+            <article class="col-5 offset-1 text-center">
+                <h2 class="text-uppercase text-center fw-bold">A propos des comptes Useritium</h2>
+                Les comptes Useritium sont proposés par Tyrolium, afin de vous proposer une adresse mail spécialisée et personnelle.
+                <br><br>
+                Ces comptes vous offrent un cloud et des fonctionnalités pour la création de documents ou de notes, de plus, ils permettent egalement de pouvoir gérer vos jeux vidéos ou vos serveurs personnels et/ou professionnels.
+                <br><br>
+                Ils vous permettent également de connaître l'avancée de vos demandes de prestations.
+                <br><br>
+                Ces comptes sont aussi une garantie de sécurité de vos données, nous nous engageons à ne jamais partager ou divulguer quelconques informations vous concernant ou liées à ces comptes (projet open source).
             </article>
         </div>  
     </section>
