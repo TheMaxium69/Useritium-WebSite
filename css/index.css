@@ -131,4 +131,18 @@ footer {
     #items ul li {
         width: 100%
     }
+
+    header nav ul li{
+        display: none!important;
+    }
+
+    #devise img{
+        display: none;
+    }
+
+    #devise .col-5{
+        -ms-flex: unset;
+        flex: unset;
+        max-width: unset;
+    }
 }
