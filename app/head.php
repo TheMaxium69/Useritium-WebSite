@@ -5,11 +5,11 @@ function head($page)
 
     //Page
     if ($page == 1) {
-        $title = "Accueil";
+        $title = "Useritium";
     } else if ($page == 2) {
-        $title = "Connect";
+        $title = "Connexion/Inscription | Useritium";
     } else if ($page == 3) {
-        $title = "Home Panel";
+        $title = "Panel Useritium";
     } else
 
 
