@@ -285,3 +285,24 @@ a {
         display: none;
     }
 }
+
+.sidebar-footer span{
+    font-size: 13px;
+}
+
+.sidebar-footer span a{
+    color: #b3b8d4;
+}
+
+.sidebar-footer span a:hover{
+    color: #b3b8d4;
+}
+
+.sidebar-header span a{
+    color: #e3e5f1;
+}
+
+.sidebar-header span a:hover{
+    color: #e3e5f1;
+    text-decoration:none;
+}
