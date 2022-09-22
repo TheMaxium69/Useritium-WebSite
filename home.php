@@ -9,7 +9,7 @@ if($page == 3 && $isLogged == null){
 
 if(empty($_GET['p'])){ 
 
-    $sidepage = 404;
+    $sidepage = 1;
 
 } else {
 

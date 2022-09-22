@@ -22,11 +22,25 @@ img {
 }
 
 header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/wallpaper.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/wallpaper3.jpg');
     background-position: center;
     background-size: cover;
     padding: 20px;
     color: white;
+}
+
+header#connect-head{
+    background-image: unset;
+    color: black;
+    box-shadow: 0px 5px 15px black;
+}
+
+header#connect-head a{
+    color: black;
+}
+
+header#connect-head a.btn-super{
+    border: 2px solid black;
 }
 
 header nav {
