@@ -1,5 +1,6 @@
 <?php include "app/app.php"; $page = 3; head($page); ?>
 <body>
+    
 <?php
 
 if($page == 3 && $isLogged == null){

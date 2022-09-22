@@ -1,5 +1,5 @@
 <?php include "app/app.php"; $page = 1; head($page); ?>
-<body> <header> <?php navbar($page); ?> </header>
+<body> <header> <?php navbar($page, $isLogged); ?> </header>
 
 <main>
     
@@ -62,7 +62,7 @@ Toutes ces notes et ces documents seront également synchronisés sur tous vos a
 En effet, nous voulons être proches de nos clients, ils pourront alors également nous contacter pour des questions, des modifications ou toute autre demande concernant leurs prestations en cours. </p>
                 </li>
                 <li class="col align-self-center">
-                    <img src="Files And Folder_Monochromatic.png" alt="Lorem Ispu">
+                    <img src="assets/Gaming _Monochromatic.png" alt="Lorem Ispu">
                     <h3>Retrouvez vos Jeux Vidéo</h3>
                     <p>Vous retrouverez ici tous les jeux vidéos que vous possédez, dont ceux de TyroServ et TyroStudio ainsi que ceux de nos futurs partenaires.
 
@@ -71,7 +71,7 @@ Vos sauvegardes y seront stockées
 Ainsi vous pourrez également ajouter vos amis et consulter leur profil </p>
                 </li>
                 <li class="col align-self-center">
-                    <img src="Files And Folder_Monochromatic.png" alt="Lorem Ispu">
+                    <img src="assets/Data Hosting_Monochromatic.png" alt="Lorem Ispu">
                     <h3>Gérez tous vos Serveurs</h3>
                     <p>Vous pourrez retrouver dans cette section, tous vos comptes achetés par notre filiale SolidServ.
 

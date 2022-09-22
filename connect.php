@@ -1,5 +1,5 @@
 <?php include "app/app.php"; $page = 2; head($page); ?>
-<body> <header> <?php navbar($page); ?> </header>
+<body> <header> <?php navbar($page, $isLogged); ?> </header>
 
 <main>
   
