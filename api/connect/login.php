@@ -46,11 +46,13 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['site
 
 function resultLogin($why, $code, $redirect){
 
+    require "././app/env.php";
+
     if ($why == 1){
         if ($code == 641){
-            header("location: ". $redirect ."panel.php?true=Connexion a votre compte avec success");
+            header("location: ". $env_connectUrl ."panel.php?true=Connexion a votre compte avec success");
         } else {
-            header("location: ". $redirect ."connect.php?true=code:" . $code );
+            header("location: ". $env_connectUrl ."panel.php?true=code:" . $code );
         }
 
     }
