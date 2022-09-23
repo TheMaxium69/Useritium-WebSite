@@ -91,6 +91,7 @@
                                                             <input type="password" name="password" class="form-style" placeholder="Votre Mot De Passe" id="logpass" autocomplete="off">
                                                             <i class="input-icon uil uil-lock-alt"></i>
                                                         </div>
+                                                        <input type="hidden" name="site" value="<?= $env_connectUrl ?>">
                                                         <input class="btn mt-4" type="submit" value="Envoyer"></input>
                                                         <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Mot de passe oublié?</a></p>
                                                     </div>
@@ -112,6 +113,8 @@
                                                             <input type="password" name="passwordSignUp" class="form-style" placeholder="Ton Mot De Passe" id="logpass" autocomplete="off">
                                                             <i class="input-icon uil uil-lock-alt"></i>
                                                         </div>
+                                                        
+                                                        <input type="hidden" name="site" value="<?= $env_connectUrl ?>">
                                                         <input class="btn mt-4" type="submit" value="Envoyer"></input>
                                                     </div>
                                                 </form>
@@ -127,5 +130,34 @@
         <!-- back -->
     </div>
 </main>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src='https://unpkg.com/izitoast/dist/js/iziToast.min.js'></script>
+    <script  src="https://tyrolium.fr/javascript/notif.js"></script>
+
+
+    <?php if (!empty($_GET['err'])) { ?>
+        <script>
+            if(Text != 1){
+                iziToast.error({
+                    title: 'Erreur',
+                    position: 'bottomCenter',
+                    message: ' <?php echo $_GET['err']; ?>'
+                });
+            }
+        </script>
+    <?php } ?>
+
+    <?php if (!empty($_GET['true'])) {?>
+        <script>
+            if(Text != 1){
+                iziToast.success({
+                    title: 'Succès',
+                    position: 'bottomCenter',
+                    message: '<?php echo $_GET['true']; ?>'
+                });
+            }
+        </script>
+    <?php } ?>
 
 </body> </html>

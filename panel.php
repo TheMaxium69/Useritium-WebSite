@@ -40,26 +40,13 @@ if(empty($_GET['p'])){
     <script src='https://unpkg.com/izitoast/dist/js/iziToast.min.js'></script>
     <script  src="https://tyrolium.fr/javascript/notif.js"></script>
 
-
-    <?php if (!empty($_GET['err'])) { ?>
-        <script>
-            if(Text != 1){
-                iziToast.error({
-                    title: 'Erreur',
-                    position: 'bottomRight',
-                    message: ' Code : <?php echo $_GET['err']; ?>'
-                });
-            }
-        </script>
-    <?php } ?>
-
     <?php if (!empty($_GET['true'])) {?>
         <script>
             if(Text != 1){
                 iziToast.success({
-                    title: 'Connectée',
+                    title: 'Succès',
                     position: 'bottomRight',
-                    message: 'Connexion a votre compte avec success'
+                    message: '<?php echo $_GET['true']; ?>'
                 });
             }
         </script>

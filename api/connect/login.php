@@ -1,5 +1,9 @@
 <?php
-if (isset($_POST['username']) && isset($_POST['password'])){
+
+
+if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['site'])){
+    
+    $redirect = $_POST['site'];
     $usernameEntre = $_POST['username'];
     $passwordEntre = $_POST['password'];
     if( $usernameEntre != "" && $passwordEntre !=""){
@@ -20,16 +24,50 @@ if (isset($_POST['username']) && isset($_POST['password'])){
                 $_SESSION["userDisNameLog"]= $userDisName;
                 $_SESSION["userEmailLog"]= $userEmail;
                 $_SESSION["userRoleLog"]= $userRole;
-                header("location: panel.php?true=login");
+                resultLogin(1, 641, $redirect);
             }else{
-                echo "mauvais mot de passe, $usernameEntre";
+                //mauvais mot de passe
+                
+                resultLogin(2, 740, $redirect);
             }
         }else{
-            echo "username inexistant dans la DB";
+            //username inexistant dans la DB";
+            
+            resultLogin(2, 741, $redirect);
         }
     }else{
 
-        echo "Veuillez entrer un username et un password";
+        //Veuillez entrer un username et un password";
+        
+        resultLogin(2, 742, $redirect);
     }
+}
+
+
+function resultLogin($why, $code, $redirect){
+
+    if ($why == 1){
+        if ($code == 641){
+            header("location: ". $redirect ."panel.php?true=Connexion a votre compte avec success");
+        } else {
+            header("location: ". $redirect ."connect.php?true=code:" . $code );
+        }
+
+    }
+
+    if ($why == 2){
+        if ($code == 740){
+            header("location: ". $redirect ."connect.php?err=Mauvais mot de passe");
+        } else
+        if ($code == 741){
+            header("location: ". $redirect ."connect.php?err=Username inexistant");
+        } else
+        if ($code == 742){
+            header("location: ". $redirect ."connect.php?err=Champ non remplie");
+        } else {
+            header("location: ". $redirect ."connect.php?err=code:" . $code );
+        }
+    }
+
 }
 ?>

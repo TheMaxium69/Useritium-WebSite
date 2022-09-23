@@ -109,34 +109,4 @@ Fait en France, par des français.</p>
         2022 © <a href="https://tyrolium.fr" target="_bank">TYROLIUM</a>
     </footer>
 
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-    <script src='https://unpkg.com/izitoast/dist/js/iziToast.min.js'></script>
-    <script  src="https://tyrolium.fr/javascript/notif.js"></script>
-
-
-    <?php if (!empty($_GET['err'])) { ?>
-        <script>
-            if(Text != 1){
-                iziToast.error({
-                    title: 'Erreur',
-                    position: 'bottomRight',
-                    message: ' Code : <?php echo $_GET['err']; ?>'
-                });
-            }
-        </script>
-    <?php } ?>
-
-    <?php if (!empty($_GET['true'])) {?>
-        <script>
-            if(Text != 1){
-                iziToast.success({
-                    title: 'Connectée',
-                    position: 'bottomRight',
-                    message: 'Connexion a votre compte avec success'
-                });
-            }
-        </script>
-    <?php } ?>
-
 </body> </html>
