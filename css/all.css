@@ -10,3 +10,7 @@ a.btn-super{
     padding: 2px;
     border-radius: 5px;
 }
+
+.bold {
+    font-weight: bold;
+}

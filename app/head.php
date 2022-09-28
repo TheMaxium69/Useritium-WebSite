@@ -17,7 +17,7 @@ function head($page)
 
 
     {
-        $title = "404 | Exemple";
+        $title = "404 | Useritium";
     }
 
 
@@ -26,7 +26,7 @@ function head($page)
     echo '<!doctype html> <html lang="fr"> <head>';
     require_once "composant/meta.phtml";
     echo '<title>' . $title . '</title>';
-    echo '<link href="' . $env_urlLogo . '" rel="shortcut icon">';
+    echo '<link href="' . $env_urlLogoOnglet . '" rel="shortcut icon">';
     require_once "extension.php";
     echo '</head>';
 }

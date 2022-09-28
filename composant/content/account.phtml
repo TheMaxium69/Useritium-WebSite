@@ -1,0 +1,51 @@
+<section id="panel-account">
+
+    <h3>Profil Public</h3><br>
+    <form methode="post">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="PierreDupond69" value="<?= $_SESSION['userNameLog'] ?>" disabled>
+        </div>
+        <div class="form-group">
+            <label>Nom d'affichage</label>
+            <input type="text" class="form-control" placeholder="Pierre Jean Dupond" value="<?= $_SESSION['userDisNameLog'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Adresse Email</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="<?= $_SESSION['userEmailLog'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Bio</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><?php if(!empty($_SESSION['userBioLog']) ) { echo $_SESSION['userBioLog']; } ?></textarea>
+        </div>
+        
+        <br>
+        <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+
+    </form>
+
+    <br><br>
+
+    <hr>
+
+    <br><br>
+
+    <h3>Mots de passe</h3><br>
+    <form methode="post">
+        <div class="form-group">
+            <label>Ancien Mots de passe</label>
+            <input type="password" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>Nouveau Mots de passe</label>
+            <input type="password" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
+            <label>Comfirmer le Nouveau Mots de passe</label>
+            <input type="password" class="form-control" placeholder="">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+    </form>
+
+</section>
