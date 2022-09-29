@@ -24,6 +24,8 @@ $isLogged = false;
 
 require_once "connect/signup.php";
 require_once "connect/login.php";
+require_once "update/public.php";
+require_once "update/pass.php";
 
 if (!empty($_SESSION['userNameLog'])){
     $isLogged = true;

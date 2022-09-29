@@ -52,6 +52,18 @@ if(empty($_GET['p'])){
         </script>
     <?php } ?>
 
+    <?php if (!empty($_GET['err'])) { ?>
+        <script>
+            if(Text != 1){
+                iziToast.error({
+                    title: 'Erreur',
+                    position: 'bottomCenter',
+                    message: ' <?php echo $_GET['err']; ?>'
+                });
+            }
+        </script>
+    <?php } ?>
+
     <script>
         function redirectPanel(i) {
             window.location.href = i
