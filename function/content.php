@@ -9,6 +9,18 @@ function content($sidepage)
     } else if($sidepage == 2) {
         
         require_once "./composant/content/account.phtml";
+    } else if($sidepage == 3) {
+        
+        require_once "./composant/content/erreur.phtml";
+    } else if($sidepage == 4) {
+        
+        require_once "./composant/content/erreur.phtml";
+    } else if($sidepage == 5) {
+        
+        require_once "./composant/content/erreur.phtml";
+    } else if($sidepage == 6) {
+        
+        require_once "./composant/content/erreur.phtml";
     } else if($sidepage == 7) {
         
         require_once "./composant/content/service.phtml";
