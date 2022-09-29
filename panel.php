@@ -52,5 +52,11 @@ if(empty($_GET['p'])){
         </script>
     <?php } ?>
 
+    <script>
+        function redirectPanel(i) {
+            window.location.href = i
+        }
+    </script>
+
 <?php sidebarEnd(); ?>
 </body> </html>
