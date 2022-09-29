@@ -1,33 +1,166 @@
 <section>
 
-                    <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h2>
+<h3>Accueil</h3>
 
-                </section>
-                <section>
+<br><br>
+<div class="stylebox" onclick="redirectPanel('panel.php?p=2')">
 
-                    <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h2>
+<h4>Votre profile</h4><br>
+<p>Username : <?= $_SESSION['userNameLog'] ?></p>
+<p>Mail : <?= $_SESSION['userEmailLog'] ?></p>
+<p>Nom d'affichage : <?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } else { echo '<i> Vide </i>'; } ?></p>
+</div>
 
-                </section>
-                <section>
+<div class="row">
 
-                    <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h2>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" onclick="redirectPanel('panel.php?p=8')">
+            <div class="game-back">
+                <div class="picture">
+                    <img class="img-fluid" src="assets/icone/game.png">
+                </div>
+                
+                <div class="team-content">
+                    <h3 class="name">Vos jeux</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3"  onclick="redirectPanel('panel.php?p=7')">
+            <div class="game-back">
+                <div class="picture">
+                    <img class="img-fluid" src="assets/icone/service.png">
+                </div>
+                
+                <div class="team-content">
+                    <h3 class="name">Vos Prestations</h3>
+                </div>
+            </div>
+        </div>
 
-                </section>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" onclick="redirectPanel('panel.php?p=9')">
+            <div class="game-back">
+                <div class="picture">
+                    <img class="img-fluid" src="assets/icone/server.png">
+                </div>
+                
+                <div class="team-content">
+                    <h3 class="name">Vos Serveurs</h3>
+                </div>
+            </div>
+        </div>
+</div>
+</section>
 
-                <section>
+<style>
+.stylebox{
+    
+    margin-bottom: 30px;
+    padding: 30px 0 25px 10px;
+    box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f7f7f7;
+    border-radius: 12px;
+}
 
-                    <h2>
-                    
+.game-back {
+    padding: 30px 0 25px;
+    margin-bottom: 30px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    min-height: 302px;
+    box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f7f7f7;
+    border-radius: 12px;
+}
+.game-back .picture {
+    display: inline-block;
+    height: 130px;
+    width: 130px;
+    margin-bottom: 50px;
+    z-index: 1;
+    position: relative;
+}
+.game-back .picture::before {
+    content: "";
+    width: 100%;
+    height: 0;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 135%;
+    right: 0;
+    left: 0;
+    opacity: 0.9;
+    transform: scale(3);
+    transition: all 0.3s linear 0s;
+}
 
 
-                    </h2>
+.game-back:hover .picture::before {
+    height: 100%;
+}
 
-                </section>
+.game-back .picture::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* background-color: #1325d7; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
 
-                <style>
+.game-back .picture img {
+    width: 100%;
+    height: auto;
+    /* border-radius: 50%; */
+    transform: scale(1);
+    transition: all 0.9s ease 0s;
+}
 
-                    section{
-                        margin-bottom: 100px;
-                    }
+.game-back:hover .picture img {
+    
+    /* background-color: #1325d7; */
+    transform: scale(0.7);
+}
 
-                </style>
+.game-back .title {
+    display: block;
+    font-size: 15px;
+    color: #7a7b7c;
+    /* text-transform: capitalize; */
+}
+
+.game-back .social {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #1325d7;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    transition: all 0.5s ease 0s;
+}
+
+.game-back:hover .social {
+    bottom: 0;
+}
+
+.game-back .social li {
+    display: inline-block;
+}
+
+.game-back .social li a {
+    display: block;
+    padding: 10px;
+    font-size: 17px;
+    color: white;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.game-back .social li a:hover {
+    color: #1325d7;
+    background-color: #f7f5ec;
+}
+
+
+</style>
