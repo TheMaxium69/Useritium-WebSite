@@ -106,7 +106,7 @@ Fait en France, par des français.</p>
 
 
     <footer>
-        2022 © <a href="https://tyrolium.fr" target="_bank">TYROLIUM</a>
+        2024 © <a href="https://tyrolium.fr" target="_bank">TYROLIUM</a>
     </footer>
 
 </body> </html>
