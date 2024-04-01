@@ -30,6 +30,12 @@ function content($sidepage)
     } else if($sidepage == 9) {
         
         require_once "./composant/content/server.phtml";
+    } else if($sidepage == 10) {
+
+        require_once "./composant/content/tyroserv.phtml";
+    } else if($sidepage == 11) {
+
+        require_once "./composant/content/gamenium.phtml";
     } else {
         
         require_once "./composant/content/404.phtml";

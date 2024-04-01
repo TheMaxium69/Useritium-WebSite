@@ -27,6 +27,21 @@
 
     <br><br>
 
+    <h3>Photo de Profil</h3><br>
+    <form method="POST">
+        <div class="form-group">
+            <label>Votre Image (PNG/JPEG only)</label>
+            <input type="file" class="form-control" name="picture">
+        </div>
+
+        <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
+        <br>
+        <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+
+    </form>
+
+    <br><br>
+
     <hr>
 
     <br><br>

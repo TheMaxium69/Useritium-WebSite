@@ -17,6 +17,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['site
                 $userDisName =  $value['displayname'];
                 $userEmail = $value['email'];
                 $userRole = $value['role'];
+                $userPp = $value['pp'];
             }
             if( md5($passwordEntre).md5($key) == $vraiMotDePasse  ){
                 $_SESSION["userIdLog"]= $userId;
@@ -24,6 +25,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['site
                 $_SESSION["userDisNameLog"]= $userDisName;
                 $_SESSION["userEmailLog"]= $userEmail;
                 $_SESSION["userRoleLog"]= $userRole;
+                $_SESSION["userPpLog"]= $userPp;
                 resultLogin(1, 641, $redirect);
             }else{
                 //mauvais mot de passe

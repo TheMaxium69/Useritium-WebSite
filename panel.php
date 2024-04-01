@@ -27,7 +27,6 @@ if(empty($_GET['p'])){
             <?php 
             // var_dump($_SESSION);
             // var_dump($isLogged);
-            
             content($sidepage) 
             
             ?>

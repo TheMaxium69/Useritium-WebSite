@@ -4,21 +4,43 @@
 
 <br><br>
 <div class="stylebox" onclick="redirectPanel('panel.php?p=2')">
-
-<h4>Votre profile</h4><br>
-<p>Username : <?= $_SESSION['userNameLog'] ?></p>
-<p>Mail : <?= $_SESSION['userEmailLog'] ?></p>
-<p>Nom d'affichage : <?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } else { echo '<i> Vide </i>'; } ?></p>
+    <?php
+    require "app/env.php";
+    $premiereLettreName = substr($_SESSION['userNameLog'], 0, 1); ?>
+    <div id="prePP">
+        <?php if (!$_SESSION["userPpLog"]){ ?>
+            <div id="PP" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
+        <?php } else { ?>
+            <div id="PP" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
+        <?php } ?>
+    </div>
+    <div>
+        <h4>Votre profile</h4><br>
+        <p>Username : <?= $_SESSION['userNameLog'] ?></p>
+        <p>Mail : <?= $_SESSION['userEmailLog'] ?></p>
+        <p>Nom d'affichage : <?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } else { echo '<i> Vide </i>'; } ?></p>
+    </div>
 </div>
 
 <div class="row">
 
+<!--        <div class="col-12 col-sm-6 col-md-4 col-lg-3" onclick="redirectPanel('panel.php?p=10')">-->
+<!--            <div class="game-back">-->
+<!--                <div class="picture">-->
+<!--                    <img class="img-fluid" src="https://tyrolium.fr/Contenu/Image/Tyrolium%20ServerMC%20Sword%203D.png">-->
+<!--                </div>-->
+<!--                -->
+<!--                <div class="team-content">-->
+<!--                    <h3 class="name">TyroServ</h3>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="col-12 col-sm-6 col-md-4 col-lg-3" onclick="redirectPanel('panel.php?p=8')">
             <div class="game-back">
                 <div class="picture">
                     <img class="img-fluid" src="assets/icone/game.png">
                 </div>
-                
+
                 <div class="team-content">
                     <h3 class="name">Vos jeux</h3>
                 </div>
@@ -162,5 +184,35 @@
     background-color: #f7f5ec;
 }
 
+#PP {
+    width: 200px;
+    height: 200px;
+    box-shadow: 0px 4px 83px rgba(0, 0, 0, 0.07);
+    border-radius: 133px;
+    background-size: contain;
+    background-color: white;
+    margin-left: 25px;
+    margin-right: 25px;
+    background-repeat: no-repeat;
+}
+
+.stylebox{
+    display: flex;
+}
+
+@media (max-width: 710px) {
+    #PP{
+        margin: auto;
+    }
+
+    .stylebox{
+        display: block;
+    }
+
+    #prePP{
+        width: 100%;
+    }
+
+}
 
 </style>
