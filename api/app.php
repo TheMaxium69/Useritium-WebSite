@@ -26,6 +26,8 @@ require_once "connect/signup.php";
 require_once "connect/login.php";
 require_once "update/public.php";
 require_once "update/pass.php";
+require_once "update/picture.php";
+require_once "update/skin.php";
 
 if (!empty($_SESSION['userNameLog'])){
     $isLogged = true;
@@ -41,3 +43,24 @@ if(isset($_GET['modeDeco']) && $_GET['modeDeco']== "on"){
     $isLogged = false;
 }
 
+
+// GET API EXTERNE
+function getTyroServ(){
+
+    require "api/private/db.php";
+
+    // SELECT * FROM `users_tyroserv` WHERE `idUsers` = 2
+    $maRequeteMinecraft = "SELECT * FROM users_tyroserv WHERE idUsers='$_SESSION[userIdLog]'";
+    $resultatTyroServ = mysqli_query($ConnectDB, $maRequeteMinecraft);
+
+    if ($resultatTyroServ){
+
+        return mysqli_fetch_assoc($resultatTyroServ);
+
+    } else {
+
+        return null;
+    }
+
+
+}

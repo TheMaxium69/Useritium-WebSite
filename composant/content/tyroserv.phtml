@@ -2,4 +2,62 @@
 
     <h2>Profil TyroServ</h2>
 
+    <?php
+
+    require "app/env.php";
+    $tyroservAccount = getTyroServ();
+
+    if ($tyroservAccount){
+
+    ?>
+
+    <br><br>
+    <h3>Skin Minecraft</h3><br>
+    <form method="POST" enctype="multipart/form-data">
+
+        <div id="prePP">
+            <?php if (!$tyroservAccount['skin']){ ?>
+                <div id="PP" style="background-image: url('https://mineskin.eu/skin/<?= $tyroservAccount['pseudo'] ?>')"></div>
+            <?php } else { ?>
+                <div id="PP" style="background-image: url('<?= $env_uploadUrl . "skin/" . $tyroservAccount['skin'] ?>')"></div>
+            <?php } ?>
+        </div>
+
+        <div class="form-group">
+            <label>Votre Image (9 Mo Max)</label>
+            <input type="file" class="form-control" name="pictureSkinAdd">
+        </div>
+
+        <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
+        <br>
+        <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+
+    </form>
+
+    <?php } else { ?>
+
+        <h1>Vous n'avez jamais jouer a TyroServ</h1>
+        <a href="https://tyroserv.fr" target="_blank">Go TyroServ.fr</a>
+
+    <?php } ?>
+
 </section>
+
+<style>
+    #PP {
+        width: 200px;
+        height: 200px;
+        box-shadow: 0px 4px 83px rgba(0, 0, 0, 0.24);
+        background-size: contain;
+        background-color: #919191;
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+
+    #prePP{
+        width: 100%;
+    }
+
+
+</style>
+

@@ -27,11 +27,27 @@
 
     <br><br>
 
+    <hr>
+
+    <br><br>
+
     <h3>Photo de Profil</h3><br>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
+        <?php
+        require "app/env.php";
+        $premiereLettreName = substr($_SESSION['userNameLog'], 0, 1);
+        ?>
+        <div id="prePP">
+            <?php if (!$_SESSION["userPpLog"]){ ?>
+                <div id="PP" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
+            <?php } else { ?>
+                <div id="PP" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
+            <?php } ?>
+        </div>
+
         <div class="form-group">
-            <label>Votre Image (PNG/JPEG only)</label>
-            <input type="file" class="form-control" name="picture">
+            <label>Votre Image (9 Mo Max)</label>
+            <input type="file" class="form-control" name="pictureProfilAdd">
         </div>
 
         <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
@@ -66,3 +82,22 @@
     </form>
 
 </section>
+
+<style>
+    #PP {
+        width: 200px;
+        height: 200px;
+        box-shadow: 0px 4px 83px rgba(0, 0, 0, 0.24);
+        border-radius: 133px;
+        background-size: contain;
+        background-color: white;
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+
+        #prePP{
+            width: 100%;
+        }
+
+
+</style>
