@@ -8,6 +8,8 @@ fontawesome-5.15.4/
 db.php
 salt.php
 
+api/private/
+
 # Other files and folders
 
 # file/

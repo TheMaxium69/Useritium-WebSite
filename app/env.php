@@ -16,6 +16,6 @@ if($APP_ENV == "PROD"){
 
 } else if ($APP_ENV == "DEV"){
 
-    $env_connectUrl = "http://localhost/TyroMail/";
+    $env_connectUrl = "http://127.0.0.1/Useritium-WebSite/";
 
 }
