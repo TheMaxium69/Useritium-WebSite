@@ -2,10 +2,6 @@
 
 if (isset($_FILES['pictureProfilAdd']) && isset($_POST['idEdit'])){
 
-    var_dump($_POST);
-    var_dump($_FILES);
-
-
     // Vérification si c'est une image
     $image_info = getimagesize($_FILES["pictureProfilAdd"]["tmp_name"]);
     if($image_info !== false) {
