@@ -11,3 +11,10 @@ require_once "./api/app.php";
 require_once "./function/navbar.php";
 require_once "./function/sidebar.php";
 require_once "./function/content.php";
+
+//DekstopApp
+if (!empty($_COOKIE['DesktopApp'])){
+    $appdesktop = true;
+} else {
+    $appdesktop = false;
+}

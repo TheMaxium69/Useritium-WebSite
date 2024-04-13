@@ -4,7 +4,11 @@
 <?php
 
 if($page == 3 && $isLogged == null){
-    header("location: index.php");
+    if (!$appdesktop){
+        header("location: index.php");
+    } else {
+        header("location: connect.php");
+    }
 }
 
 if(empty($_GET['p'])){ 
@@ -65,7 +69,7 @@ if(empty($_GET['p'])){
 
     <script>
         function redirectPanel(i) {
-            window.location.href = i
+            window.open(i, '_blank');
         }
     </script>
 

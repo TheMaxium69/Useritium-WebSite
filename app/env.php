@@ -17,7 +17,9 @@ if($APP_ENV == "PROD"){
 
 } else if ($APP_ENV == "DEV"){
 
-    $env_connectUrl = "http://localhost/Useritium-WebSite/";
-    $env_uploadUrl = "http://localhost/Useritium-WebSite/uploads/";
+    $env_connectUrl = "http://127.0.0.1/Useritium-WebSite/";
+    $env_uploadUrl = "http://127.0.0.1/Useritium-WebSite/uploads/";
 
 }
+
+

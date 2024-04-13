@@ -1,5 +1,12 @@
-<?php include "app/app.php"; $page = 2; head($page); ?>
-<body> <header id="connect-head"> <?php navbar($page, $isLogged); ?> </header>
+<?php include "app/app.php"; $page = 2; head($page);?>
+<body>
+<?php if(!$appdesktop){?><header id="connect-head"> <?php navbar($page, $isLogged); ?> </header><?php } else { ?>
+<style>#particule-acc { height: 101% }</style>
+<?php
+if ($isLogged) {
+    header("location: panel.php");
+}
+} ?>
 
 <main id="main-contact">
     <div id="particule-acc">

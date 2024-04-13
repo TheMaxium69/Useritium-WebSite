@@ -3,23 +3,27 @@
 function head($page)
 {
 
-    //Page
-    if ($page == 1) {
-        $title = "Useritium";
-    } else if ($page == 2) {
-        $title = "Connexion/Inscription | Useritium";
-    } else if ($page == 3) {
-        $title = "Panel Useritium";
-    } else
 
+    if(empty($_COOKIE['DesktopApp'])){
 
+        //Page
+        if ($page == 1) {
+            $title = "Useritium";
+        } else if ($page == 2) {
+            $title = "Connexion/Inscription | Useritium";
+        } else if ($page == 3) {
+            $title = "Panel Useritium";
+        } else
 
+        {
+            $title = "404 | Useritium";
+        }
 
+    } else {
 
-    {
-        $title = "404 | Useritium";
+        $title = "Useritium App";
+
     }
-
 
     include "env.php";
 

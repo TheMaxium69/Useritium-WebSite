@@ -10,8 +10,25 @@
                 font-size: 15px;
                 letter-spacing: 3px;
                 font-weight: bold;
-              "><a href=".">Useritium
-<span class="badge badge-info">Bêta</span></a></span>
+              ">
+
+
+            <?php if(empty($_COOKIE['DesktopApp'])){?>
+
+                <a href=".">Useritium
+                    <span class="badge badge-info">Bêta</span>
+                </a>
+
+            <?php } else { ?>
+
+                <a href="./panel.php">Useritium
+                    <span class="badge badge-light">Bêta App</span>
+                </a>
+
+            <?php } ?>
+
+
+        </span>
             </div>
             <div class="sidebar-content">
                 <nav class="menu open-current-submenu">
