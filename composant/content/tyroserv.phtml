@@ -7,34 +7,111 @@
     require "app/env.php";
     $tyroservAccount = getTyroServ();
 
+    var_dump($tyroservAccount);
+
     if ($tyroservAccount){
 
     ?>
 
-    <br><br>
-    <h3>Skin Minecraft</h3><br>
-    <form method="POST" enctype="multipart/form-data">
+        <br><br>
+        <h3>Pseudo :</h3><br>
+        <h5><?= $tyroservAccount['pseudo'] ?></h5>
 
-        <div id="prePP">
-            <?php if (!$tyroservAccount['skin']){ ?>
-                <div id="PP" style="background-image: url('https://mineskin.eu/skin/<?= $tyroservAccount['pseudo'] ?>')"></div>
-            <?php } else { ?>
-                <div id="PP" style="background-image: url('<?= $env_uploadUrl . "skin/" . $tyroservAccount['skin'] ?>')"></div>
-            <?php } ?>
+        <br><br>
+        <h3>Skin Minecraft :</h3><br>
+        <form method="POST" enctype="multipart/form-data">
+
+            <div id="prePP">
+                <?php if (!$tyroservAccount['skin']){ ?>
+                    <div id="PP" style="background-image: url('https://mineskin.eu/skin/<?= $tyroservAccount['pseudo'] ?>')"></div>
+                <?php } else { ?>
+                    <div id="PP" style="background-image: url('<?= $env_uploadUrl . "skin/" . $tyroservAccount['skin'] ?>')"></div>
+                <?php } ?>
+            </div>
+
+            <div class="form-group">
+                <label>Votre Image (9 Mo Max)</label>
+                <input type="file" class="form-control" name="pictureSkinAdd">
+            </div>
+
+    <!--        <input type="checkbox" name="slim" value="">-->
+
+            <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
+            <br>
+            <button type="submit" class="btn btn-primary" style="width: 100%">Update Skin</button>
+
+        </form>
+
+        <?php
+
+        /* CAPE */
+
+        $MyCape = [];
+
+        if (empty($tyroservAccount['cape'])) {
+            $tyroservCape = "null";
+        } else {
+            $tyroservCape = $tyroservAccount['cape'];
+        }
+
+        $json = file_get_contents('http://vps214.tyrolium.fr/capes/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
+        $json2 = file_get_contents('http://vps214.tyrolium.fr/capes/wiki.php');
+        $resultApiCape = json_decode($json);
+        $resultAllCape = json_decode($json2);
+
+        foreach ($resultAllCape as $oneCape) {
+
+            foreach ($resultApiCape as $oneBuyCape) {
+
+                if ($oneCape->id == $oneBuyCape->idCapes) {
+
+                    $temp = $oneBuyCape;
+                    $temp->cape = $oneCape;
+                    $MyCape[] = $temp;
+                }
+
+            }
+
+        }
+
+        ?>
+
+        <br><br>
+        <h3>Cape Minecraft :</h3><br>
+
+        <div class="card-group">
+        <?php foreach ($MyCape as $oneCape) { ?>
+
+
+            <div class="cardcape">
+                <div class="cape" style="background: url('http://vps214.tyrolium.fr/capes/capes/<?= $oneCape->cape->url ?>')"></div>
+
+
+
+            </div>
+
+
+        <?php } ?>
         </div>
 
-        <div class="form-group">
-            <label>Votre Image (9 Mo Max)</label>
-            <input type="file" class="form-control" name="pictureSkinAdd">
-        </div>
+        <style>
+            .cardcape{
+                border: 1px solid rgba(0,0,0,.125);
+                border-radius: .25rem;
+                padding: 30px 40px;
+            }
 
-<!--        <input type="checkbox" name="slim" value="">-->
+            .cape{
+                width: 100px;
+                height: 160px;
+            }
 
-        <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
-        <br>
-        <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
 
-    </form>
+        </style>
+
+
+
+
 
     <?php } else { ?>
 
