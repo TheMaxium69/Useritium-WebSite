@@ -58,9 +58,9 @@
         $tyroservCape = $tyroservAccount['cape'];
     }
 
-//    $json = file_get_contents('http://vps214.tyrolium.fr/capes/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
+//    $json = file_get_contents('http://vps214.tyrolium.fr/api-cape/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
     $json = file_get_contents('http://127.0.0.1/Api-TyroModCape/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
-//    $json2 = file_get_contents('http://vps214.tyrolium.fr/capes/wiki.php');
+//    $json2 = file_get_contents('http://vps214.tyrolium.fr/api-cape/wiki.php');
     $json2 = file_get_contents('http://127.0.0.1/Api-TyroModCape/wiki.php');
     $resultApiCape = json_decode($json);
     $resultAllCape = json_decode($json2);
@@ -107,7 +107,7 @@
 
                 <div data-id="<?= $oneCape->cape->id ?>" class="cardcape <?php if ($oneCape->isSelected) echo "active" ?>">
                     <div class="cape canvas-container">
-                        <canvas data-url="http://vps214.tyrolium.fr/capes/capes/<?= $oneCape->cape->url ?>" class="pixelCanvas" width="100" height="160"></canvas>
+                        <canvas data-url="http://vps214.tyrolium.fr/api-cape/capes/<?= $oneCape->cape->url ?>" class="pixelCanvas" width="100" height="160"></canvas>
                     </div>
                     <div class="cape-footer">
                         <input name="idCapeSelected" value="<?= $oneCape->cape->id ?>" type="radio" <?php if ($oneCape->isSelected) echo "checked" ?>> <?= $oneCape->cape->name ?>
