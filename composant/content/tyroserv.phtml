@@ -7,17 +7,19 @@
     require "app/env.php";
     $tyroservAccount = getTyroServ();
 
-    var_dump($tyroservAccount);
+//    var_dump($tyroservAccount);
 
     if ($tyroservAccount){
 
     ?>
 
         <br><br>
-        <h3>Pseudo :</h3><br>
-        <h5><?= $tyroservAccount['pseudo'] ?></h5>
+        <h3>Pseudo Minecraft :</h3><br>
+        <h2><?= $tyroservAccount['pseudo'] ?></h2>
 
-        <br><br>
+
+        <br><hr><br>
+
         <h3>Skin Minecraft :</h3><br>
         <form method="POST" enctype="multipart/form-data">
 
@@ -42,72 +44,69 @@
 
         </form>
 
-        <?php
 
-        /* CAPE */
+    <?php
 
-        $MyCape = [];
+    /* CAPE */
 
-        if (empty($tyroservAccount['cape'])) {
-            $tyroservCape = "null";
-        } else {
-            $tyroservCape = $tyroservAccount['cape'];
-        }
+    $MyCape = [];
+    $isSelected = 0;
 
-        $json = file_get_contents('http://vps214.tyrolium.fr/capes/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
-        $json2 = file_get_contents('http://vps214.tyrolium.fr/capes/wiki.php');
-        $resultApiCape = json_decode($json);
-        $resultAllCape = json_decode($json2);
+    if (empty($tyroservAccount['cape'])) {
+        $tyroservCape = "null";
+    } else {
+        $tyroservCape = $tyroservAccount['cape'];
+    }
 
-        foreach ($resultAllCape as $oneCape) {
+    $json = file_get_contents('http://vps214.tyrolium.fr/capes/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
+    $json2 = file_get_contents('http://vps214.tyrolium.fr/capes/wiki.php');
+    $resultApiCape = json_decode($json);
+    $resultAllCape = json_decode($json2);
 
-            foreach ($resultApiCape as $oneBuyCape) {
+    foreach ($resultAllCape as $oneCape) {
 
-                if ($oneCape->id == $oneBuyCape->idCapes) {
+        foreach ($resultApiCape as $oneBuyCape) {
 
-                    $temp = $oneBuyCape;
-                    $temp->cape = $oneCape;
-                    $MyCape[] = $temp;
+            if ($oneCape->id == $oneBuyCape->idCapes) {
+
+                $temp = $oneBuyCape;
+                $temp->cape = $oneCape;
+                $MyCape[] = $temp;
+
+                if ($temp->isSelected == 1) {
+                    $isSelected = $temp->cape->id;
                 }
-
             }
 
         }
 
-        ?>
+    }
 
-        <br><br>
-        <h3>Cape Minecraft :</h3><br>
+    ?>
+
+        <br><hr><br>
+
+        <h3>Cape Minecraft :</h3>
+        <button type="submit" class="btn btn-primary" style=""><i class="ri-shopping-bag-line"></i> Acheter une cape</button><br><br>
 
         <div class="card-group">
-        <?php foreach ($MyCape as $oneCape) { ?>
+          <?php foreach ($MyCape as $oneCape) { ?>
 
-
-            <div class="cardcape">
-                <div class="cape" style="background: url('http://vps214.tyrolium.fr/capes/capes/<?= $oneCape->cape->url ?>')"></div>
-
-
-
+            <div data-id="<?= $oneCape->cape->id ?>" class="cardcape <?php if ($oneCape->isSelected) echo "active" ?>">
+                <div class="cape" style="background-image: url('http://vps214.tyrolium.fr/capes/capes/<?= $oneCape->cape->url ?>')"></div>
+                <div class="cape-footer">
+                    <input type="radio" <?php if ($oneCape->isSelected) echo "checked" ?>> <?= $oneCape->cape->name ?>
+                </div>
             </div>
 
 
-        <?php } ?>
+          <?php } ?>
         </div>
 
-        <style>
-            .cardcape{
-                border: 1px solid rgba(0,0,0,.125);
-                border-radius: .25rem;
-                padding: 30px 40px;
-            }
-
-            .cape{
-                width: 100px;
-                height: 160px;
-            }
+        <br>
+        <button id="capeUpdate" disabled class="btn btn-secondary" onclick="updateSkin()" style="width: 100%">Appliqué la cape</button>
 
 
-        </style>
 
 
 
@@ -123,6 +122,9 @@
 </section>
 
 <style>
+
+    /* SKIN */
+
     #PP {
         width: 200px;
         height: 200px;
@@ -131,12 +133,135 @@
         background-color: #919191;
         background-repeat: no-repeat;
         margin: auto;
+
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode: nearest-neighbor;
     }
 
     #prePP{
         width: 100%;
     }
 
+    /* CAPE */
+
+    .card-group{
+        justify-content: center;
+    }
+
+    .cardcape.active{
+        border: 2px solid #007bff !important;
+    }
+
+    .cape-footer{
+        text-align: center;
+        color: #5a5a5a;
+
+        margin-right: 15px;
+        margin-bottom: 15px;
+        margin-left: 15px;
+
+    }
+
+    .cardcape{
+        /*border: 1px solid rgba(0,0,0,.125);*/
+        border: 2px solid #aba09c !important;
+        /*border-radius: .25rem;*/
+        margin: 10px;
+        width: 206px;
+    }
+
+    .cape{
+        margin-top: 30px;
+        margin-right: auto;
+        margin-bottom: 15px;
+        margin-left: auto;
+
+        width: 100px;
+        height: 160px;
+
+        background-size: 639px;
+        background-position-y: 7%;
+        background-position-x: -10px;
+
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode: nearest-neighbor;
+
+    }
+
 
 </style>
+
+<script>
+
+
+    var currentCapeId = <?= $isSelected ?>;
+    var chooseCapeId;
+
+    window.addEventListener('DOMContentLoaded', function() {
+        // Obtenez une référence à tous les éléments .cardcape
+        let cardCapes = document.querySelectorAll('.cardcape');
+
+        cardCapes.forEach(function(cardCape) {
+            // Ajoutez un écouteur d'événements click à chaque élément .cardcape
+            cardCape.addEventListener('click', function() {
+                // Supprimez la classe 'active' de tous les autres .cardcape
+                cardCapes.forEach(function(otherCardCape) {
+                    otherCardCape.classList.remove('active');
+                    // Décochez le bouton radio
+                    let radioButton = otherCardCape.querySelector('input[type="radio"]');
+                    if (radioButton) {
+                        radioButton.checked = false;
+                    }
+                });
+
+                // Ajoutez la classe 'active'à l'élément cliqué
+                this.classList.add('active');
+
+                // Cochez le bouton radio
+                let radioButton = this.querySelector('input[type="radio"]');
+                if (radioButton) {
+                    radioButton.checked = true;
+                }
+            });
+        });
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+        var submitButton = document.getElementById('capeUpdate');
+        var cardCapes = document.querySelectorAll('.cardcape');
+
+        cardCapes.forEach(function(cardCape) {
+            if (cardCape.classList.contains('active')) {
+                currentCapeId = cardCape.getAttribute('data-id');
+            }
+            cardCape.addEventListener('click', function() {
+                var thisCapeId = this.getAttribute('data-id');
+                chooseCapeId = thisCapeId;
+                if (thisCapeId != currentCapeId) {
+                    submitButton.disabled = false;
+                    submitButton.classList.add("btn-primary");
+                    submitButton.classList.remove("btn-secondary");
+                } else {
+                    submitButton.disabled = true;
+                    submitButton.classList.add("btn-secondary");
+                    submitButton.classList.remove("btn-primary");
+                }
+            });
+        });
+    });
+
+    function updateSkin() {
+
+        console.log(chooseCapeId)
+
+    }
+
+
+</script>
 
