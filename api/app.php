@@ -28,6 +28,7 @@ require_once "update/public.php";
 require_once "update/pass.php";
 require_once "update/picture.php";
 require_once "update/skin.php";
+require_once "update/cape.php";
 
 if (!empty($_SESSION['userNameLog'])){
     $isLogged = true;

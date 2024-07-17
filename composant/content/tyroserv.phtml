@@ -50,7 +50,7 @@
     /* CAPE */
 
     $MyCape = [];
-    $isSelected = 0;
+    $isSelected = 99999999;
 
     if (empty($tyroservAccount['cape'])) {
         $tyroservCape = "null";
@@ -58,8 +58,10 @@
         $tyroservCape = $tyroservAccount['cape'];
     }
 
-    $json = file_get_contents('http://vps214.tyrolium.fr/capes/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
-    $json2 = file_get_contents('http://vps214.tyrolium.fr/capes/wiki.php');
+//    $json = file_get_contents('http://vps214.tyrolium.fr/capes/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
+    $json = file_get_contents('http://127.0.0.1/Api-TyroModCape/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
+//    $json2 = file_get_contents('http://vps214.tyrolium.fr/capes/wiki.php');
+    $json2 = file_get_contents('http://127.0.0.1/Api-TyroModCape/wiki.php');
     $resultApiCape = json_decode($json);
     $resultAllCape = json_decode($json2);
 
@@ -87,30 +89,40 @@
         <br><hr><br>
 
         <h3>Cape Minecraft :</h3>
-        <button type="submit" class="btn btn-primary" style=""><i class="ri-shopping-bag-line"></i> Acheter une cape</button><br><br>
+        <button class="btn btn-primary" style=""><i class="ri-shopping-bag-line"></i> Acheter une cape</button><br><br>
 
-        <div class="card-group">
-          <?php foreach ($MyCape as $oneCape) { ?>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="card-group">
 
-            <div data-id="<?= $oneCape->cape->id ?>" class="cardcape <?php if ($oneCape->isSelected) echo "active" ?>">
-                <div class="cape" style="background-image: url('http://vps214.tyrolium.fr/capes/capes/<?= $oneCape->cape->url ?>')"></div>
-                <div class="cape-footer">
-                    <input type="radio" <?php if ($oneCape->isSelected) echo "checked" ?>> <?= $oneCape->cape->name ?>
+                <div data-id="vide" class="cardcape <?php if ($isSelected == 99999999) echo "active" ?>">
+                    <div class="cape canvas-container">
+                        <canvas data-url="" class="pixelCanvas vide" width="100" height="160"></canvas>
+                    </div>
+                    <div class="cape-footer">
+                        <input name="idCapeSelected" value="99999999" type="radio" <?php if ($isSelected == 99999999) echo "checked" ?>> Aucune Cape
+                    </div>
                 </div>
+
+              <?php foreach ($MyCape as $oneCape) { ?>
+
+                <div data-id="<?= $oneCape->cape->id ?>" class="cardcape <?php if ($oneCape->isSelected) echo "active" ?>">
+                    <div class="cape canvas-container">
+                        <canvas data-url="http://vps214.tyrolium.fr/capes/capes/<?= $oneCape->cape->url ?>" class="pixelCanvas" width="100" height="160"></canvas>
+                    </div>
+                    <div class="cape-footer">
+                        <input name="idCapeSelected" value="<?= $oneCape->cape->id ?>" type="radio" <?php if ($oneCape->isSelected) echo "checked" ?>> <?= $oneCape->cape->name ?>
+                    </div>
+                </div>
+
+              <?php } ?>
             </div>
 
+            <input type="hidden" name="idCapeOld" value="<?= $isSelected ?>">
+            <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
 
-          <?php } ?>
-        </div>
-
-        <br>
-        <button id="capeUpdate" disabled class="btn btn-secondary" onclick="updateSkin()" style="width: 100%">Appliqué la cape</button>
-
-
-
-
-
-
+            <br>
+            <button id="capeUpdate" disabled class="btn btn-secondary" type="submit" style="width: 100%">Appliqué la cape</button>
+        </form>
 
     <?php } else { ?>
 
@@ -194,6 +206,20 @@
 
     }
 
+    .canvas-container {
+        width: 100px;
+        height: 160px;
+    }
+    canvas {
+        width: 100%;
+        height: 100%;
+        image-rendering: pixelated;
+    }
+
+    canvas.vide{
+        border: 2px dashed #aba09c;
+    }
+
 
 </style>
 
@@ -203,27 +229,25 @@
     var currentCapeId = <?= $isSelected ?>;
     var chooseCapeId;
 
+    /* CHANGEMENT DE COULEUR A LA SELECTION DE LA CAPE */
     window.addEventListener('DOMContentLoaded', function() {
-        // Obtenez une référence à tous les éléments .cardcape
+
         let cardCapes = document.querySelectorAll('.cardcape');
 
         cardCapes.forEach(function(cardCape) {
-            // Ajoutez un écouteur d'événements click à chaque élément .cardcape
+
             cardCape.addEventListener('click', function() {
-                // Supprimez la classe 'active' de tous les autres .cardcape
                 cardCapes.forEach(function(otherCardCape) {
                     otherCardCape.classList.remove('active');
-                    // Décochez le bouton radio
+
                     let radioButton = otherCardCape.querySelector('input[type="radio"]');
                     if (radioButton) {
                         radioButton.checked = false;
                     }
                 });
 
-                // Ajoutez la classe 'active'à l'élément cliqué
                 this.classList.add('active');
 
-                // Cochez le bouton radio
                 let radioButton = this.querySelector('input[type="radio"]');
                 if (radioButton) {
                     radioButton.checked = true;
@@ -232,6 +256,7 @@
         });
     });
 
+    /* ACTIVATION DU BTN UPLOAD CAPE */
     window.addEventListener('DOMContentLoaded', function() {
         var submitButton = document.getElementById('capeUpdate');
         var cardCapes = document.querySelectorAll('.cardcape');
@@ -256,10 +281,38 @@
         });
     });
 
+    /* AFFICHAGE DES CAPES */
+    window.onload = function() {
+
+        var canvases = document.querySelectorAll('.pixelCanvas');
+
+        canvases.forEach(function(canvas) {
+
+            var context = canvas.getContext('2d');
+            var image = new Image();
+            var imageUrl = canvas.getAttribute('data-url');
+            image.src = imageUrl;
+
+            image.onload = function () {
+                context.imageSmoothingEnabled = false;
+
+                var sourceX = 1;
+                var sourceY = 1;
+                var sourceWidth = 10;
+                var sourceHeight = 16;
+                var destX = 0;
+                var destY = 0;
+                var destWidth = canvas.width;
+                var destHeight = canvas.height;
+
+                context.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+
+            };
+        })
+    };
+
     function updateSkin() {
-
-        console.log(chooseCapeId)
-
+        window.location.href = '?p=10&cape=' + chooseCapeId + '&idEdit=' + <?= $tyroservAccount['idTyroServ'] ?> ;
     }
 
 
