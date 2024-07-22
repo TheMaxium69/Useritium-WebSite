@@ -69,7 +69,15 @@ if(empty($_GET['p'])){
 
     <script>
         function redirectPanel(i) {
-            window.open(i, '_blank');
+            startUrl = "http://"
+            startUrls = "https://"
+
+            console.log(i)
+            if (!i.startsWith(startUrl) || !i.startsWith(startUrls)) {
+                window.location.href = i;
+            } else {
+                window.open(i, "_blank");
+            }
         }
     </script>
 

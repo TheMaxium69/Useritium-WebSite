@@ -1,60 +1,67 @@
 <section id="panel-account">
 
-    <h3 class="title-morph">Profil Public</h3>
-    <form method="POST" class="card-morph">
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" class="input-morph" placeholder="PierreDupond69" value="<?= $_SESSION['userNameLog'] ?>" disabled>
-        </div>
-        <div class="form-group">
-            <label>Nom d'affichage</label>
-            <input type="text" class="input-morph" name="displayEdit" placeholder="Pierre Jean Dupond" value="<?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } ?>">
-        </div>
-        <div class="form-group">
-            <label>Adresse Email</label>
-            <input type="text" class="input-morph" name="emailEdit" placeholder="name@example.com" value="<?= $_SESSION['userEmailLog'] ?>">
-        </div>
-        <!-- <div class="form-group">
-            <label for="exampleFormControlTextarea1">Bio</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><?php if(!empty($_SESSION['userBioLog']) ) { echo $_SESSION['userBioLog']; } ?></textarea>
-        </div> -->
-        
-        <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
-        <br>
-        <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+    <h3 class="title-morph">Profile Publique</h3>
+    <div class="card-morph">
+        <form method="POST" enctype="multipart/form-data">
+            <?php
+            require "app/env.php";
+            $premiereLettreName = substr($_SESSION['userNameLog'], 0, 1);
+            ?>
+            <div id="prePP">
+                <?php if (!$_SESSION["userPpLog"]){ ?>
+                    <div id="PP" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
+                <?php } else { ?>
+                    <div id="PP" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
+                <?php } ?>
+            </div>
 
-    </form>
+            <div class="form-group">
+                <label>Votre Image (9 Mo Max)</label>
+                <input type="file" class="form-control input-morph" name="pictureProfilAdd">
+            </div>
 
+            <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
+            <br>
+            <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+
+        </form>
+
+        <form method="POST">
+            <div class="form-group">
+                <h4><?= $_SESSION['userNameLog'] ?></h4>
+            </div>
+            <div class="form-group">
+                <label>Nom d'affichage</label>
+                <input type="text" class="input-morph" name="displayEdit" placeholder="Pierre Jean Dupond" value="<?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } ?>">
+            </div>
+            <div class="form-group">
+                <label>Adresse Email</label>
+                <input type="text" class="input-morph" name="emailEdit" placeholder="name@example.com" value="<?= $_SESSION['userEmailLog'] ?>">
+            </div>
+            <!-- <div class="form-group">
+                <label for="exampleFormControlTextarea1">Bio</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><?php if(!empty($_SESSION['userBioLog']) ) { echo $_SESSION['userBioLog']; } ?></textarea>
+            </div> -->
+
+            <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
+            <br>
+            <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+
+        </form>
+    </div>
     <br><br>
 
     <hr>
 
     <br><br>
 
-    <h3 class="title-morph">Photo de Profil</h3>
-    <form method="POST" enctype="multipart/form-data" class="card-morph">
-        <?php
-        require "app/env.php";
-        $premiereLettreName = substr($_SESSION['userNameLog'], 0, 1);
-        ?>
-        <div id="prePP">
-            <?php if (!$_SESSION["userPpLog"]){ ?>
-                <div id="PP" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
-            <?php } else { ?>
-                <div id="PP" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
-            <?php } ?>
-        </div>
+    <h3  class="title-morph">Vérification des emails</h3>
+    <div class="card-morph">
 
-        <div class="form-group">
-            <label>Votre Image (9 Mo Max)</label>
-            <input type="file" class="form-control input-morph" name="pictureProfilAdd">
-        </div>
 
-        <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
-        <br>
-        <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+    </div>
 
-    </form>
+
 
     <br><br>
 
@@ -80,6 +87,22 @@
         <input type="hidden" name="idEditPass" value="<?= $_SESSION['userIdLog'] ?>">
         <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
     </form>
+
+    <br><br>
+
+    <hr>
+
+    <br><br>
+
+    <h3  class="title-morph">Compte Liée</h3>
+    <div class="card-morph">
+
+
+    </div>
+
+
+
+    <br><br>
 
 </section>
 
