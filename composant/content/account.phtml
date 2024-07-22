@@ -1,18 +1,18 @@
 <section id="panel-account">
 
-    <h3>Profil Public</h3><br>
-    <form method="POST">
+    <h3 class="title-morph">Profil Public</h3>
+    <form method="POST" class="card-morph">
         <div class="form-group">
             <label>Username</label>
-            <input type="text" class="form-control" placeholder="PierreDupond69" value="<?= $_SESSION['userNameLog'] ?>" disabled>
+            <input type="text" class="input-morph" placeholder="PierreDupond69" value="<?= $_SESSION['userNameLog'] ?>" disabled>
         </div>
         <div class="form-group">
             <label>Nom d'affichage</label>
-            <input type="text" class="form-control" name="displayEdit" placeholder="Pierre Jean Dupond" value="<?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } ?>">
+            <input type="text" class="input-morph" name="displayEdit" placeholder="Pierre Jean Dupond" value="<?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } ?>">
         </div>
         <div class="form-group">
             <label>Adresse Email</label>
-            <input type="text" class="form-control" name="emailEdit" placeholder="name@example.com" value="<?= $_SESSION['userEmailLog'] ?>">
+            <input type="text" class="input-morph" name="emailEdit" placeholder="name@example.com" value="<?= $_SESSION['userEmailLog'] ?>">
         </div>
         <!-- <div class="form-group">
             <label for="exampleFormControlTextarea1">Bio</label>
@@ -31,8 +31,8 @@
 
     <br><br>
 
-    <h3>Photo de Profil</h3><br>
-    <form method="POST" enctype="multipart/form-data">
+    <h3 class="title-morph">Photo de Profil</h3>
+    <form method="POST" enctype="multipart/form-data" class="card-morph">
         <?php
         require "app/env.php";
         $premiereLettreName = substr($_SESSION['userNameLog'], 0, 1);
@@ -47,7 +47,7 @@
 
         <div class="form-group">
             <label>Votre Image (9 Mo Max)</label>
-            <input type="file" class="form-control" name="pictureProfilAdd">
+            <input type="file" class="form-control input-morph" name="pictureProfilAdd">
         </div>
 
         <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
@@ -62,19 +62,19 @@
 
     <br><br>
 
-    <h3>Mots de passe</h3><br>
-    <form method="POST">
+    <h3  class="title-morph">Mots de passe</h3>
+    <form method="POST" class="card-morph">
         <div class="form-group">
             <label>Ancien Mots de passe</label>
-            <input type="password" name="passEditNewOld" class="form-control" placeholder="">
+            <input type="password" name="passEditNewOld" class="input-morph" placeholder="">
         </div>
         <div class="form-group">
             <label>Nouveau Mots de passe</label>
-            <input type="password" name="passEditNew" class="form-control" placeholder="">
+            <input type="password" name="passEditNew" class="input-morph" placeholder="">
         </div>
         <div class="form-group">
             <label>Comfirmer le Nouveau Mots de passe</label>
-            <input type="password" name="passEditNewC" class="form-control" placeholder="">
+            <input type="password" name="passEditNewC" class="input-morph" placeholder="">
         </div>
         <br>
         <input type="hidden" name="idEditPass" value="<?= $_SESSION['userIdLog'] ?>">
