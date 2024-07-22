@@ -13,6 +13,8 @@ function head($page)
             $title = "Connexion/Inscription | Useritium";
         } else if ($page == 3) {
             $title = "Panel Useritium";
+        } else if ($page == 4) {
+            $title = "Verif Useritium";
         } else
 
         {
