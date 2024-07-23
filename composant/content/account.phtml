@@ -116,10 +116,33 @@
 
     <br><br>
 
-    <h3  class="title-morph">Compte Liée</h3>
+    <h3  class="title-morph">Service Liée</h3>
     <div class="card-morph">
 
         <!-- COMPTE LIER -->
+
+        <?php
+
+        require "app/env.php";
+        $tyroservAccount = getTyroServ();
+
+        if ($tyroservAccount){ ?>
+
+                <div style="display: flex">
+        <img width="30" src="https://tyrolium.fr/Contenu/Image/Tyrolium%20ServerMC%20Sword%203D.png"><h5 style="margin: unset;
+    margin-top: 3px;
+    margin-left: 8px;">TyroServ : <small><?= $tyroservAccount['pseudo'] ?></small></h5>
+                </div>
+        <?php } else { ?>
+
+
+            <h5 style="text-align: center;
+    margin: unset;
+    font-size: 15px;
+    opacity: 0.8;
+}">Votre compte n'est lié à aucun service</h5>
+
+        <?php } ?>
 
     </div>
 
@@ -136,3 +159,4 @@
     }
 
 </style>
+
