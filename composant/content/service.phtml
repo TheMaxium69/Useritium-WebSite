@@ -1,17 +1,84 @@
+<?php
+
+require "app/env.php";
+$productPrestationByAccount = getProductPrestation();
+
+//var_dump($productPrestationByAccount);
+
+?>
+
 <section id="panel-game">
     <h3 class="title-morph">Vos prestations</h3>
+
     <div class="flex-container">
 
-            <div class="game-back"  onclick="redirectPanel('https://tyrolium.fr/service.php')">
-                <div class="picture">
-                    <img class="img-fluid" src="assets/icone/add.png">
-                </div>
-                
-                <div class="team-content">
-                    <h3 class="name">Commandez</h3>
-                    <h4 class="title">Prestations de Tyrolium</h4>
-                </div>
+        <div class="dropdown-morph" style="width: 400px; height: 60px!important;" onclick="redirectPanel('https://tyrolium.fr/')">
+
+            <div class="dropdownContent">
+                <i class="iconestatus ri-add-circle-line" style=" color: #0050c9"></i>
+                <h3 class="nameserver" style="margin-left: 10px; font-size: 16px; color: #0050c9">Acheter un Service</h3>
+                <small class="ipserver" style="font-size: 10px; margin-left: auto;">Powered by Tyrolium <img width="20px" src="https://tyrolium.fr/Contenu/Image/Tyrolium%20Site.png"></small>
             </div>
 
+        </div>
+
+        <?php foreach ($productPrestationByAccount as $presta){ ?>
+
+            <div class="dropdown-morph">
+
+                <div class="dropdownContent">
+                    <i class="iconestatus ri-focus-2-fill" style="color: <?= $presta['progresseColor'] ?>!important;"></i>
+                    <h3 class="nameserver"><?= $presta['title'] ?> </h3>
+                    <small class="ipserver"><?= $presta['subTitle'] ?></small>
+                    <i class="dropdownarrow ri-arrow-down-s-line"></i>
+                </div>
+
+                <div class="dropdownHover">
+                    <hr>
+                    <div class="btnAndStatus" style="display: flex">
+                        <div class="statusDiv" style="<?php if (empty($presta['oneBtnTitle']) && empty($presta['twoBtnTitle'])){ ?> width: 100%; <?php } else { ?> width: 70%; <?php } ?> padding-left: 10px; margin-top: 14px">
+                            <h5>Status</h5>
+                            <div class="progressbarBack"><div class="progressbarProf"><div class="progressbar" style="background-color: <?= $presta['progresseColor'] ?>; width: <?= $presta['progresseBar'] ?>%"></div></div></div>
+                            <div class="legend" style="display: flex;justify-content: space-around;">
+                                <h6>Acheter</h6>
+                                <h6>En cours</h6>
+                                <h6>Lancer</h6>
+                            </div>
+                        </div>
+                        <?php if (!empty($presta['oneBtnTitle']) || !empty($presta['twoBtnTitle'])){ ?>
+                            <div class="btnDiv" style="width: 30%">
+                                    <h6>Action</h6>
+
+                                <?php if (!empty($presta['oneBtnTitle'])) { ?>
+                                    <div onclick="redirectPanel('<?= $presta['oneBtnUrl'] ?>')" class="btn-morph btn-morph-primary" style="text-align: center; color: <?= $presta['oneBtnColor'] ?>;margin-top: 15px;"><?= $presta['oneBtnTitle'] ?></div>
+                                <?php } ?>
+
+                                <?php if (!empty($presta['twoBtnTitle'])) { ?>
+                                    <div onclick="redirectPanel('<?= $presta['twoBtnUrl'] ?>')" class="btn-morph btn-morph-primary" style="color: <?= $presta['twoBtnColor'] ?>;text-align: center;margin-top: 15px;margin-bottom: 10px"><?= $presta['twoBtnTitle'] ?></div>
+                                <?php } ?>
+
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+
+            </div>
+
+        <?php } ?>
 
 </section>
+
+
+<style>
+    .btn-morph{
+        text-align: center;
+        font-size: 15px;
+        padding: 11px;
+    }
+
+    .ipserver:hover{
+        text-decoration: unset!important;
+    }
+</style>
+
+<script src="javascript/dropdown.js"></script>

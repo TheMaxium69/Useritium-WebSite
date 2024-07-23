@@ -1,29 +1,101 @@
+<?php
+
+    require "app/env.php";
+    $productServerByAccount = getProductServer();
+
+?>
+
 <section id="panel-game">
     <h3 class="title-morph">Vos serveurs informatique</h3>
     <div class="flex-container">
 
-            <div class="game-back" onclick="redirectPanel('https://solidserv.fr/')">
-                <div class="picture">
-                    <img class="img-fluid" src="assets/icone/add.png">
-                </div>
-                
-                <div class="team-content">
-                    <h3 class="name">Commandez</h3>
-                    <h4 class="title">Serveur de SolidServ</h4>
+        <div class="dropdown-morph" style="width: 400px; height: 60px!important;" onclick="redirectPanel('https://solidserv.fr/')">
+
+            <div class="dropdownContent">
+                <i class="iconestatus ri-add-circle-line" style=" color: #0050c9"></i>
+                <h3 class="nameserver" style="margin-left: 10px; font-size: 16px; color: #0050c9">Acheter un Serveur</h3>
+                <small class="ipserver" style="font-size: 10px; margin-left: auto;">Powered by SolidServ <img width="20px" src="https://tyrolium.fr/Contenu/Image/SolidServ%20Site.png"></small>
+            </div>
+
+        </div>
+
+        <div class="dropdown-morph">
+
+            <div class="dropdownContent">
+                <i class="iconestatus ri-rss-fill"></i>
+                <h3 class="nameserver">Donnée Useritium</h3>
+                <small class="ipserver" onclick="redirectPanel('https://useritium.fr/')">Useritium.fr</small>
+                <i class="dropdownarrow ri-arrow-down-s-line"></i>
+            </div>
+
+            <div class="dropdownHover">
+                <hr>
+                <div class="btnAndStatus" style="display: flex">
+                    <div class="statusDiv" style="width: 70%; padding-left: 10px; margin-top: 14px">
+                        <h5>Status</h5>
+                        <div class="progressbarBack"><div class="progressbarProf"><div class="progressbar" style="background-color: green; width: 80%"></div></div></div>
+                        <div class="legend" style="display: flex;justify-content: space-around;">
+                            <h6>Acheter</h6>
+                            <h6>En cours</h6>
+                            <h6>Lancer</h6>
+                        </div>
+                    </div>
+                    <div class="btnDiv" style="width: 30%">
+                        <h6>Action</h6>
+                        <div onclick="redirectPanel('panel.php?p=2')" class="btn-morph btn-morph-primary" style="text-align: center; color: #c40909;margin-top: 15px;">Mots de passe</div>
+                        <div onclick="redirectPanel('https://stats.uptimerobot.com/7z9o3SEnWX/795847131')" class="btn-morph btn-morph-primary" style="text-align: center;margin-top: 15px;margin-bottom: 10px">Uptime</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="game-back" onclick="redirectPanel('panel.php?p=6')">
-                <div class="picture">
-                    <img class="img-fluid" src="assets/logo.png">
-                </div>
-                
-                <div class="team-content">
-                    <h3 class="name">Cloud User</h3>
-                    <h4 class="title">Donnée du Compte Useritium</h4>
+        </div>
+
+        <?php foreach($productServerByAccount as $server){ ?>
+
+        <div class="dropdown-morph">
+
+            <div class="dropdownContent">
+                <i class="iconestatus ri-rss-fill" style="color: <?= $server['progresseColor'] ?>!important;"></i>
+                <h3 class="nameserver"><?= $server['type'] ?> nº<?= $server['numero'] ?></h3>
+                <small class="ipserver"  onclick="redirectPanel('http://<?= $server['ip'] ?>/')"><?= $server['ip'] ?></small>
+                <i class="dropdownarrow ri-arrow-down-s-line"></i>
+            </div>
+
+            <div class="dropdownHover">
+                <hr>
+                <div class="btnAndStatus" style="display: flex">
+                    <div class="statusDiv" style="width: 70%; padding-left: 10px; margin-top: 14px">
+                        <h5>Status</h5>
+                        <div class="progressbarBack"><div class="progressbarProf"><div class="progressbar" style="background-color: <?= $server['progresseColor'] ?>; width: <?= $server['progresseBar'] ?>%"></div></div></div>
+                        <div class="legend" style="display: flex;justify-content: space-around;">
+                            <h6>Acheter</h6>
+                            <h6>En cours</h6>
+                            <h6>Lancer</h6>
+                        </div>
+                    </div>
+                    <div class="btnDiv" style="width: 30%">
+                        <h6>Action</h6>
+                        <div onclick="redirectPanel('')" class="btn-morph btn-morph-primary" style="text-align: center; color: #c40909;margin-top: 15px;">Mots de passe</div>
+                        <div onclick="redirectPanel('<?= $server['uptime'] ?>')" class="btn-morph btn-morph-primary" style="text-align: center;margin-top: 15px;margin-bottom: 10px">Uptime</div>
+                    </div>
                 </div>
             </div>
+
+        </div>
+
+        <?php } ?>
 
     </div>
 
 </section>
+
+
+<style>
+    .btn-morph{
+        text-align: center;
+        font-size: 15px;
+        padding: 11px;
+    }
+</style>
+
+<script src="javascript/dropdown.js"></script>

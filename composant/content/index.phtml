@@ -1,6 +1,14 @@
+<?php
+
+require "app/env.php";
+$productPrestationByAccount = getProductPrestation();
+$productServerByAccount = getProductServer();
+
+?>
+
 <section>
 
-<h3 class="title-morph">Accueil</h3>
+<!--<h3 class="title-morph">Accueil</h3>-->
 
 <div class="stylebox" onclick="redirectPanel('panel.php?p=2')">
     <?php
@@ -13,11 +21,9 @@
             <div id="PP" class="pp-morph" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
         <?php } ?>
     </div>
-    <div>
-        <h4>Votre profile</h4><br>
-        <p>Username : <?= $_SESSION['userNameLog'] ?></p>
-        <p>Mail : <?= $_SESSION['userEmailLog'] ?></p>
-        <p>Nom d'affichage : <?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } else { echo '<i> Vide </i>'; } ?></p>
+    <div style="margin-left: 20px; text-align: center;margin-top: 29px;">
+        <h4>Bonjour <?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } else { echo $_SESSION['userNameLog']; } ?></h4>
+        <p><?= $_SESSION['userEmailLog'] ?></p>
     </div>
 </div>
 
@@ -35,16 +41,16 @@
                     <h3 class="name">TyroServ</h3>
                 </div>
         </div>
-        <div class="game-back" onclick="redirectPanel('panel.php?p=8')">
-            <div class="picture">
-                <img class="img-fluid" src="assets/icone/game.png">
-            </div>
-
-            <div class="team-content secondtext">
-                <h3 class="name">Vos jeux</h3>
-                <small>5 jeux</small>
-            </div>
-        </div>
+<!--        <div class="game-back" onclick="redirectPanel('panel.php?p=8')">-->
+<!--            <div class="picture">-->
+<!--                <img class="img-fluid" src="assets/icone/game.png">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="team-content secondtext">-->
+<!--                <h3 class="name">Vos jeux</h3>-->
+<!--                <small>5 jeux</small>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="game-back" onclick="redirectPanel('panel.php?p=7')">
             <div class="picture">
@@ -53,7 +59,7 @@
 
             <div class="team-content secondtext">
                 <h3 class="name">Vos Prestations</h3>
-                <small>5 produits</small>
+                <small><?php echo count($productPrestationByAccount); ?> produit</small>
             </div>
         </div>
 
@@ -64,14 +70,63 @@
 
             <div class="team-content secondtext">
                 <h3 class="name">Vos Serveurs</h3>
-                <small>5 produits</small>
+                <small><?php echo count($productServerByAccount) + 1; ?> produit</small>
             </div>
         </div>
 </div>
 
 
+<?php
+
+    if (!empty($productPrestationByAccount) || !empty($productServerByAccount)) {
+
+?>
+
     <h3 class="title-morph">Vos produits</h3>
 
+<?php
+
+    foreach ($productPrestationByAccount as $presta) {
+
+?>
+
+    <div class="dropdown-morph"  style="width: 96%;margin-left: auto; margin-right: auto;" onclick="redirectPanel('panel.php?p=7')">
+
+        <div class="dropdownContent">
+            <i class="iconestatus ri-focus-2-fill" style=" color: <?= $presta['progresseColor'] ?>"></i>
+            <h3 class="nameserver" style="margin-left: 10px; font-size: 16px; color: <?= $presta['progresseColor'] ?>"><?= $presta['title'] ?></h3>
+            <small class="ipserver"><?= $presta['subTitle'] ?> </small>
+            <small class="ipserver" style="font-size: 15px; margin-left: auto;">Prestation </small>
+            <i class="ri-share-box-line" style="margin-left: 8px;"></i>
+        </div>
+
+    </div>
+
+<?php
+
+    }
+
+    foreach ($productServerByAccount as $server) {
+
+?>
+
+    <div class="dropdown-morph" style="width: 96%;margin-left: auto; margin-right: auto;" onclick="redirectPanel('panel.php?p=9')">
+
+        <div class="dropdownContent">
+            <i class="iconestatus ri-rss-fill" style=" color: <?= $server['progresseColor'] ?>"></i>
+            <h3 class="nameserver" style="margin-left: 10px; font-size: 16px; color: <?= $server['progresseColor'] ?>"><?= $server['type'] ?> nº<?= $server['numero'] ?></h3>
+            <small class="ipserver"><?= $server['ip'] ?> </small>
+            <small class="ipserver" style="font-size: 15px; margin-left: auto;">Serveur </small>
+            <i class="ri-share-box-line" style="margin-left: 8px;"></i>
+        </div>
+
+    </div>
+
+<?php
+
+    }}
+
+?>
 
 
 
@@ -79,11 +134,16 @@
 
 <style>
 
+    .title-morph{
+        margin-top: 60px;
+    }
 
 .stylebox{
+    margin-top: 15px;
 
     margin-bottom: 30px;
-    padding: 30px 0 25px 10px;
+    padding-top: 20px;
+    padding-bottom: 11px;
     /*box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f7f7f7;*/
     border-radius: 12px;
     background: #EBECF0;
@@ -91,29 +151,33 @@
     transition: all 0.2s ease 0s;
 }
 
+.stylebox:hover{
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
 
 #PP {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin: auto;
 }
 
 .stylebox{
-    display: flex;
+    display: block;
 }
 
-@media (max-width: 710px) {
-    #PP{
-        margin: auto;
-    }
-
-    .stylebox{
-        display: block;
-    }
-
-    #prePP{
-        width: 100%;
-    }
-
+#prePP{
+    width: 100%;
 }
+
+/*ONLY PAGE*/
+
+.ipserver:hover{
+    text-decoration: unset!important;
+}
+
+@media (max-width: 992px) {
+    .layout .content {
+        padding: 19px 10px;
+    }
+}
+
 
 </style>

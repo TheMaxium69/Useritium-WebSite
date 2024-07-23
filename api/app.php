@@ -65,3 +65,43 @@ function getTyroServ(){
 
 
 }
+
+function getProductServer(){
+
+    require "api/private/db.php";
+
+    $maRequeteServer = "SELECT * FROM product_server WHERE idUsers='$_SESSION[userIdLog]'";
+    $resultatServer = mysqli_query($ConnectDB, $maRequeteServer);
+    $data = array();
+
+    if ($resultatServer) {
+        while ($row = mysqli_fetch_assoc($resultatServer)) {
+            array_push($data, $row);
+        }
+        return $data;
+    } else {
+        return null;
+    }
+
+
+}
+
+function getProductPrestation(){
+
+    require "api/private/db.php";
+
+    $maRequetePrestation = "SELECT * FROM product_prestation WHERE idUsers='$_SESSION[userIdLog]'";
+    $resultatPrestation = mysqli_query($ConnectDB, $maRequetePrestation);
+    $data2 = array();
+
+    if ($resultatPrestation) {
+        while ($row = mysqli_fetch_assoc($resultatPrestation)) {
+            array_push($data2, $row);
+        }
+        return $data2;
+    } else {
+        return null;
+    }
+
+
+}

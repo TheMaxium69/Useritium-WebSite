@@ -289,3 +289,123 @@
 .team-content.secondtext{
     margin-top: -14px;
 }
+
+.iconestatus{
+    font-size: 20px;
+    margin-left: 5px;
+    color: green;
+}
+.nameserver{
+    font-size: 21px;
+    margin-top: 8px;
+    margin-left: 27px;
+}
+.ipserver{
+    margin-left: 19px;
+}
+.ipserver:hover{
+    text-decoration: underline;
+}
+.dropdownarrow{
+    margin-left: auto;
+    transition: all 0.5s ease 0s;
+}
+
+.dropdownContent{
+    height: 60px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.dropdown-morph {
+    padding: 0px 20px;
+    /*padding: 60px;*/
+    width: 685px;
+    height: 60px;
+
+
+    background: #EBECF0;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.3s ease 0s;
+    border-radius: 12px;
+
+    margin-bottom: 30px;
+}
+
+@media (max-width: 690px) {
+    .dropdown-morph{
+        width: 100%;
+    }
+
+    .btnAndStatus{
+        display: block!important;
+    }
+
+    .btnDiv{
+        width: 100% !important;
+    }
+
+    .statusDiv{
+
+        width: 100% !important;
+    }
+
+    .dropdown-morph-active {
+        height: 355px!important;
+    }
+
+
+}
+
+.dropdown-morph:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;!important;
+    /*box-shadow: inset 5px 5px 10px #c8c9cc,inset -5px -5px 10px #ffffff;*/
+}
+
+.dropdown-morph-active{
+    height: 240px;
+    align-items: start;
+    transition: all 0.3s ease 0s;
+}
+
+
+.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.5s ease;
+}
+
+.display-block {
+    transition: all 0.3s ease 0s;
+    display: block !important;
+}
+
+
+.dropdownHover{
+    margin-top: -15px;
+    display: none;
+    transition: all 0.5s ease 0s;
+}
+
+.progressbarBack{
+    width: 80%;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-bottom: 14px;
+    margin-left: auto;
+    box-shadow:  5px 5px 10px #c8c9cc, -5px -5px 10px #ffffff;
+    height: 20px;
+    border-radius: 10px
+}
+
+.progressbarProf{
+    width: 100%;
+    box-shadow: inset 1px 1px 2px #bebebe, inset -1px -1px 2px #ffffff;;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.progressbar {
+    height: 20px;
+    border-radius: 10px;
+}

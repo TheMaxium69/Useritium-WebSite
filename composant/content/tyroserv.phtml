@@ -133,8 +133,12 @@
 
             <?php } else { ?>
 
-                <h1>Vous n'avez jamais jouer a TyroServ</h1>
-                <a href="https://tyroserv.fr" target="_blank">Go TyroServ.fr</a>
+                    <div class="card-morph">
+
+                    <h4>Vous n'avez jamais joué à Tyroserv</h4><br>
+                    <a class="btn-morph btn-morph-primary" style="text-align: center" href="https://tyroserv.fr" target="_blank">Go TyroServ.fr</a>
+
+                    </div>
 
             <?php } ?>
 
@@ -234,6 +238,13 @@
         opacity: 0.50;
         color: black;
     }
+
+    @media (max-width: 992px) {
+        .layout .content {
+            padding: 19px 10px;
+        }
+    }
+
 
 
 </style>
