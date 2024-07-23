@@ -1,0 +1,62 @@
+<section  style="width: 1000px">
+
+    <h1 class="title-morph">Vos notes</h1>
+    <form id="noteForm" style="max-width: 500px; margin: auto">
+        <textarea name="note" id="note" rows="4" cols="50" class="input-morph" placeholder="Créer une note"></textarea><br>
+        <input style="margin-top: 20px" class="btn-morph btn-morph-primary" type="submit" value="Créer une note">
+    </form>
+
+    <br><br>
+    <div style="width: 100%; background-color: rgba(0,0,0,.1); height: 1px;max-width: 600px; margin: auto"></div>
+    <br><br>
+
+    <ul id="notesList" class="flex-container"></ul>
+
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('noteForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var note = document.getElementById('note').value;
+
+            var request = new XMLHttpRequest();
+            request.open('POST', '', true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+                    var div = document.createElement("div");
+                    div.classList.add("card-morph");
+
+
+                    div.textContent = note;
+
+                    document.getElementById("notesList").appendChild(div);
+                } else {
+                    console.error('Error: ' + this.response);
+                }
+            };
+            request.send('note=' + note);
+
+            document.getElementById('note').value = '';
+        });
+    });
+</script>
+
+<style>
+
+    .card-morph{
+        width: 250px;
+        min-height: 250px;
+        margin: auto;
+        margin-bottom: 33px;
+
+    }
+
+    .card-morph:hover{
+        box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+    }
+
+</style>

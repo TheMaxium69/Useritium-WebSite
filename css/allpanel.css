@@ -197,7 +197,8 @@
     color: transparent;
     position: relative;
     top: -200px;
-    left: 160px;
+    /*left: 160px;*/
+    left: calc(50% - 100px);
     width: 200px;
     height: 200px;
     border-radius: 133px;
@@ -231,7 +232,8 @@
     transform: scale(3.5);
     width: 0;
     top: -313px;
-    left: 230px;
+    /*left: 230px;*/
+    left: calc(50% - 28px);
     color: white;
     pointer-events: none;
 }

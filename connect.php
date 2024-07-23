@@ -50,7 +50,12 @@ if ($isLogged) {
 
             <script src="javascript/form.js"></script>
 
+<style>
 
+    header#connect-head {
+         box-shadow: unset;
+    }
+</style>
 
 
 </main>

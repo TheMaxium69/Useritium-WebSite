@@ -14,7 +14,7 @@ function content($sidepage)
         require_once "./composant/content/erreur.phtml";
     } else if($sidepage == 4) {
         
-        require_once "./composant/content/erreur.phtml";
+        require_once "./composant/content/note.phtml";
     } else if($sidepage == 5) {
         
         require_once "./composant/content/erreur.phtml";
