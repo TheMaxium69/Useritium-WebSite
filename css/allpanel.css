@@ -1,3 +1,9 @@
+.icon-sidebar{
+    width: 25px;
+    height: 25px;
+    margin-top: -3px;
+    margin-left: 2px;
+}
 
 .title-morph{
     text-transform: uppercase;
@@ -7,7 +13,9 @@
     letter-spacing: -0.2px;
     font-size: 30px;
     font-weight: bold;
-    color: #AAAEBB;
+    /*color: #AAAEBB;*/
+    /*color: #0c92ff;*/
+    color: #1980d3;
     text-shadow: 1px 1px 1px #FFF;
     text-align: center;
 }
@@ -36,8 +44,8 @@
     height: 302px;
     padding: 30px 0 25px;
     margin-bottom: 30px;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 29px;
+    margin-right: 29px;
     text-align: center;
     overflow: hidden;
     position: relative;
@@ -164,4 +172,118 @@
 }
 .input-morph:focus {
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+#PP,
+.ppclass {
+    width: 200px;
+    height: 200px;
+    /*box-shadow: 0px 4px 83px rgba(0, 0, 0, 0.24);*/
+    border-radius: 133px;
+    background-size: cover;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+}
+
+#prePP{
+    width: 100%;
+}
+
+.input-pp{
+    /* opacity: 0; */
+    background: transparent;
+    color: transparent;
+    position: relative;
+    top: -200px;
+    left: 160px;
+    width: 200px;
+    height: 200px;
+    border-radius: 133px;
+    transition: all 0.2s ease 0s;
+}
+
+.input-pp:hover{
+    background-color: rgba(0, 0, 0, 0.34);
+}
+
+.input-pp::file-selector-button {
+    border: none;
+    background: transparent;
+    color: transparent;
+}
+
+.pp-morph{
+    box-shadow:  23px 23px 46px #c7c8cb,
+    -23px -23px 46px #f3f3f3;
+    transition: all 0.2s ease 0s;
+}
+
+.pp-morph:hover{
+    box-shadow:  5px 5px 10px #c7c8cb,
+    -5px -5px 10px #f3f3f3;
+}
+
+#uploadIcone{
+    display: none;
+    position: relative;
+    transform: scale(3.5);
+    width: 0;
+    top: -313px;
+    left: 230px;
+    color: white;
+    pointer-events: none;
+}
+
+.btn-morph {
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    border-radius: 320px;
+    padding: 16px;
+    background-color: #EBECF0;
+    text-shadow: 1px 1px 0 #FFF;
+}
+
+.btn-morph {
+    color: #61677C;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-morph:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+.btn-morph:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+.btn-morph .icon {
+    margin-right: 8px;
+}
+.btn-morph.unit {
+    border-radius: 8px;
+    line-height: 0;
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 8px;
+    font-size: 19.2px;
+}
+.btn-morph.unit .icon {
+    margin-right: 0;
+}
+.btn-morph.btn-morph-primary {
+    display: block;
+    width: 80%;
+    color: #0c92ff;
+    margin: auto;
+}
+
+.team-content.secondtext{
+    margin-top: -14px;
 }

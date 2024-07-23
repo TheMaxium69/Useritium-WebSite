@@ -6,11 +6,11 @@
     <?php
     require "app/env.php";
     $premiereLettreName = substr($_SESSION['userNameLog'], 0, 1); ?>
-    <div id="prePP">
+    <div id="prePP" style="width: unset!important;">
         <?php if (!$_SESSION["userPpLog"]){ ?>
-            <div id="PP" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
+            <div id="PP" class="pp-morph" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
         <?php } else { ?>
-            <div id="PP" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
+            <div id="PP" class="pp-morph" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
         <?php } ?>
     </div>
     <div>
@@ -20,6 +20,9 @@
         <p>Nom d'affichage : <?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } else { echo '<i> Vide </i>'; } ?></p>
     </div>
 </div>
+
+
+    <h3 class="title-morph">Raccourci</h3>
 
 <div class="flex-container">
 
@@ -37,8 +40,9 @@
                 <img class="img-fluid" src="assets/icone/game.png">
             </div>
 
-            <div class="team-content">
+            <div class="team-content secondtext">
                 <h3 class="name">Vos jeux</h3>
+                <small>5 jeux</small>
             </div>
         </div>
 
@@ -47,8 +51,9 @@
                 <img class="img-fluid" src="assets/icone/service.png">
             </div>
 
-            <div class="team-content">
+            <div class="team-content secondtext">
                 <h3 class="name">Vos Prestations</h3>
+                <small>5 produits</small>
             </div>
         </div>
 
@@ -57,11 +62,16 @@
                 <img class="img-fluid" src="assets/icone/server.png">
             </div>
 
-            <div class="team-content">
+            <div class="team-content secondtext">
                 <h3 class="name">Vos Serveurs</h3>
+                <small>5 produits</small>
             </div>
         </div>
 </div>
+
+
+    <h3 class="title-morph">Vos produits</h3>
+
 
 
 
@@ -71,7 +81,7 @@
 
 
 .stylebox{
-    
+
     margin-bottom: 30px;
     padding: 30px 0 25px 10px;
     /*box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f7f7f7;*/
@@ -83,15 +93,8 @@
 
 
 #PP {
-    width: 200px;
-    height: 200px;
-    box-shadow: 0px 4px 83px rgba(0, 0, 0, 0.07);
-    border-radius: 133px;
-    background-size: contain;
-    background-color: white;
     margin-left: 25px;
     margin-right: 25px;
-    background-repeat: no-repeat;
 }
 
 .stylebox{

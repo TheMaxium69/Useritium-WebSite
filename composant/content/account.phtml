@@ -7,28 +7,54 @@
             require "app/env.php";
             $premiereLettreName = substr($_SESSION['userNameLog'], 0, 1);
             ?>
-            <div id="prePP">
-                <?php if (!$_SESSION["userPpLog"]){ ?>
-                    <div id="PP" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
-                <?php } else { ?>
-                    <div id="PP" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
-                <?php } ?>
+
+            <div id="PPnoChange" style="display: block;height: 227px;">
+                <div id="prePP">
+                    <?php if (!$_SESSION["userPpLog"]){ ?>
+                        <div id="PP" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
+                    <?php } else { ?>
+                        <div id="PP" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
+                    <?php } ?>
+                </div>
+
+                <input type="file" class="input-pp pp-morph" name="pictureProfilAdd" onchange="previewImage(event)" onmouseover="hoverPP()" onmouseout="nohoverPP()">
+                <div id="uploadIcone">
+                    <i class="ri-upload-2-line"></i>
+                </div>
+            </div>
+            <div id="PPchange" style="display: none;">
+                <div style="display: flex">
+                    <div id="prePP">
+                        <?php if (!$_SESSION["userPpLog"]){ ?>
+                            <div id="PP" class="pp-morph" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
+                        <?php } else { ?>
+                            <div id="PP" class="pp-morph" style="background-image: url('<?= $env_uploadUrl . "pp/" . $_SESSION["userPpLog"] ?>')"></div>
+                        <?php } ?>
+                    </div>
+
+                    <i class="ri-arrow-right-line" style="font-size: 35px;margin-top: 74px;"></i>
+
+                    <div id="prePP">
+                        <div id="previewImg" class="ppclass pp-morph"></div>
+                    </div>
+                </div>
+                <br>
+                <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
+
+                <div style="margin-bottom: 30px">
+                    <div style="width: 80%; margin: auto">
+                        <button type="submit" class="btn btn-morph" style="color: #0c92ff;height: 53px;width: 64%;font-size: 14px; margin-right: 19px;"><i class="icon ri-upload-2-line"></i> Appliqué</button>
+                        <div onclick="location.reload();" class="btn btn-morph" style="color: #b70707;height: 53px;width: 30%;font-size: 14px;"><i class="icon ri-delete-bin-line"></i> Reset</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>Votre Image (9 Mo Max)</label>
-                <input type="file" class="form-control input-morph" name="pictureProfilAdd">
-            </div>
-
-            <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
-            <br>
-            <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
-
+            <script src="javascript/photoprofil.js"></script>
         </form>
 
         <form method="POST">
             <div class="form-group">
-                <h4><?= $_SESSION['userNameLog'] ?></h4>
+                <h4 style="margin-bottom: 30px; text-align: center"><?= $_SESSION['userNameLog'] ?></h4>
             </div>
             <div class="form-group">
                 <label>Nom d'affichage</label>
@@ -45,28 +71,24 @@
 
             <input type="hidden" name="idEdit" value="<?= $_SESSION['userIdLog'] ?>">
             <br>
-            <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+            <button type="submit" class="btn btn-morph btn-morph-primary"><i class="icon ri-check-line"></i> Mettre à jour</button>
 
         </form>
     </div>
+
     <br><br>
-
     <hr>
-
     <br><br>
 
     <h3  class="title-morph">Vérification des emails</h3>
     <div class="card-morph">
 
+        <!--VERIF MAIL-->
 
     </div>
 
-
-
     <br><br>
-
     <hr>
-
     <br><br>
 
     <h3  class="title-morph">Mots de passe</h3>
@@ -85,7 +107,7 @@
         </div>
         <br>
         <input type="hidden" name="idEditPass" value="<?= $_SESSION['userIdLog'] ?>">
-        <button type="submit" class="btn btn-primary" style="width: 100%">Envoyer</button>
+        <button type="submit" class="btn btn-morph btn-morph-primary"><i class="icon ri-check-line"></i> Mettre à jour</button>
     </form>
 
     <br><br>
@@ -97,30 +119,10 @@
     <h3  class="title-morph">Compte Liée</h3>
     <div class="card-morph">
 
+        <!-- COMPTE LIER -->
 
     </div>
-
-
 
     <br><br>
 
 </section>
-
-<style>
-    #PP {
-        width: 200px;
-        height: 200px;
-        box-shadow: 0px 4px 83px rgba(0, 0, 0, 0.24);
-        border-radius: 133px;
-        background-size: contain;
-        background-color: white;
-        background-repeat: no-repeat;
-        margin: auto;
-    }
-
-        #prePP{
-            width: 100%;
-        }
-
-
-</style>
