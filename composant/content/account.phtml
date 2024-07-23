@@ -1,3 +1,6 @@
+<?php
+require "app/env.php";
+?>
 <section id="panel-account">
 
     <h3 class="title-morph">Profile Publique</h3>
@@ -84,6 +87,19 @@
     <div class="card-morph">
 
         <!--VERIF MAIL-->
+        <?php
+
+        $yourMail = getEmailUser();
+
+        var_dump($yourMail);
+
+        ?>
+
+        <ul>
+            <li style="display: flex">
+                <h6>#1</h6> <h6>mxm.tournier@gmail.com</h6> <div class="btn-morph">Vérifier</div>
+            </li>
+        </ul>
 
     </div>
 
@@ -123,7 +139,6 @@
 
         <?php
 
-        require "app/env.php";
         $tyroservAccount = getTyroServ();
 
         if ($tyroservAccount){ ?>

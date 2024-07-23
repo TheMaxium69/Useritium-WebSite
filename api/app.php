@@ -105,3 +105,23 @@ function getProductPrestation(){
 
 
 }
+
+function getEmailUser(){
+
+    require "api/private/db.php";
+
+    $maRequeteEmail = "SELECT * FROM users_email WHERE idUsers='$_SESSION[userIdLog]'";
+    $resultatEmail = mysqli_query($ConnectDB, $maRequeteEmail);
+    $data3 = array();
+
+    if ($resultatEmail) {
+        while ($row = mysqli_fetch_assoc($resultatEmail)) {
+            array_push($data3, $row);
+        }
+        return $data3;
+    } else {
+        return null;
+    }
+
+
+}
