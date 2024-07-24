@@ -28,8 +28,16 @@
 
 ?>
       <nav class="d-flex align-items-center justify-content-between">
-            <a id="logo" href="." style="font-size: 25px;"><img src="assets/logo.png" alt="logo useritium"> Compte Useritium </a>
-            <ul class="d-flex">
+            <a id="logo" href="." style="
+                        text-align: center;
+                        width: 100%;
+                        font-family: 'Inter', sans-serif;
+                        text-transform: uppercase;
+                        font-size: 18px;
+                        letter-spacing: 3px;
+                        font-weight: bold;">
+                Useritium <small style="font-size: 10px">Par Tyrolium</small></a>
+            <ul class="d-flex" style="margin: unset;display: none!important;">
                 <li class="ms-4"><a href="index.php">Accueil</a></li>
                 <?php if(!$isLogged){ ?>
                 <li class="ms-4"><a href="connect.php" class="btn-super">Connexion / Inscription</a></li>

@@ -84,22 +84,36 @@ require "app/env.php";
     <br><br>
 
     <h3  class="title-morph">Vérification des emails</h3>
-    <div class="card-morph">
+    <div class="card-morph" style="padding: 40px 40px 20px 40px;">
 
         <!--VERIF MAIL-->
         <?php
 
         $yourMail = getEmailUser();
 
-        var_dump($yourMail);
-
         ?>
 
-        <ul>
-            <li style="display: flex">
-                <h6>#1</h6> <h6>mxm.tournier@gmail.com</h6> <div class="btn-morph">Vérifier</div>
-            </li>
-        </ul>
+        <div style="margin-left: 10px;">
+            <?php $i = 0; foreach ($yourMail as $mail){ $i++; ?>
+                <li style="display: flex; justify-content: start; align-items: center;margin-bottom: 27px">
+                    <h6>#<?= $i ?></h6> <h6 style="margin: 0 8px 0 10px"><?= $mail['email'] ?> <?php if ($mail['email'] == $_SESSION['userEmailLog']) { ?> (Défaut) <?php } ?></h6>
+
+                    <?php if ($mail['isVerif'] == 1){ ?>
+                    <i class="ri-checkbox-circle-fill" style="color: green; margin-left: auto;margin-right: 19px;"></i>
+                    <?php } else { ?>
+                    <i class="ri-alert-fill" style="color: orange;"></i> <div class="btn-morph" style="margin-left:auto ;color: orange;padding: 13px 19px;">Vérifier</div>
+                    <?php } ?>
+
+                    <?php if ($mail['email'] != $_SESSION['userEmailLog']) { ?> <div class="btn-morph" style="margin-left: 10px;color: #b70707;padding: 13px 19px;"><i class="ri-delete-bin-line"></i></div>  <?php } ?>
+                </li>
+            <?php } ?>
+        </div>
+
+        <style>
+            h6 {
+                margin: unset;
+            }
+        </style>
 
     </div>
 

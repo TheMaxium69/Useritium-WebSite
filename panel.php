@@ -21,6 +21,16 @@ if(empty($_GET['p'])){
 
 }
 
+require "app/env.php";
+$yourMail = getEmailUser();
+foreach ($yourMail as $mail){
+    if ($mail['email'] == $_SESSION['userEmailLog']) {
+        if ($mail['isVerif'] == 0) {
+            header("location: verif.php");
+        }
+    }
+}
+
 ?>
 
 <sidebar><?php sidebar($page); ?></sidebar>

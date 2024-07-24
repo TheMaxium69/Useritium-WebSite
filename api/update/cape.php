@@ -13,6 +13,8 @@ if (!empty($_POST['idCapeSelected']) && !empty($_POST['idCapeOld']) && !empty($_
 
     if ($idCapeSelected != $idCapeOld) {
 
+        if ($idEdit == $_SESSION['userIdLog']) {
+
             $maRequete = "UPDATE users_tyroserv SET cape='$idCapeSelected' WHERE idUsers='$idEdit'";
             $resultUpdate = mysqli_query($ConnectDB, $maRequete);
 
@@ -24,6 +26,12 @@ if (!empty($_POST['idCapeSelected']) && !empty($_POST['idCapeOld']) && !empty($_
 
                 resultSkin(2, "BDD Erreur");
             }
+
+        } else {
+
+            resultSkin(2, "Permission Erreur");
+
+        }
 
     } else {
 

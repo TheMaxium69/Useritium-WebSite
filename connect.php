@@ -53,7 +53,6 @@ if ($isLogged) {
 <style>
 
     header#connect-head {
-         box-shadow: unset;
     }
 </style>
 

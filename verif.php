@@ -42,6 +42,38 @@ mail($to, $subject, $message, $headers);
 */
 
 
+} else {
+
+    require "app/env.php";
+    $yourMail = getEmailUser();
+
+    $noMailVerif = 1;
+
+    foreach ($yourMail as $mail){
+        if ($mail['email'] == $_SESSION['userEmailLog']) {
+            if ($mail['isVerif'] == 0) {
+                $noMailVerif = 2;
+            }
+        }
+    }
+
+
+    if ($noMailVerif == 2) {
+
+
+        echo "IL FAUT QUE TU VERIF MAIL";
+
+    } else {
+
+
+        echo "PK TU EST Là";
+
+
+
+
+    }
+
+
 }
 
 ?>
@@ -61,10 +93,15 @@ mail($to, $subject, $message, $headers);
         flex-grow: 1;
         overflow: auto;
     }
+
+    header#connect-head {
+        box-shadow: 0px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
+    }
+
 </style>
 
 
-    <footer>
+    <footer style="background-color: #193554">
         2024 © <a href="https://tyrolium.fr" target="_bank">TYROLIUM</a>
     </footer>
 

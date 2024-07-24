@@ -32,7 +32,8 @@ header {
 header#connect-head{
     background-image: unset;
     color: black;
-    box-shadow: 0px 5px 15px black;
+    /*box-shadow: 0px 5px 15px black;*/
+    box-shadow: unset;
 }
 
 header#connect-head a{

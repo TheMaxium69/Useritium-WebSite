@@ -3,6 +3,7 @@
 require "app/env.php";
 $productPrestationByAccount = getProductPrestation();
 $productServerByAccount = getProductServer();
+$yourMail = getEmailUser();
 
 ?>
 
@@ -23,7 +24,12 @@ $productServerByAccount = getProductServer();
     </div>
     <div style="margin-left: 20px; text-align: center;margin-top: 29px;">
         <h4>Bonjour <?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } else { echo $_SESSION['userNameLog']; } ?></h4>
-        <p><?= $_SESSION['userEmailLog'] ?></p>
+        <p><?= $_SESSION['userEmailLog'] ?>
+            <?php foreach ($yourMail as $mail){
+                if ($mail['email'] == $_SESSION['userEmailLog']) {
+                    if ($mail['isVerif'] == 0) {?>
+                    <i class="ri-alert-fill" style="color: orange;font-size: 11px;"></i></p>
+            <?php } } }?>
     </div>
 </div>
 

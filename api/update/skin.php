@@ -28,16 +28,25 @@ if (isset($_FILES['pictureSkinAdd']) && isset($_POST['idEdit'])) {
                     $filename = basename($upload_file);
                     $idEdit = $_POST['idEdit'];
 
-                    $maRequete = "UPDATE users_tyroserv SET skin='$filename' WHERE idUsers='$idEdit'";
-                    $resultUpdate = mysqli_query($ConnectDB, $maRequete);
+                    if ($idEdit == $_SESSION['userIdLog']) {
 
-                    if ($resultUpdate) {
+                        $maRequete = "UPDATE users_tyroserv SET skin='$filename' WHERE idUsers='$idEdit'";
+                        $resultUpdate = mysqli_query($ConnectDB, $maRequete);
 
-                        resultSkin(1, "Enregistrement de votre skin minecraft.");
+
+                        if ($resultUpdate) {
+
+                            resultSkin(1, "Enregistrement de votre skin minecraft.");
+
+                        } else {
+
+                            resultSkin(2, "BDD Erreur");
+                        }
 
                     } else {
 
-                        resultSkin(2, "BDD Erreur");
+                        resultSkin(2, "Permission Erreur");
+
                     }
 
                 } else {
