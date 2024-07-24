@@ -11,12 +11,86 @@ $titre = "Erreur";
 $button = "Retour à l'accueil";
 $buttonUrl = ".";
 
-if (!empty($_GET['token'])){
+if (!empty($_GET['change'])){
+
+    $img = "cybersecurity-1-98.png";
+    $titre = "Changement de mots de passe effectuez";
+    $button = "Retour à l'accueil";
+    $buttonUrl = ".";
+
+    ?>
+
+    <div style="width: 100%; text-align: center">
+        <img src="assets/<?= $img ?>" style="
+    pointer-events: none;width: 300px;transform: scale(1);
+    margin-top: 9px;margin-bottom: 10px">
+        <h3 class="title-morph"><?= $titre ?></h3>
+
+        <div onclick="redirectPanel('<?= $buttonUrl ?>')" class="btn-morph" style="margin: 30px auto; "><?= $button ?></div>
+
+    </div>
+
+    <?php
+
+} else if (!empty($_GET['token'])){
+
+    $token = $_GET['token'];
+
+    $isVerif = verifTicketPassword($token);
+
+
+
+    if ($isVerif){
+
+        $img = "astronaut-52.png";
+        $titre = "Entrez votre nouveau mots de passe";
+        $button = "Changer votre mot de passe";
+
+        ?>
+
+        <div style="width: 100%; text-align: center">
+            <img src="assets/<?= $img ?>" style="
+    pointer-events: none;width: 300px;transform: scale(1);
+    margin-top: 9px;margin-bottom: 10px">
+            <h3 class="title-morph" style="  margin-bottom: 33px;"><?= $titre ?></h3>
+            <form method="POST">
+                <input class="input-morph" type="password" name="passForgetNew" placeholder="Votre nouveau mots de passe" style="margin-bottom: 10px"><br>
+                <input class="input-morph" type="password" name="passForgetNewC" placeholder="Confirmer votre mots de passe"><br>
+                <input type="hidden" name="passForgetToken" value="<?= $token ?>">
+                <input value="<?= $button ?>" type="submit" class="btn-morph" style="padding: 16px 25px;margin: 30px auto; ">
+            </form>
+        </div>
+
+
+
+<?php
+
+    } else {
+
+        $img = "404-page-not-found-62.png";
+        $titre = "Erreur";
+        $button = "Retour à l'accueil";
+        $buttonUrl = ".";
+
+        ?>
+
+
+        <div style="width: 100%; text-align: center">
+            <img src="assets/<?= $img ?>" style="
+    pointer-events: none;width: 300px;transform: scale(1);
+    margin-top: 9px;margin-bottom: 10px">
+            <h3 class="title-morph"><?= $titre ?></h3>
+
+            <div onclick="redirectPanel('<?= $buttonUrl ?>')" class="btn-morph" style="margin: 30px auto; "><?= $button ?></div>
+
+        </div>
 
 
 
 
 
+        <?php
+    }
 } else if (!empty($_GET['create'])){
 
     $img = "astronaut-52.png";
@@ -122,7 +196,7 @@ if (!empty($_GET['token'])){
         pointer-events: none;width: 300px;transform: scale(1);
         margin-top: 9px;margin-bottom: 10px">
             <h3 class="title-morph"><?= $titre ?><br>
-                <small style="color: black">Lien valade 2H</small></h3>
+                <?php if ($titre == "Mail envoyé"){ ?><small style="color: black">Lien valade 2H</small></h3><?php } ?>
 
             <div onclick="redirectPanel('<?= $buttonUrl ?>')" class="btn-morph" style="margin: 30px auto; "><?= $button ?></div>
 
@@ -253,6 +327,23 @@ if (!empty($_GET['token'])){
         }
     }
 </script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://unpkg.com/izitoast/dist/js/iziToast.min.js'></script>
+<script  src="https://tyrolium.fr/javascript/notif.js"></script>
+
+
+<?php if (!empty($_GET['err'])) { ?>
+    <script>
+        if(Text != 1){
+            iziToast.error({
+                title: 'Erreur',
+                position: 'bottomCenter',
+                message: ' <?php echo $_GET['err']; ?>'
+            });
+        }
+    </script>
+<?php } ?>
 
 
 <footer style="background-color: #193554">

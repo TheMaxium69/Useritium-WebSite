@@ -63,7 +63,7 @@ if (isset($_POST['passEditNewOld']) && isset($_POST['passEditNew']) && isset($_P
             resultPass(2, "Vous n\'avez pas écrit le même mots de passe");
         }            
     }else{
-        resultPass(2, "Pas tout remplie Pass");
+        resultPass(2, "Pas tout remplie");
     }
 
 }

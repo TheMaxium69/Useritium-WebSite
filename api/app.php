@@ -26,6 +26,7 @@ require_once "connect/signup.php";
 require_once "connect/login.php";
 require_once "update/public.php";
 require_once "update/pass.php";
+require_once "update/passForget.php";
 require_once "update/picture.php";
 require_once "update/skin.php";
 require_once "update/cape.php";
@@ -228,7 +229,7 @@ mail($to, $subject, $message, $headers);
 function createTicketPassword($idUsers)
 {
 
-    $token = uniqid();
+    $token = md5(uniqid() . uniqid() . uniqid() . uniqid() . uniqid());
 
     require "api/private/db.php";
     $maRequeteTicketPassword = "INSERT INTO `users_password` (`idUsers`, `token`) VALUES ('$idUsers', '$token');";
@@ -242,7 +243,32 @@ function createTicketPassword($idUsers)
 
 }
 
-function verifTickerPassword($token){
+function verifTicketPassword($token){
+
+
+    require "api/private/db.php";
+    $maRequeteTicketPasswordtoken = "SELECT * FROM users_password WHERE token='$token';";
+    $resultTicketPasswordtoken = mysqli_query($ConnectDB, $maRequeteTicketPasswordtoken);
+
+    if ($resultTicketPasswordtoken->num_rows){
+        $ticketPassword = mysqli_fetch_assoc($resultTicketPasswordtoken);
+
+        $dateCreate = new DateTime($ticketPassword['forgetDate']);
+        $dateNow = new DateTime();
+
+        $interval = $dateCreate->diff($dateNow);
+
+        if($interval->h < 2){
+
+            return $ticketPassword['idUsers'];
+
+        } else {
+            return false;
+        }
+
+    } else {
+        return false;
+    }
 
 }
 
@@ -293,6 +319,35 @@ function getEmailByPseudo($pseudo){
     } else {
         return null;
     }
+
+
+}
+
+function isLog($idUsers, $email, $username)
+{
+
+    require "api/private/db.php";
+
+    $maRequeteGetEmail2 = "SELECT * FROM `users_email` WHERE `idUsers` = '$idUsers'; ";
+    $resultatGetEmail2 = mysqli_query($ConnectDB, $maRequeteGetEmail2);
+
+    if (!$resultatGetEmail2->num_rows) {
+
+        $token = uniqid();
+
+        $createEmail2 = "INSERT INTO `users_email` (`idUsers`, `email`, `token`, `isVerif`) VALUES ('$idUsers', '$email', '$token', '0'); ";
+        $resultCreateEmail2 = mysqli_query($ConnectDB, $createEmail2);
+
+    }
+
+    sendingMailConnected($email, $username);
+
+}
+
+function sendingMailConnected($email, $username)
+{
+
+
 
 
 }

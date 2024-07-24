@@ -26,6 +26,9 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['site
                 $_SESSION["userEmailLog"]= $userEmail;
                 $_SESSION["userRoleLog"]= $userRole;
                 $_SESSION["userPpLog"]= $userPp;
+
+                isLog($userId, $userEmail, $userName);
+
                 resultLogin(1, 641, $redirect);
             }else{
                 //mauvais mot de passe
