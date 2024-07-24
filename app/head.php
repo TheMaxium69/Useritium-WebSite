@@ -10,15 +10,17 @@ function head($page)
         if ($page == 1) {
             $title = "Useritium";
         } else if ($page == 2) {
-            $title = "Connexion/Inscription | Useritium";
+            $title = "Useritium - Connexion/Inscription";
         } else if ($page == 3) {
-            $title = "Panel Useritium";
+            $title = "Useritium - Panel";
         } else if ($page == 4) {
-            $title = "Verif Useritium";
+            $title = "Useritium - Verification";
+        } else if ($page == 5) {
+            $title = "Useritium - Mots de passe";
         } else
 
         {
-            $title = "404 | Useritium";
+            $title = "Useritium - 404 ";
         }
 
     } else {

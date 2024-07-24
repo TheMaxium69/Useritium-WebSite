@@ -29,6 +29,7 @@ require_once "update/pass.php";
 require_once "update/picture.php";
 require_once "update/skin.php";
 require_once "update/cape.php";
+require_once "update/email.php";
 
 if (!empty($_SESSION['userNameLog'])){
     $isLogged = true;
@@ -119,6 +120,176 @@ function getEmailUser(){
             array_push($data3, $row);
         }
         return $data3;
+    } else {
+        return null;
+    }
+
+
+}
+
+function getOneEmailUser($email){
+
+    require "api/private/db.php";
+
+    $maRequeteOneEmail = "SELECT * FROM users_email WHERE email='$email' AND idUsers='$_SESSION[userIdLog]'";
+    $resultatOneEmail = mysqli_query($ConnectDB, $maRequeteOneEmail);
+
+    if ($resultatOneEmail) {
+        return mysqli_fetch_assoc($resultatOneEmail);
+    } else {
+        return null;
+    }
+
+
+}
+
+function sendingMailVerif($email, $idUser, $token)
+{
+
+
+    require "./app/env.php";
+
+    $url = $env_connectUrl . "verif.php?email=$email&token=$token";
+
+    var_dump($url);
+
+    /*
+
+$to = $user_email;
+$subject = "Vérification de l'email";
+$token = uniqid();
+$link = "http://yourwebsite.com/verify.php?token=$token";
+
+$message = "
+    Merci de vous être inscrit !
+    S'il vous plaît, cliquez sur le lien ci-dessous pour vérifier votre adresse e-mail :
+    $link
+    ";
+
+$headers = "From: no-reply@yourwebsite.com\r\n";
+$headers .= "Content-type: text/html\r\n";
+
+mail($to, $subject, $message, $headers);
+
+// N'oubliez pas de stocker le jeton dans la base de données !
+
+*/
+
+
+}
+
+
+function sendingMailPassword($user)
+{
+
+    $token = createTicketPassword($user['id']);
+
+    if (!$token){
+
+        return false;
+
+    } else {
+
+        require "./app/env.php";
+
+        $url = $env_connectUrl . "password.php?token=$token";
+
+        var_dump($url);
+
+        return true;
+    }
+
+
+    /*
+
+$to = $user_email;
+$subject = "Vérification de l'email";
+$token = uniqid();
+$link = "http://yourwebsite.com/verify.php?token=$token";
+
+$message = "
+    Merci de vous être inscrit !
+    S'il vous plaît, cliquez sur le lien ci-dessous pour vérifier votre adresse e-mail :
+    $link
+    ";
+
+$headers = "From: no-reply@yourwebsite.com\r\n";
+$headers .= "Content-type: text/html\r\n";
+
+mail($to, $subject, $message, $headers);
+
+// N'oubliez pas de stocker le jeton dans la base de données !
+
+*/
+
+
+}
+
+function createTicketPassword($idUsers)
+{
+
+    $token = uniqid();
+
+    require "api/private/db.php";
+    $maRequeteTicketPassword = "INSERT INTO `users_password` (`idUsers`, `token`) VALUES ('$idUsers', '$token');";
+    $resultTicketPassword= mysqli_query($ConnectDB, $maRequeteTicketPassword);
+
+    if ($resultTicketPassword){
+        return $token;
+    } else {
+        return false;
+    }
+
+}
+
+function verifTickerPassword($token){
+
+}
+
+function verifAndUpateEmail($email, $token){
+
+    require "api/private/db.php";
+
+    $maRequeteOneEmailToken = "SELECT * FROM users_email WHERE email='$email' AND token='$token'";
+    $resultatOneEmailToken = mysqli_query($ConnectDB, $maRequeteOneEmailToken);
+
+    if ($resultatOneEmailToken->num_rows) {
+        $resultatOneEmailToken = mysqli_fetch_assoc($resultatOneEmailToken);
+
+        $idEmail = $resultatOneEmailToken['id'];
+        $date = new DateTime();
+        $date = $date->format('Y-m-d H:i:s');
+
+        $maRequeteUpdateVerif = "UPDATE `users_email` SET `isVerif` = '1', `dateValidation` = '$date' WHERE `users_email`.`id` = '$idEmail'; ";
+        $resultatUpdateVerif= mysqli_query($ConnectDB, $maRequeteUpdateVerif);
+
+        if ($resultatUpdateVerif) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    } else {
+        return null;
+    }
+
+}
+
+
+function getEmailByPseudo($pseudo){
+
+    require "api/private/db.php";
+
+    $maRequeteGetEmail = "SELECT * FROM users WHERE username='$pseudo'";
+    $resultatGetEmail = mysqli_query($ConnectDB, $maRequeteGetEmail);
+
+    if ($resultatGetEmail) {
+        $users = mysqli_fetch_assoc($resultatGetEmail);
+        return $users;
     } else {
         return null;
     }

@@ -15,38 +15,39 @@ if (!empty($_GET['token']) && !empty($_GET['email'])) {
     $token = $_GET['token'];
     $email = $_GET['email'];
 
+    $checkVerifIsGood = verifAndUpateEmail($email, $token);
+
+    if ($checkVerifIsGood) {
+
+
+        $img = "cybersecurity-1-98.png";
+        $titre = "Votre mail à été vérifier ";
+        $button = "Revenir sur le panel";
+        $buttonUrl = 'panel.php?p=1';
+
+    }
 
 
 
 
-    var_dump($token);
-    var_dump($email);
+} else if (!empty($_GET['sending']) && !empty($_GET['email'])) {
 
 
+    $email = $_GET['email'];
+    $idUSer = $_SESSION['userIdLog'];
 
+    $result = getOneEmailUser($email);
 
-/*
+    if (!empty($result)) {
 
-$to = $user_email;
-$subject = "Vérification de l'email";
-$token = uniqid();
-$link = "http://yourwebsite.com/verify.php?token=$token";
+        sendingMailVerif($email, $idUSer, $result['token']);
 
-$message = "
-    Merci de vous être inscrit !
-    S'il vous plaît, cliquez sur le lien ci-dessous pour vérifier votre adresse e-mail :
-    $link
-    ";
+        $img = "sending-emails-84.png";
+        $titre = "Votre mail de vérification à été envoyé";
+        $button = "Revenir sur le panel";
+        $buttonUrl = 'panel.php?p=1';
 
-$headers = "From: no-reply@yourwebsite.com\r\n";
-$headers .= "Content-type: text/html\r\n";
-
-mail($to, $subject, $message, $headers);
-
-// N'oubliez pas de stocker le jeton dans la base de données !
-
-*/
-
+    }
 
 } else {
 
@@ -56,11 +57,13 @@ mail($to, $subject, $message, $headers);
         $yourMail = getEmailUser();
 
         $noMailVerif = 1;
+        $yourDefaultMail = [];
 
         foreach ($yourMail as $mail){
             if ($mail['email'] == $_SESSION['userEmailLog']) {
                 if ($mail['isVerif'] == 0) {
                     $noMailVerif = 2;
+                    $yourDefaultMail = $mail;
                 }
             }
         }
@@ -71,7 +74,7 @@ mail($to, $subject, $message, $headers);
             $img = "sending-emails-84.png";
             $titre = "Vous devez verifier votre mail";
             $button = "Envoyé un mail";
-            $buttonUrl = ".";
+            $buttonUrl = '?sending=yes&email=' . $yourDefaultMail['email'];
 
         }
 

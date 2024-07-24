@@ -17,11 +17,32 @@ if(isset($_POST['usernameSignUp']) && isset($_POST['emailSignUp'])&& isset($_POS
                 $passwordSignUpCrypt = md5($passwordSignUp);
                 $passwordSignUpCryptSalt = $passwordSignUpCrypt.md5($key);
                 $requeteInsert = "INSERT INTO users(username, email, password, role) VALUES ('$usernameSignUp', '$emailSignUp', '$passwordSignUpCryptSalt', 'user')";
-                echo $requeteInsert;
+//                echo $requeteInsert;
 
                 $resultInsert = mysqli_query($ConnectDB, $requeteInsert);
 
                 if($resultInsert){
+
+
+                    $recupLeCompteCreer = "SELECT * FROM `users` WHERE `username` LIKE '$usernameSignUp' AND `email` LIKE '$emailSignUp' AND `password` LIKE '$passwordSignUpCryptSalt' ";
+                    $resultRecupLeCompteCreer = mysqli_query($ConnectDB, $recupLeCompteCreer);
+
+                    $tableUser = mysqli_fetch_assoc($resultRecupLeCompteCreer);
+
+                    $_SESSION["userIdLog"]= $tableUser['id'];
+                    $_SESSION["userNameLog"]= $tableUser['username'];
+                    $_SESSION["userDisNameLog"]= $tableUser['displayname'];
+                    $_SESSION["userEmailLog"]= $tableUser['email'];
+                    $_SESSION["userRoleLog"]= $tableUser['role'];
+                    $_SESSION["userPpLog"]= $tableUser['pp'];
+
+                    $iduser = $tableUser['id'];
+                    $emailUser = $tableUser['email'];
+                    $token = uniqid();
+
+                    $createEmail = "INSERT INTO `users_email` (`idUsers`, `email`, `token`, `isVerif`) VALUES ('$iduser', '$emailUser', '$token', '0'); ";
+                    $resultCreateEmail = mysqli_query($ConnectDB, $createEmail);
+
                     resultSignup(1, 141, $redirect);
 
                 }else{
@@ -44,9 +65,9 @@ function resultSignup($why, $code, $redirect){
 
     if ($why == 1){
         if ($code == 141){
-            header("location: ". $redirect ."connect.php?true=Compte bien créer");
+            header("location: ". $redirect ."panel.php?p=1&true=Compte bien créé");
         } else {
-            header("location: ". $redirect ."connect.php?true=code:" . $code );
+            header("location: ". $redirect ."panel.php?p=1&true=code:" . $code );
         }
 
     }

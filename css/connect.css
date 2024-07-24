@@ -361,7 +361,8 @@ main {
     height: 600px;
     padding: 25px;
     background-color: #ecf0f3;
-    box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
+    /*box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;*/
+    box-shadow: 10px 10px 10px #6a6a6a14, -10px -10px 10px #6a6a6a14;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -449,13 +450,18 @@ main {
     line-height: 2;
 }
 
+.form__link:hover{
+    color: #676767 !important;
+}
+
 .title {
     font-size: 34px;
     font-weight: 700;
     /*line-height: 3;*/
     color: #181818;
     text-align: center;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
+    margin-bottom: 44px;
 }
 
 h2 {

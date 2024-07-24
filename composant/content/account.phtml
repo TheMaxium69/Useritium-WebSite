@@ -63,10 +63,10 @@ require "app/env.php";
                 <label>Nom d'affichage</label>
                 <input type="text" class="input-morph" name="displayEdit" placeholder="Pierre Jean Dupond" value="<?php if(!empty($_SESSION['userDisNameLog']) ) { echo $_SESSION['userDisNameLog']; } ?>">
             </div>
-            <div class="form-group">
-                <label>Adresse Email</label>
-                <input type="text" class="input-morph" name="emailEdit" placeholder="name@example.com" value="<?= $_SESSION['userEmailLog'] ?>">
-            </div>
+<!--            <div class="form-group">-->
+<!--                <label>Adresse Email</label>-->
+<!--                <input type="text" class="input-morph" name="emailEdit" placeholder="name@example.com" value="--><?php //= $_SESSION['userEmailLog'] ?><!--">-->
+<!--            </div>-->
             <!-- <div class="form-group">
                 <label for="exampleFormControlTextarea1">Bio</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><?php if(!empty($_SESSION['userBioLog']) ) { echo $_SESSION['userBioLog']; } ?></textarea>
@@ -83,7 +83,7 @@ require "app/env.php";
     <hr>
     <br><br>
 
-    <h3  class="title-morph">Vérification des emails</h3>
+    <h3  class="title-morph">Adresses mails</h3>
     <div class="card-morph" style="padding: 40px 40px 20px 40px;">
 
         <!--VERIF MAIL-->
@@ -101,10 +101,10 @@ require "app/env.php";
                     <?php if ($mail['isVerif'] == 1){ ?>
                     <i class="ri-checkbox-circle-fill" style="color: green; margin-left: auto;margin-right: 19px;"></i>
                     <?php } else { ?>
-                    <i class="ri-alert-fill" style="color: orange;"></i> <div class="btn-morph" style="margin-left:auto ;color: orange;padding: 13px 19px;">Vérifier</div>
+                    <i class="ri-alert-fill" style="color: orange;"></i> <div onclick="redirectPanel('verif.php?sending=yes&email=<?= $mail['email'] ?>')" class="btn-morph" style="margin-left:auto ;color: orange;padding: 13px 19px;">Vérifier</div>
                     <?php } ?>
 
-                    <?php if ($mail['email'] != $_SESSION['userEmailLog']) { ?> <div class="btn-morph" style="margin-left: 10px;color: #b70707;padding: 13px 19px;"><i class="ri-delete-bin-line"></i></div>  <?php } ?>
+                    <?php if ($mail['email'] != $_SESSION['userEmailLog']) { ?> <div onclick="redirectPanel('panel.php?p=2&delemail=<?= $mail['id'] ?>')" class="btn-morph" style="margin-left: 10px;color: #b70707;padding: 13px 19px;"><i class="ri-delete-bin-line"></i></div>  <?php } ?>
                 </li>
             <?php } ?>
         </div>
