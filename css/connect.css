@@ -366,24 +366,31 @@ main {
     border-radius: 12px;
     overflow: hidden;
 }
-@media (max-width: 1200px) {
-    .main {
-        transform: scale(0.7);
+
+
+.main-mobil{
+    display: none;
+    z-index: 100;
+    width: 100%;
+    height: 461px;
+}
+
+@media (max-width: 1020px) {
+    .main-mobil{
+        display: block;
+    }
+    .main{
+        display: none;
     }
 }
-@media (max-width: 1000px) {
-    .main {
-        transform: scale(0.6);
+
+@media (max-width: 530px) {
+    .main-mobil form{
+        width: 98%!important;
     }
-}
-@media (max-width: 800px) {
-    .main {
-        transform: scale(0.5);
-    }
-}
-@media (max-width: 600px) {
-    .main {
-        transform: scale(0.4);
+
+    .main-mobil #button{
+        width: 50%!important;
     }
 }
 
@@ -617,4 +624,136 @@ body::before {
     width: 100%;
     background: linear-gradient(#e91e63, #2196f3);
     clip-path: circle(20% at right 70%);
+}
+
+/*MOBIL*/
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500&display=swap");
+
+:root {
+    --primary: #e5e8ef;
+    --primary-dark: #e1e4ea;
+    --secondary-lime: #e1ff2d;
+    --secondary-lavender: #d3b7f8;
+    --primary-box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001;
+    --secondary-box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+    --font: "Inter", sans-serif;
+}
+
+.main-mobil form {
+    display: flex;
+    flex-direction: column;
+    padding-block: 24px;
+    border-radius: 20px;
+    /*background: linear-gradient(145deg, #f1f4fa, #cbcdd3);*/
+    background: #ecf0f3;
+    box-shadow: var(--primary-box-shadow);
+    height: 100%;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-mobil input[type=submit] {
+    border: none;
+    height: 32px;
+    border-radius: 10px;
+    background: #ecf0f3;
+    outline: none;
+
+}
+
+/*.main-mobil input[type="text"],*/
+/*.main-mobil input[type="password"] {*/
+/*    box-shadow: var(--secondary-box-shadow);*/
+/*    padding-inline: 20px;*/
+/*    height: 49px;*/
+/*    width: 60%;*/
+/*}*/
+.main-mobil input[type="submit"] {
+    box-shadow: var(--primary-box-shadow);
+    cursor: pointer;
+    letter-spacing: 0.8px;
+    height: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: sans-serif;
+    color: #008af9;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    text-shadow: 1px 1px 0 #FFF;
+}
+.main-mobil #title {
+    color: #5a5a5a;
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1;
+    letter-spacing: 0.8px;
+}
+.main-mobil #linksParent {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.main-mobil #linksParent > a {
+    /*font-family: "Nunito Sans", sans-serif;*/
+    font-size: 15px;
+    color: gray;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.main-mobil .rip1,
+.main-mobil .rip2 {
+    filter: blur(1px);
+    width: 100%;
+    position: absolute;
+    height: 50px;
+    left: 0;
+    bottom: 0;
+}
+.main-mobil .rip1 {
+    box-shadow: 0.4rem 0.4rem 0.8rem #e2e4e8, -0.4rem -0.4rem 0.8rem #fff;
+    background: linear-gradient(to bottom right, #fff 0%, #e2e4e8 100%);
+    animation: waves 2s linear infinite;
+}
+.main-mobil .rip2 {
+    box-shadow: 0.4rem 0.4rem 0.8rem #e2e4e8, -0.4rem -0.4rem 0.8rem #fff;
+    animation: waves 2s linear 1s infinite;
+}
+
+@keyframes waves {
+    0% {
+        transform: scale(0.7);
+        opacity: 1;
+        border-radius: 10px;
+    }
+
+    50% {
+        opacity: 1;
+        border-radius: 15px;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+        border-radius: 20px;
+    }
+}
+.main-mobil #button {
+    width: 40%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
