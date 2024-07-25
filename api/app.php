@@ -144,87 +144,6 @@ function getOneEmailUser($email){
 
 }
 
-function sendingMailVerif($email, $idUser, $token)
-{
-
-
-    require "./app/env.php";
-
-    $url = $env_connectUrl . "verif.php?email=$email&token=$token";
-
-    var_dump($url);
-
-    /*
-
-$to = $user_email;
-$subject = "Vérification de l'email";
-$token = uniqid();
-$link = "http://yourwebsite.com/verify.php?token=$token";
-
-$message = "
-    Merci de vous être inscrit !
-    S'il vous plaît, cliquez sur le lien ci-dessous pour vérifier votre adresse e-mail :
-    $link
-    ";
-
-$headers = "From: no-reply@yourwebsite.com\r\n";
-$headers .= "Content-type: text/html\r\n";
-
-mail($to, $subject, $message, $headers);
-
-// N'oubliez pas de stocker le jeton dans la base de données !
-
-*/
-
-
-}
-
-
-function sendingMailPassword($user)
-{
-
-    $token = createTicketPassword($user['id']);
-
-    if (!$token){
-
-        return false;
-
-    } else {
-
-        require "./app/env.php";
-
-        $url = $env_connectUrl . "password.php?token=$token";
-
-        var_dump($url);
-
-        return true;
-    }
-
-
-    /*
-
-$to = $user_email;
-$subject = "Vérification de l'email";
-$token = uniqid();
-$link = "http://yourwebsite.com/verify.php?token=$token";
-
-$message = "
-    Merci de vous être inscrit !
-    S'il vous plaît, cliquez sur le lien ci-dessous pour vérifier votre adresse e-mail :
-    $link
-    ";
-
-$headers = "From: no-reply@yourwebsite.com\r\n";
-$headers .= "Content-type: text/html\r\n";
-
-mail($to, $subject, $message, $headers);
-
-// N'oubliez pas de stocker le jeton dans la base de données !
-
-*/
-
-
-}
 
 function createTicketPassword($idUsers)
 {
@@ -346,6 +265,287 @@ function isLog($idUsers, $email, $username)
 
 function sendingMailConnected($email, $username)
 {
+
+
+
+
+}
+
+
+function sendingMailVerif($email, $idUser, $token)
+{
+
+    require "./app/env.php";
+
+    $url = $env_connectUrl . "verif.php?email=$email&token=$token";
+
+//    var_dump($url);
+//    var_dump($email);
+//    var_dump($_SESSION['userNameLog']);
+    $pseudo = $_SESSION['userNameLog'];
+
+    $to = $email;
+    $subject = "Vérification de votre adresse e-mail";
+    $content = '
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EBECF0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #EBECF0;
+            padding: 50px;
+            box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+            border-radius: 5px;
+        }
+        h1 {
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            font-family: \'Montserrat\', sans-serif;
+            letter-spacing: -0.2px;
+            font-size: 30px;
+            font-weight: bold;
+            /* color: #AAAEBB; */
+            /* color: #0c92ff; */
+            color: #1980d3;
+            text-shadow: 1px 1px 1px #FFF;
+            text-align: center;
+        }
+        p {
+            color: #555555;
+            line-height: 1.5;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #aaaaaa;
+        }
+        .button-container {
+            text-align: center;
+            margin: 41px 0;
+        }
+        
+        .btn-morph {
+            display: inline-block;
+            text-decoration: none;
+            color: white!important;
+            max-width: 450px;
+            border: 0;
+            outline: 0;
+            font-size: 16px;
+            border-radius: 320px;
+            padding: 19px;
+            background-color: #1980d3;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    
+        .btn-morph:hover {
+            background-color: #5da3db;
+        }
+    </style>
+    <title>Vérification de votre adresse e-mail</title>
+</head>
+<body>
+    <h4 style="width: 100%;
+                        text-align: center;
+                        font-family: \'Inter\', sans-serif;
+                        text-transform: uppercase;
+                        font-size: 18px;
+                        letter-spacing: 3px;
+                        font-weight: bold;
+        margin-top: 47px;">
+                Useritium <small style="font-size: 10px">Par Tyrolium</small>
+            </h4>
+            
+    <div class="container">
+        <h1>Vérification de votre adresse e-mail</h1>
+        <p>Bonjour '.$pseudo.',</p>
+        <p>Nous avons reçu une demande de vérification de votre adresse e-mail. Cliquez sur le bouton ci-dessous pour vérifier votre adresse e-mail :</p>
+        <p class="button-container">
+            <a href="'. $url .'" class="btn-morph">Vérifier mon adresse e-mail</a>
+        </p>
+        <p>Si vous n\'avez pas demandé la vérification de votre adresse e-mail, veuillez ignorer cet e-mail.</p>
+        <p>Cordialement,</p>
+        <p>L\'équipe Useritium</p>
+        <div class="footer">
+            <p>&copy; 2024 Tyrolium. Tous droits réservés.</p>
+        </div>
+    </div>
+</body>
+</html>
+';
+
+
+    $headers = "From: USERITIUM par tyrolium <no-reply@useritium.fr>\r\n";
+    $headers .= "Reply-To: officiel@tyrolium.fr\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+    if (mail($to, $subject, $content, $headers)){
+
+        return true;
+
+    } else {
+
+        return false;
+
+    }
+
+}
+
+
+function sendingMailPassword($user)
+{
+
+    $token = createTicketPassword($user['id']);
+
+    if (!$token){
+
+        return false;
+
+    } else {
+
+        require "./app/env.php";
+
+        $url = $env_connectUrl . "password.php?token=$token";
+
+//        var_dump($url);
+//        var_dump($user['email']);
+
+        $pseudo = $user['username'];
+
+        $to = $user['email'];
+        $subject = "Mots de passe oublié";
+        $content = '
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EBECF0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #EBECF0;
+            padding: 50px;
+            box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+            border-radius: 5px;
+        }
+        h1 {
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            font-family: \'Montserrat\', sans-serif;
+            letter-spacing: -0.2px;
+            font-size: 30px;
+            font-weight: bold;
+            /* color: #AAAEBB; */
+            /* color: #0c92ff; */
+            color: #1980d3;
+            text-shadow: 1px 1px 1px #FFF;
+            text-align: center;
+        }
+        p {
+            color: #555555;
+            line-height: 1.5;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #aaaaaa;
+        }
+        .button-container {
+            text-align: center;
+            margin: 41px 0;
+        }
+        
+        .btn-morph {
+            display: inline-block;
+            text-decoration: none;
+            color: white!important;
+            max-width: 450px;
+            border: 0;
+            outline: 0;
+            font-size: 16px;
+            border-radius: 320px;
+            padding: 19px;
+            background-color: #1980d3;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    
+        .btn-morph:hover {
+            background-color: #5da3db;
+        }
+    </style>
+    <title>Réinitialisation de mot de passe</title>
+</head>
+<body>
+    <h4 style="width: 100%;
+                        text-align: center;
+                        font-family: \'Inter\', sans-serif;
+                        text-transform: uppercase;
+                        font-size: 18px;
+                        letter-spacing: 3px;
+                        font-weight: bold;
+        margin-top: 47px;">
+                Useritium <small style="font-size: 10px">Par Tyrolium</small>
+            </h4>
+            
+    <div class="container">
+        <h1>Réinitialisation de votre mot de passe</h1>
+        <p>Bonjour '.$pseudo.',</p>
+        <p>Nous avons reçu une demande de réinitialisation de votre mot de passe. Cliquez sur le bouton ci-dessous pour réinitialiser votre mot de passe :</p>
+        <p class="button-container">
+            <a href="'.$url.'" class="btn-morph">Réinitialiser mon mot de passe</a>
+        </p>
+        <p>Si vous n\'avez pas demandé la réinitialisation de votre mot de passe, veuillez ignorer cet e-mail.</p>
+        <p>Cordialement,</p>
+        <p>L\'équipe Useritium</p>
+        <div class="footer">
+            <p>&copy; 2024 Tyrolium. Tous droits réservés.</p>
+        </div>
+    </div>
+</body>
+</html>
+';
+
+        $headers = "From: USERITIUM par tyrolium <no-reply@useritium.fr>\r\n";
+        $headers .= "Reply-To: officiel@tyrolium.fr\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+        if (mail($to, $subject, $content, $headers)){
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+        
+
+    }
 
 
 

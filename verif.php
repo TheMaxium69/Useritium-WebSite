@@ -40,12 +40,23 @@ if (!empty($_GET['token']) && !empty($_GET['email'])) {
 
     if (!empty($result)) {
 
-        sendingMailVerif($email, $idUSer, $result['token']);
+        $isGood = sendingMailVerif($email, $idUSer, $result['token']);
 
-        $img = "sending-emails-84.png";
-        $titre = "Votre mail de vérification à été envoyé";
-        $button = "Revenir sur le panel";
-        $buttonUrl = 'panel.php?p=1';
+        if ($isGood){
+
+            $img = "sending-emails-84.png";
+            $titre = "Votre mail de vérification à été envoyé";
+            $button = "Revenir sur le panel";
+            $buttonUrl = 'panel.php?p=1';
+
+        } else {
+
+            $img = "404-page-not-found-62.png";
+            $titre = "Erreur de l'envoie du mail de vérification";
+            $button = "Revenir sur le panel";
+            $buttonUrl = 'panel.php?p=1';
+
+        }
 
     }
 

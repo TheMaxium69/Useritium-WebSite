@@ -131,7 +131,7 @@ if (!empty($_GET['change'])){
         $img = "sending-emails-84.png";
         $titre = "Envoyé un mail à " . $maskedEmail;
         $button = "Envoyé un mail";
-        $buttonUrl = "password?sending=" . $_GET['pseudo'];
+        $buttonUrl = "password.php?sending=" . $_GET['pseudo'];
 
     ?>
 
