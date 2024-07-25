@@ -313,6 +313,11 @@
             var context = canvas.getContext('2d');
             var image = new Image();
             var imageUrl = canvas.getAttribute('data-url');
+
+            if (imageUrl.startsWith('https:')) {
+                imageUrl = imageUrl.replace('https:', 'http:');
+            }
+
             image.src = imageUrl;
 
             image.onload = function () {

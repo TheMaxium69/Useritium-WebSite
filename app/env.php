@@ -1,7 +1,7 @@
 <?php
 
 //PROD or DEV
-$APP_ENV = "PROD";
+$APP_ENV = "DEV";
 
 
 //Variable Share
