@@ -63,10 +63,10 @@
         $tyroservCape = $tyroservAccount['cape'];
     }
 
-//    $json = file_get_contents('http://vps214.tyrolium.fr/api-cape/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
-    $json = file_get_contents('http://127.0.0.1/Api-TyroModCape/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
-//    $json2 = file_get_contents('http://vps214.tyrolium.fr/api-cape/wiki.php');
-    $json2 = file_get_contents('http://127.0.0.1/Api-TyroModCape/wiki.php');
+    $json = file_get_contents('http://vps214.tyrolium.fr/capes/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
+//    $json = file_get_contents('http://127.0.0.1/Api-TyroModCape/player.php?pseudo=' . $tyroservAccount['pseudo'] . '&idCapeUseritium='. $tyroservCape);
+    $json2 = file_get_contents('http://vps214.tyrolium.fr/capes/wiki.php');
+//    $json2 = file_get_contents('http://127.0.0.1/Api-TyroModCape/wiki.php');
     $resultApiCape = json_decode($json);
     $resultAllCape = json_decode($json2);
 
