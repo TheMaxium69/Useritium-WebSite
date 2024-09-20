@@ -80,7 +80,7 @@
                 $temp->cape = $oneCape;
                 $MyCape[] = $temp;
 
-                if ($temp->isSelected == 1) {
+                if ($temp->isSelected == 1 && $tyroservCape !== '99999999') {
                     $isSelected = $temp->cape->id;
                 }
             }
@@ -112,13 +112,13 @@
 
                       <?php foreach ($MyCape as $oneCape) { ?>
 
-                        <div data-id="<?= $oneCape->cape->id ?>" class="cardcape <?php if ($oneCape->isSelected) echo "active" ?>">
+                        <div data-id="<?= $oneCape->cape->id ?>" class="cardcape <?php if ($isSelected == $oneCape->cape->id) echo "active" ?>">
                             <div class="cape canvas-container">
                                 <img src="http://vps214.tyrolium.fr/capes/capes/capeView.php?scale=20&pictureName=<?php echo $oneCape->cape->url ?>" class="pixelCanvas" width="100" height="160">
                                 <!-- <canvas data-url="http://vps214.tyrolium.fr/capes/capes/--><?php //= $oneCape->cape->url ?><!--" class="pixelCanvas" width="100" height="160"></canvas> -->
                             </div>
                             <div class="cape-footer">
-                                <input name="idCapeSelected" value="<?= $oneCape->cape->id ?>" type="radio" <?php if ($oneCape->isSelected) echo "checked" ?>> <?= $oneCape->cape->name ?>
+                                <input name="idCapeSelected" value="<?= $oneCape->cape->id ?>" type="radio" <?php if ($isSelected == $oneCape->cape->id) echo "checked" ?>> <?= $oneCape->cape->name ?>
                             </div>
                         </div>
 
