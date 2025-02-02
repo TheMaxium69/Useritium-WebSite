@@ -5,8 +5,12 @@
 
     <?php
 
+
+    require "app/env.php";
+
     try {
-        $url = 'https://localhost:8000/useritium/' . $_SESSION['userIdLog']; /* CONNECTION A GAMENIUM */
+        $url = $env_urlGamenium. 'useritium/' . $_SESSION['userIdLog']; /* CONNECTION A GAMENIUM */
+//        $url = $env_urlGamenium. 'useritium/' . '8';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -36,10 +40,48 @@
 
     <?php if ($resultGameniumAPI->message == "good"){ ?>
 
-        <div class="card-morph">
-            <h4><?= $resultGameniumAPI->result ?></h4>
-        </div>
+<!--        <div class="card-morph">-->
+<!--            <h4>--><?php //= $resultGameniumAPI->result->id_useritium ?><!--</h4>-->
+<!--            -->
+<!--        </div>-->
 
+        <div class="card-morph">
+            <form>
+                <div id="PPnoChange" style="display: block;height: 227px;">
+                    <div id="prePP">
+                        <?php if (!$resultGameniumAPI->result->pp){
+
+                            $premiereLettreName = substr($resultGameniumAPI->result->username, 0, 1);
+                            if ($resultGameniumAPI->result->displayname_useritium){
+                                $premiereLettreName = substr($resultGameniumAPI->result->displayname_useritium, 0, 1);
+                            }
+                            ?>
+                            <div id="PP" style="background-image: url('https://tyrolium.fr/generate-pp/?c=183153&l=<?= $premiereLettreName ?>')"></div>
+                        <?php } else { ?>
+                            <div id="PP" style="background-image: url('<?= $resultGameniumAPI->result->pp ?>')"></div>
+                        <?php } ?>
+                    </div>
+                </div>
+
+            </form>
+
+            <form >
+                <div class="form-group">
+                    <?php if (!$resultGameniumAPI->result->displayname_useritium || $resultGameniumAPI->result->displayname_useritium == $resultGameniumAPI->result->username){ ?>
+                        <h4 style="margin-bottom: 30px; text-align: center"><?= $resultGameniumAPI->result->username ?></h4>
+                    <?php } else { ?>
+                        <h4 style="margin-bottom: 8px; text-align: center"><?= $resultGameniumAPI->result->displayname_useritium ?></h4>
+                        <h6 style="margin-bottom: 30px; text-align: center"><?= $resultGameniumAPI->result->username ?></h6>
+                    <?php } ?>
+
+                    <hr>
+
+                    <p> Nombre de jeux : <?= $resultGameniumAPI->result->nb_game ?></p>
+                    <p> Nombre de note : <?= $resultGameniumAPI->result->nb_game_rate ?></p>
+
+                </div>
+            </form>
+        </div>
 
     <?php } else { ?>
 
@@ -51,3 +93,14 @@
     <?php } ?>
 
 </section>
+
+<style>
+    #panel-gamenium{
+        max-width: 628px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    .content{
+        width: 100%;
+    }
+</style>

@@ -153,17 +153,85 @@ require "app/env.php";
 
         <?php
 
-        $tyroservAccount = getTyroServ();
+        $logTyroserv= false;
+        $logGamenium= false;
 
-        if ($tyroservAccount){ ?>
+        ?>
+
+
+        <!-- TYROSERV -->
+        <?php
+
+            $tyroservAccount = getTyroServ();
+
+            if ($tyroservAccount){
+
+            $logTyroserv = true;
+
+        ?>
+
+                <div style="display: flex; margin-bottom: 10px">
+                    <img width="30" src="https://tyrolium.fr/Contenu/Image/Tyrolium%20ServerMC%20Sword%203D.png">
+                    <h5 style="margin: unset;
+    margin-top: 3px;
+    margin-left: 8px;">TyroServ :
+                        <small><?= $tyroservAccount['pseudo'] ?></small>
+                    </h5>
+                </div>
+
+        <?php
+
+            }
+
+        ?>
+
+        <!-- GAMENIUM -->
+
+        <?php
+
+            try {
+                $url = $env_urlGamenium. 'useritium/' . $_SESSION['userIdLog']; /* CONNECTION A GAMENIUM */
+//                $url = $env_urlGamenium. 'useritium/' . '8';
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                $output = curl_exec($ch);
+
+                if (curl_errno($ch)) {
+                    $resultGameniumAPI = (object)['message' => 'error'];
+                }
+
+                curl_close($ch);
+
+                $resultGameniumAPI = json_decode($output);
+
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    $resultGameniumAPI = (object)['message' => 'error'];
+                }
+            } catch (Exception $e) {
+                $resultGameniumAPI = (object)['message' => 'error'];
+            }
+
+            if ($resultGameniumAPI->message == "good"){
+                $logGamenium = true;
+        ?>
 
                 <div style="display: flex">
-        <img width="30" src="https://tyrolium.fr/Contenu/Image/Tyrolium%20ServerMC%20Sword%203D.png"><h5 style="margin: unset;
+                    <img width="30" src="https://tyrolium.fr/Contenu/Image/Gamenium%20Lettre%20Site.png">
+                    <h5 style="margin: unset;
     margin-top: 3px;
-    margin-left: 8px;">TyroServ : <small><?= $tyroservAccount['pseudo'] ?></small></h5>
+    margin-left: 8px;">Gamenium :
+                        <small><?= $resultGameniumAPI->result->username ?></small>
+                    </h5>
                 </div>
-        <?php } else { ?>
 
+        <?php } ?>
+
+
+        <?php if (!$logGamenium && !$logTyroserv) { ?>
 
             <h5 style="text-align: center;
     margin: unset;
@@ -172,6 +240,7 @@ require "app/env.php";
 }">Votre compte n'est lié à aucun service</h5>
 
         <?php } ?>
+
 
     </div>
 
