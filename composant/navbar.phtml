@@ -50,6 +50,28 @@
         
 <?php
 
+    } else if ($page == 999999) {
+
+        ?>
+
+        <div class="container text-white py-4">
+            <nav class="d-flex align-items-center justify-content-between">
+                <a id="logo" href="#"><img src="assets/logo.png" alt="logo useritium"></a>
+                <ul class="d-flex" style="margin: unset;">
+                    <li class="ms-4"><a href="index.php">Accueil</a></li>
+                    <?php if(!$isLogged){ ?>
+                        <li class="ms-4"><a href="connect.php" class="btn-super">Connexion / Inscription</a></li>
+                    <?php } else { ?>
+                        <li class="ms-4"><a href="panel.php" class="btn-super">Panel</a></li>
+                        <li class="ms-4"><a style="text-decoration: underline;" href="?modeDeco=on">Déconnexion</a></li>
+                    <?php } ?>
+                </ul>
+            </nav>
+        </div>
+
+
+        <?php
+
     } else {
 
         echo "NULL";

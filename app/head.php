@@ -17,6 +17,8 @@ function head($page)
             $title = "Useritium - Verification";
         } else if ($page == 5) {
             $title = "Useritium - Mots de passe";
+        } else if ($page == 999999){
+            $title = "Useritium - Mentions Légals";
         } else
 
         {
