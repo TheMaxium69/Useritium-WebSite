@@ -46,7 +46,7 @@ export class App implements AfterViewInit {
           ? [
             { label: 'Home',         link: '/',              icon: 'ri-home-line' },
             { label: 'Ecosystem',    ancre: 'ecosystem',     icon: 'ri-apps-line' },
-            { label: 'Features',     icon: 'ri-star-line',   children: [
+            { label: 'Features',     ancre: 'features',      icon: 'ri-star-line',   children: [
                 { label: 'Productivity',  ancre: 'features',      icon: 'ri-mail-line' },
                 { label: 'Services',   ancre: 'prestations',   icon: 'ri-briefcase-line' },
                 { label: 'Gaming',     ancre: 'gaming',        icon: 'ri-gamepad-line' },
@@ -56,7 +56,7 @@ export class App implements AfterViewInit {
           : [
             { label: 'Accueil',         link: '/',              icon: 'ri-home-line' },
             { label: 'Écosystème',      ancre: 'ecosystem',     icon: 'ri-apps-line' },
-            { label: 'Fonctionnalités', icon: 'ri-star-line',   children: [
+            { label: 'Fonctionnalités', ancre: 'features',      icon: 'ri-star-line',   children: [
                 { label: 'Productivité',   ancre: 'features',      icon: 'ri-mail-line' },
                 { label: 'Prestation',  ancre: 'prestations',   icon: 'ri-briefcase-line' },
                 { label: 'Gaming',      ancre: 'gaming',        icon: 'ri-gamepad-line' },
