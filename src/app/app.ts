@@ -40,25 +40,28 @@ export class App implements AfterViewInit {
   /* ─── Pages ────────────────────────────────────────────────────────── */
 
   public pages = computed<ITyroUiNavbarPages[]>(() =>
-    this.langService.lang() === 'en'
-      ? [
-          { label: 'Home',         link: '/',              icon: 'ri-home-line' },
-          { label: 'Ecosystem',    link: '/#ecosystem',    icon: 'ri-apps-line' },
-          { label: 'Features',     link: '/#features',     icon: 'ri-star-line' },
-          { label: 'Gaming',       link: '/#gaming',       icon: 'ri-gamepad-line' },
-          { label: 'Independence', link: '/#independence', icon: 'ri-shield-check-line' },
-          { label: 'Sign up',      link: '/#cta',          icon: 'ri-user-add-line' },
-        ]
-      : [
-          { label: 'Accueil',         link: '/',              icon: 'ri-home-line' },
-          { label: 'Écosystème',      link: '/#ecosystem',    icon: 'ri-apps-line' },
-          { label: 'Fonctionnalités', link: '/#features',     icon: 'ri-star-line' },
-          { label: 'Gaming',          link: '/#gaming',       icon: 'ri-gamepad-line' },
-          { label: 'Indépendance',    link: '/#independence', icon: 'ri-shield-check-line' },
-          { label: 'Créer un compte', link: '/#cta',          icon: 'ri-user-add-line' },
-        ]
+      this.langService.lang() === 'en'
+          ? [
+            { label: 'Home',         link: '/',              icon: 'ri-home-line' },
+            { label: 'Ecosystem',    ancre: 'ecosystem',     icon: 'ri-apps-line' },
+            { label: 'Features',     icon: 'ri-star-line',   children: [
+                { label: 'Productivity',  ancre: 'features',      icon: 'ri-mail-line' },
+                { label: 'Services',   ancre: 'prestations',   icon: 'ri-briefcase-line' },
+                { label: 'Gaming',     ancre: 'gaming',        icon: 'ri-gamepad-line' },
+              ] },
+            { label: 'Independence', ancre: 'independence',  icon: 'ri-shield-check-line' }
+          ]
+          : [
+            { label: 'Accueil',         link: '/',              icon: 'ri-home-line' },
+            { label: 'Écosystème',      ancre: 'ecosystem',     icon: 'ri-apps-line' },
+            { label: 'Fonctionnalités', icon: 'ri-star-line',   children: [
+                { label: 'Productivité',   ancre: 'features',      icon: 'ri-mail-line' },
+                { label: 'Prestation',  ancre: 'prestations',   icon: 'ri-briefcase-line' },
+                { label: 'Gaming',      ancre: 'gaming',        icon: 'ri-gamepad-line' },
+              ] },
+            { label: 'Indépendance',    ancre: 'independence',  icon: 'ri-shield-check-line' }
+          ]
   );
-
   public socials: ITyroUiNavbarPages[] = [
     { label: 'linkedin',  link: 'https://www.linkedin.com/company/tyrolium/', icon: 'ri-linkedin-fill' },
     { label: 'github',    link: 'https://github.com/tyrolium',                icon: 'ri-github-fill' },
