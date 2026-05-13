@@ -28,6 +28,8 @@ export class App implements AfterViewInit {
 
   public PROJECT_NAME = 'Useritium';
   public PROJECT_LOGO = 'assets/Useritium.png';
+  public url_Useritium_login = "";
+  public url_Useritium_singup = "";
 
   public PROJECT_CONTENT = computed(() =>
     this.langService.lang() === 'en'
@@ -255,4 +257,16 @@ export class App implements AfterViewInit {
     { icon: 'ri-close-circle-fill', type: 'no',  title: 'Aucune levée de fonds',       titleEn: 'No fundraising',           desc: 'Jamais dilué, jamais contraint', descEn: 'Never diluted, never constrained' },
     { icon: 'ri-shield-check-fill', type: 'yes', title: 'Liberté créative totale',     titleEn: 'Total creative freedom',   desc: 'Nos règles, notre vision',       descEn: 'Our rules, our vision' },
   ];
+
+
+
+
+  scrollToEco() {
+    const element = document.getElementById('ecosystem');
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - 70;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  }
 }

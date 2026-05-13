@@ -46,11 +46,11 @@
       </p>
 
       <div class="us-header__actions">
-        <a href="#cta" class="us-btn-primary">
+        <a [href]="url_Useritium_singup" class="us-btn-primary">
           <i class="ri-user-add-line"></i>
           {{ lang() === 'en' ? 'Create my free account' : 'Créer mon compte gratuit' }}
         </a>
-        <a href="#ecosystem" class="us-btn-ghost">
+        <a (click)="scrollToEco()" class="us-btn-ghost">
           {{ lang() === 'en' ? 'Explore the ecosystem' : 'Explorer l\'écosystème' }}
           <i class="ri-arrow-right-line"></i>
         </a>
@@ -449,9 +449,9 @@
   [content]="lang() === 'en' ? 'Create your free Useritium account in seconds. No credit card, no commitment — hosted in France, encrypted, open source.' : 'Créez votre compte Useritium gratuit en quelques secondes. Sans carte bancaire, sans engagement — hébergé en France, chiffré, open source.'"
   [btn]="lang() === 'en' ? 'Create my account' : 'Créer mon compte'"
   [btnIcon]="'<i class=\'ri-user-add-line\'></i>'"
-  [btnLink]="'https://useritium.fr/register'"
+  [btnLink]="url_Useritium_singup"
   [subbtn]="lang() === 'en' ? 'Sign in' : 'Se connecter'"
-  [subLink]="'https://useritium.fr/login'"
+  [subLink]="url_Useritium_login"
   [notBack]="true"
 ></tyro-ui-cta>
 
