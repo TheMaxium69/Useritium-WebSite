@@ -417,7 +417,7 @@
         </p>
 
         <div class="us-independence__badges">
-          <span><i class="ri-france-line"></i>{{ lang() === 'en' ? 'French company' : 'Entreprise française' }}</span>
+          <span><i class="ri-verified-badge-line"></i>{{ lang() === 'en' ? 'French company' : 'Entreprise française' }}</span>
           <span><i class="ri-code-s-slash-line"></i>Open source</span>
           <span><i class="ri-lock-line"></i>{{ lang() === 'en' ? 'End-to-end encrypted' : 'Chiffrement E2E' }}</span>
         </div>
@@ -452,6 +452,7 @@
   [btnLink]="'https://useritium.fr/register'"
   [subbtn]="lang() === 'en' ? 'Sign in' : 'Se connecter'"
   [subLink]="'https://useritium.fr/login'"
+  [notBack]="true"
 ></tyro-ui-cta>
 
 <tyro-ui-footer

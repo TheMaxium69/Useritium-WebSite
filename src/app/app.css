@@ -58,7 +58,10 @@
   font-weight: 700;
   padding: 0.9rem 1.85rem;
   border-radius: 100px;
-  background: linear-gradient(135deg, #0533c8, #bf0000);
+  background: linear-gradient(
+          135deg,
+          #0000FF 0%,
+          #BF0000 100%);
   color: #fff;
   text-decoration: none;
   transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
