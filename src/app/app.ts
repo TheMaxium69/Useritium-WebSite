@@ -27,7 +27,7 @@ export class App implements AfterViewInit {
   /* ─── Project ──────────────────────────────────────────────────────── */
 
   public PROJECT_NAME = 'Useritium';
-  public PROJECT_LOGO = 'assets/Useritium.png';
+  public PROJECT_LOGO = 'assets/tyrolium-ui/projects/Useritium.png';
   public url_Useritium_login = "";
   public url_Useritium_singup = "";
 

@@ -13,3 +13,4 @@ api/private/
 # Other files and folders
 
 # file/
+.DS_Store
