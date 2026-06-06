@@ -1,0 +1,484 @@
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- ── HEADER ─────────────────────────────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+
+<header class="us-header" #header>
+
+    <!-- Cursor reactive light -->
+    <div class="us-cursor-light"
+         [style.left.px]="mx() - 350"
+         [style.top.px]="my() - 350">
+    </div>
+
+    <!-- Circuit dots background (revealed by cursor via CSS mask) -->
+    <div class="us-circuit-mask"></div>
+
+    <!-- Grid overlay -->
+    <div class="us-grid-overlay"></div>
+
+    <!-- Fixed background gradient -->
+    <div class="us-bg-gradient"></div>
+
+    <!-- Header inner layout -->
+    <div class="us-header__inner">
+
+        <!-- LEFT: Text -->
+        <div class="us-header__text">
+            <div class="us-header__badge">
+                <span class="us-badge__dot"></span>
+                {{ lang() === 'en' ? 'Free · Hosted in France · Open source' : 'Gratuit · Hébergé en France · Open source' }}
+            </div>
+
+            <h1 class="us-header__title">
+                <span class="us-glitch" data-text="Useritium">Useritium</span>
+            </h1>
+
+            <p class="us-header__tagline">
+                {{ lang() === 'en' ? 'Your French digital identity.' : 'Votre identité numérique française.' }}
+            </p>
+
+            <p class="us-header__subtitle">
+                {{ lang() === 'en'
+                ? 'One account. Every Tyrolium project and all its partners. Your data stays in France — encrypted, open source and yours.'
+                : 'Un seul compte. Tous les projets Tyrolium et ses partenaires. Vos données restent en France — chiffrées, open source et vous appartiennent.' }}
+            </p>
+
+            <div class="us-header__actions">
+                <a [href]="url_Useritium_singup" class="us-btn-primary">
+                    <i class="ri-user-add-line"></i>
+                    {{ lang() === 'en' ? 'Create my free account' : 'Créer mon compte gratuit' }}
+                </a>
+                <a (click)="scrollToEco()" class="us-btn-ghost">
+                    {{ lang() === 'en' ? 'Explore the ecosystem' : 'Explorer l\'écosystème' }}
+                    <i class="ri-arrow-right-line"></i>
+                </a>
+            </div>
+
+            <div class="us-header__stats">
+                <div class="us-hstat">
+                    <span class="us-hstat__num">7+</span>
+                    <span class="us-hstat__label">{{ lang() === 'en' ? 'connected projects' : 'projets connectés' }}</span>
+                </div>
+                <div class="us-hstat__sep"></div>
+                <div class="us-hstat">
+                    <span class="us-hstat__num">100%</span>
+                    <span class="us-hstat__label">{{ lang() === 'en' ? 'hosted in France' : 'hébergé en France' }}</span>
+                </div>
+                <div class="us-hstat__sep"></div>
+                <div class="us-hstat">
+                    <span class="us-hstat__num">0€</span>
+                    <span class="us-hstat__label">{{ lang() === 'en' ? 'to get started' : 'pour commencer' }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Orbit animation -->
+        <div class="us-header__orbit">
+            <div class="us-orbit-scene">
+
+                <!-- Visual rings -->
+                <div class="us-ring us-ring--1"></div>
+                <div class="us-ring us-ring--2"></div>
+
+                <!-- Center: Useritium -->
+                <div class="us-orbit-center">
+                    <div class="us-orbit-center__glow"></div>
+                    <img src="assets/tyrolium-ui/projects/Useritium.png" alt="Useritium">
+                </div>
+
+                <!-- Inner ring: 3 logos, radius 140px, 18s -->
+                <div class="us-orbit-item us-orbit-item--i1" title="Tyrolium">
+                    <img src="assets/tyrolium-ui/projects/Tyrolium.png" alt="Tyrolium">
+                </div>
+                <div class="us-orbit-item us-orbit-item--i2" title="SolidServ">
+                    <img src="assets/tyrolium-ui/projects/SolidServ.png" alt="SolidServ">
+                </div>
+                <div class="us-orbit-item us-orbit-item--i3" title="NexiumiaCRM">
+                    <img src="assets/tyrolium-ui/projects/NexiumiaCRM.png" alt="NexiumiaCRM">
+                </div>
+
+                <!-- Outer ring: 4 logos, radius 230px, 30s -->
+                <div class="us-orbit-item us-orbit-item--o1" title="TyroCiel">
+                    <img src="assets/tyrolium-ui/projects/TyroCiel.png" alt="TyroCiel">
+                </div>
+                <div class="us-orbit-item us-orbit-item--o2" title="TyroServ">
+                    <img src="assets/tyrolium-ui/projects/TyroServ.png" alt="TyroServ">
+                </div>
+                <div class="us-orbit-item us-orbit-item--o3" title="Influnias">
+                    <img src="assets/tyrolium-ui/projects/Influnias.png" alt="Influnias">
+                </div>
+                <div class="us-orbit-item us-orbit-item--o4" title="Gamenium">
+                    <img src="assets/tyrolium-ui/projects/Gamenium.png" alt="Gamenium">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="us-header__waves">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="us-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+            </defs>
+            <g class="us-waves-parallax">
+                <use xlink:href="#us-wave" x="48" y="0"/>
+                <use xlink:href="#us-wave" x="48" y="3"/>
+                <use xlink:href="#us-wave" x="48" y="5"/>
+                <use xlink:href="#us-wave" x="48" y="7"/>
+            </g>
+        </svg>
+    </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- ── ECOSYSTEM ──────────────────────────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+
+<section id="ecosystem" class="us-section us-ecosystem">
+    <div class="us-container">
+        <p class="us-label">{{ lang() === 'en' ? 'Your passport' : 'Votre passeport' }}</p>
+        <h2 class="us-title">{{ lang() === 'en' ? 'One account for the entire ecosystem' : 'Un compte pour tout l\'écosystème' }}</h2>
+        <p class="us-intro">
+            {{ lang() === 'en'
+            ? 'Useritium is the key that unlocks every Tyrolium project and its partners. Create your account once, access everything.'
+            : 'Useritium est la clé qui ouvre chaque projet Tyrolium et ses partenaires. Créez votre compte une fois, accédez à tout.' }}
+        </p>
+
+        <div class="us-ecosystem__grid">
+            @for (proj of ecosystem; track proj.name) {
+                <a [href]="proj.link" target="_blank" class="us-eco-card">
+                    <div class="us-eco-card__header">
+                        <div class="us-eco-card__logo">
+                            <img [src]="proj.logo" [alt]="proj.name">
+                        </div>
+                        <div class="us-eco-card__meta">
+                            <h3 class="us-eco-card__name">{{ proj.name }}</h3>
+                            <span class="us-eco-card__tag" [style.color]="proj.color">
+                <i [class]="proj.tagIcon"></i>
+                                {{ lang() === 'en' ? proj.tag : proj.tag }}
+              </span>
+                        </div>
+                        <div class="us-eco-card__access">
+                            <i class="ri-key-2-line"></i>
+                        </div>
+                    </div>
+                    <p class="us-eco-card__desc">{{ lang() === 'en' ? proj.descEn : proj.desc }}</p>
+                    <div class="us-eco-card__footer" [style.border-top-color]="proj.color + '30'">
+            <span class="us-eco-badge" [style.color]="proj.color" [style.background]="proj.color + '18'">
+              <i class="ri-check-line"></i>
+                {{ lang() === 'en' ? 'Access via Useritium' : 'Accès via Useritium' }}
+            </span>
+                        <i class="ri-external-link-line us-eco-card__ext" [style.color]="proj.color"></i>
+                    </div>
+                    <div class="us-eco-card__accent" [style.background]="proj.color"></div>
+                </a>
+            }
+
+            <!-- Partner CTA card -->
+            <div class="us-eco-card us-eco-card--partner">
+                <div class="us-eco-card__header">
+                    <div class="us-eco-card__logo us-eco-card__logo--partner">
+                        <i class="ri-links-line"></i>
+                    </div>
+                    <div class="us-eco-card__meta">
+                        <h3 class="us-eco-card__name">{{ lang() === 'en' ? 'And many more' : 'Et bien plus' }}</h3>
+                        <span class="us-eco-card__tag" style="color: #0533c8">
+                            <i class="ri-add-circle-line"></i>
+                            {{ lang() === 'en' ? 'Partners' : 'Partenaires' }}
+                        </span>
+                    </div>
+                </div>
+                <p class="us-eco-card__desc">
+                    {{ lang() === 'en'
+                    ? 'Useritium connects to all Tyrolium partner platforms. Integrate SSO directly into your own site or app.'
+                    : 'Useritium se connecte à toutes les plateformes partenaires de Tyrolium. Intégrez le SSO directement à votre propre site ou application.' }}
+                </p>
+                <div class="us-eco-card__footer" style="border-top-color: rgba(5,51,200,0.18)">
+                    <a href="https://tyrolium.fr/contact?from=useritium" target="_blank" class="us-eco-partner-btn">
+                        <i class="ri-plug-line"></i>
+                        {{ lang() === 'en' ? 'Integrate Useritium' : 'Intégrer Useritium' }}
+                    </a>
+                    <i class="ri-external-link-line" style="font-size: 0.8rem; color: #0533c8; opacity: 0.45;"></i>
+                </div>
+                <div class="us-eco-card__accent" style="background: linear-gradient(90deg, #0533c8, #bf0000);"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- ── FEATURES ───────────────────────────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+
+<section id="features" class="us-section us-features us-bg-light">
+    <div class="us-container">
+        <p class="us-label">{{ lang() === 'en' ? 'All inclusive' : 'Tout inclus' }}</p>
+        <h2 class="us-title">{{ lang() === 'en' ? 'What your account gives you' : 'Ce que votre compte vous offre' }}</h2>
+        <p class="us-intro">
+            {{ lang() === 'en'
+            ? 'Beyond sign-in: a complete suite of tools for your digital life. All encrypted, all on French servers.'
+            : 'Au-delà de la connexion : une suite complète d\'outils pour votre vie numérique. Tout chiffré, tout sur des serveurs français.' }}
+        </p>
+
+        <div class="us-features__grid">
+            @for (feat of features; track feat.title) {
+                <div class="us-feat-card">
+                    <div class="us-feat-card__icon" [style.background]="feat.gradient">
+                        <i [class]="feat.icon"></i>
+                    </div>
+                    <h3 class="us-feat-card__title">{{ lang() === 'en' ? feat.titleEn : feat.title }}</h3>
+                    <p class="us-feat-card__desc">{{ lang() === 'en' ? feat.descEn : feat.desc }}</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- ── PRESTATIONS (Tyrolium) ─────────────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+
+<section class="us-section us-prestations" id="prestations">
+    <div class="us-container">
+        <div class="us-prestations__inner">
+
+            <div class="us-prestations__left">
+                <p class="us-label">{{ lang() === 'en' ? 'Your projects, your dashboard' : 'Vos projets, votre tableau de bord' }}</p>
+                <h2 class="us-prestations__title">
+                    {{ lang() === 'en' ? 'Track your Tyrolium prestations in real time' : 'Suivez vos prestations Tyrolium en temps réel' }}
+                </h2>
+                <p class="us-prestations__text">
+                    {{ lang() === 'en'
+                    ? 'Your Useritium account is the gateway to all Tyrolium services. Order, track progress, communicate with our teams — everything from a single dashboard.'
+                    : 'Votre compte Useritium est la porte d\'entrée de tous les services Tyrolium. Commandez, suivez l\'avancement, communiquez avec nos équipes — tout depuis un seul tableau de bord.' }}
+                </p>
+
+                <a href="https://tyrolium.fr" target="_blank" class="us-prestations__cta">
+                    <img src="assets/tyrolium-ui/projects/Tyrolium.png" alt="Tyrolium" class="us-prestations__logo">
+                    <div>
+                        <strong>{{ lang() === 'en' ? 'Discover Tyrolium services' : 'Découvrir les prestations Tyrolium' }}</strong>
+                        <span>{{ lang() === 'en' ? 'Development · Infrastructure · Incubator' : 'Développement · Infrastructure · Incubateur' }}</span>
+                    </div>
+                    <i class="ri-external-link-line"></i>
+                </a>
+            </div>
+
+            <div class="us-prestations__right">
+                @for (p of prestations; track p.title) {
+                    <div class="us-presta-card">
+                        <div class="us-presta-card__icon" [style.background]="p.bg" [style.color]="p.color">
+                            <i [class]="p.icon"></i>
+                        </div>
+                        <div class="us-presta-card__body">
+                            <h3 class="us-presta-card__title">{{ lang() === 'en' ? p.titleEn : p.title }}</h3>
+                            <ul class="us-presta-card__list">
+                                @for (item of (lang() === 'en' ? p.itemsEn : p.items); track item) {
+                                    <li><i class="ri-check-line" [style.color]="p.color"></i>{{ item }}</li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="us-presta-card__accent" [style.background]="p.color"></div>
+                    </div>
+                }
+
+                <!-- Track mockup -->
+                <div class="us-track-card">
+                    <div class="us-track-card__header">
+                        <i class="ri-customer-service-2-line"></i>
+                        <span>{{ lang() === 'en' ? 'Your ongoing projects' : 'Vos projets en cours' }}</span>
+                    </div>
+                    <div class="us-track-item">
+                        <div class="us-track-item__dot us-track-item__dot--blue"></div>
+                        <div class="us-track-item__info">
+                            <div class="us-track-item__name"></div>
+                            <div class="us-track-item__sub"></div>
+                        </div>
+                        <span class="us-track-badge us-track-badge--blue">{{ lang() === 'en' ? 'In progress' : 'En cours' }}</span>
+                    </div>
+                    <div class="us-track-item">
+                        <div class="us-track-item__dot us-track-item__dot--green"></div>
+                        <div class="us-track-item__info">
+                            <div class="us-track-item__name"></div>
+                            <div class="us-track-item__sub us-track-item__sub--short"></div>
+                        </div>
+                        <span class="us-track-badge us-track-badge--green">{{ lang() === 'en' ? 'Delivered' : 'Livré' }}</span>
+                    </div>
+                    <div class="us-track-bar">
+                        <div class="us-track-bar__progress"></div>
+                    </div>
+                    <span class="us-track-percent">72%</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- ── GAMING (TyroCiel) ──────────────────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+
+<section id="gaming" class="us-section us-gaming">
+    <div class="us-container">
+        <div class="us-gaming__inner">
+
+            <!-- Gaming visual panel -->
+            <div class="us-gaming__panel">
+                <div class="us-gaming__panel-bg"></div>
+                <div class="us-gaming__panel-content">
+                    <img src="assets/tyrolium-ui/projects/TyroCiel.png" alt="TyroCiel" class="us-gaming__logo">
+                    <span class="us-gaming__studio">TyroCiel Studio</span>
+                    <div class="us-gaming__panel-stats">
+                        <div class="us-gaming__pstat">
+                            <i class="ri-gamepad-line"></i>
+                            <span>2 {{ lang() === 'en' ? 'games' : 'jeux' }}</span>
+                        </div>
+                        <div class="us-gaming__pstat">
+                            <i class="ri-group-line"></i>
+                            <span>{{ lang() === 'en' ? 'Friends' : 'Amis' }}</span>
+                        </div>
+                        <div class="us-gaming__pstat">
+                            <i class="ri-save-line"></i>
+                            <span>{{ lang() === 'en' ? 'Cloud saves' : 'Saves cloud' }}</span>
+                        </div>
+                    </div>
+                    <!-- Fake launcher UI -->
+                    <div class="us-launcher">
+                        <div class="us-launcher__game">
+                            <div class="us-launcher__game-thumb"></div>
+                            <div class="us-launcher__game-info">
+                                <div class="us-launcher__game-title"></div>
+                                <div class="us-launcher__game-sub"></div>
+                            </div>
+                            <div class="us-launcher__game-btn">{{ lang() === 'en' ? 'Play' : 'Jouer' }}</div>
+                        </div>
+                        <div class="us-launcher__game us-launcher__game--dimmed">
+                            <div class="us-launcher__game-thumb us-launcher__game-thumb--2"></div>
+                            <div class="us-launcher__game-info">
+                                <div class="us-launcher__game-title"></div>
+                                <div class="us-launcher__game-sub"></div>
+                            </div>
+                            <div class="us-launcher__game-btn us-launcher__game-btn--soon">{{ lang() === 'en' ? 'Soon' : 'Bientôt' }}</div>
+                        </div>
+                    </div>
+                    <div class="us-gaming__partner">
+                        <img src="assets/tyrolium-ui/projects/TyroServ.png" alt="TyroServ">
+                        <span>TyroServ {{ lang() === 'en' ? 'included' : 'inclus' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gaming text -->
+            <div class="us-gaming__text">
+                <p class="us-label">{{ lang() === 'en' ? 'Your gaming identity' : 'Votre identité gaming' }}</p>
+                <h2 class="us-gaming__title">
+                    {{ lang() === 'en' ? 'One account for all your games.' : 'Un compte pour tous vos jeux.' }}
+                </h2>
+                <p class="us-gaming__desc">
+                    {{ lang() === 'en'
+                    ? 'Your Useritium account connects directly to TyroCiel — the Tyrolium game studio. Manage your library, cloud saves, friends list and gaming servers from a single dashboard.'
+                    : 'Votre compte Useritium se connecte directement à TyroCiel — le studio de jeux vidéo de Tyrolium. Gérez votre bibliothèque, vos sauvegardes cloud, votre liste d\'amis et vos serveurs gaming depuis un seul tableau de bord.' }}
+                </p>
+
+                <ul class="us-gaming__list">
+                    <li>
+                        <i class="ri-gamepad-line"></i>
+                        <div>
+                            <strong>{{ lang() === 'en' ? 'TyroCiel game library' : 'Bibliothèque TyroCiel' }}</strong>
+                            <span>{{ lang() === 'en' ? 'All your games in one launcher' : 'Tous vos jeux dans un seul launcher' }}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="ri-save-3-line"></i>
+                        <div>
+                            <strong>{{ lang() === 'en' ? 'Cloud saves' : 'Sauvegardes cloud' }}</strong>
+                            <span>{{ lang() === 'en' ? 'Synchronized on all your devices' : 'Synchronisées sur tous vos appareils' }}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="ri-group-line"></i>
+                        <div>
+                            <strong>{{ lang() === 'en' ? 'Friends & community' : 'Amis & communauté' }}</strong>
+                            <span>{{ lang() === 'en' ? 'Add friends, see their profiles' : 'Ajoutez des amis, consultez leurs profils' }}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="ri-server-line"></i>
+                        <div>
+                            <strong>TyroServ</strong>
+                            <span>{{ lang() === 'en' ? 'The historic Tyrolium gaming server, included' : 'Le serveur gaming historique de Tyrolium, inclus' }}</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="https://tyrociel.fr" target="_blank" class="us-gaming__link">
+                    <img src="assets/tyrolium-ui/projects/TyroCiel.png" alt="TyroCiel">
+                    <span>{{ lang() === 'en' ? 'Discover TyroCiel' : 'Découvrir TyroCiel' }}</span>
+                    <i class="ri-external-link-line"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- ── INDÉPENDANCE ────────────────────────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+
+<section id="independence" class="us-section us-independence us-bg-light">
+    <div class="us-container">
+        <div class="us-independence__inner">
+
+            <div class="us-independence__left">
+                <p class="us-label">{{ lang() === 'en' ? 'Our structure' : 'Notre structure' }}</p>
+                <h2 class="us-independence__title">
+                    {{ lang() === 'en' ? 'Zero compromise.\nTotal freedom.' : 'Zéro compromis.\nTotale liberté.' }}
+                </h2>
+                <p class="us-independence__text">
+                    {{ lang() === 'en'
+                    ? 'Useritium is a project of Tyrolium, the French tech holding. 100% self-funded, we build what we believe in, on our timeline, according to our vision. No investors, no shareholders — only passion and craftsmanship. Your account is never a means of income for a third party.'
+                    : 'Useritium est un projet de Tyrolium, la holding technologique française. 100% auto-financé, nous construisons ce que nous croyons, à notre rythme, selon notre vision. Pas d\'investisseurs, pas d\'actionnaires — seulement passion et savoir-faire. Votre compte n\'est jamais un moyen de revenu pour un tiers.' }}
+                </p>
+
+                <div class="us-independence__badges">
+                    <span><i class="ri-verified-badge-line"></i>{{ lang() === 'en' ? 'French company' : 'Entreprise française' }}</span>
+                    <span><i class="ri-code-s-slash-line"></i>Open source</span>
+                    <span><i class="ri-lock-line"></i>{{ lang() === 'en' ? 'End-to-end encrypted' : 'Chiffrement E2E' }}</span>
+                </div>
+            </div>
+
+            <div class="us-independence__right">
+                @for (item of independence; track item.title) {
+                    <div class="us-ind-item" [class.us-ind-item--yes]="item.type === 'yes'" [class.us-ind-item--no]="item.type === 'no'">
+                        <i [class]="item.icon"></i>
+                        <div>
+                            <strong>{{ lang() === 'en' ? item.titleEn : item.title }}</strong>
+                            <span>{{ lang() === 'en' ? item.descEn : item.desc }}</span>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- ── CTA ────────────────────────────────────────────────────────────── -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+
+<tyro-ui-cta
+        [title]="lang() === 'en' ? 'Your digital life,<br>your rules.' : 'Votre vie numérique,<br>vos règles.'"
+        [label]="lang() === 'en' ? 'Ready to take back control?' : 'Prêt à reprendre le contrôle ?'"
+        [content]="lang() === 'en' ? 'Create your free Useritium account in seconds. No credit card, no commitment — hosted in France, encrypted, open source.' : 'Créez votre compte Useritium gratuit en quelques secondes. Sans carte bancaire, sans engagement — hébergé en France, chiffré, open source.'"
+        [btn]="lang() === 'en' ? 'Create my account' : 'Créer mon compte'"
+        [btnIcon]="'<i class=\'ri-user-add-line\'></i>'"
+        [btnLink]="url_Useritium_singup"
+        [subbtn]="lang() === 'en' ? 'Sign in' : 'Se connecter'"
+        [subLink]="url_Useritium_login"
+        [notBack]="true"
+></tyro-ui-cta>
