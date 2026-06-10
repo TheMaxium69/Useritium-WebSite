@@ -1,7 +1,7 @@
 <?php include "app/app.php"; $page = 999999; head($page); ?>
 <body>
     <header style="padding: 1px!important;background: #144794!important;">
-        <?php navbar($page, $isLogged); ?>
+        <?php navbar($page); ?>
     </header>
 
 <main>

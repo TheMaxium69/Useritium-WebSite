@@ -9,45 +9,12 @@
             <a id="logo" href="#"><img src="assets/logo.png" alt="logo useritium"></a>
             <ul class="d-flex">
                 <li class="ms-4"><a href="index.php">Accueil</a></li>
-                <?php if(!$isLogged){ ?>
-                <li class="ms-4"><a href="connect.php" class="btn-super">Connexion / Inscription</a></li>
-                <?php } else { ?>
-                <li class="ms-4"><a href="panel.php" class="btn-super">Panel</a></li>
-                <li class="ms-4"><a style="text-decoration: underline;" href="?modeDeco=on">Déconnexion</a></li>
-                <?php } ?>
+                <li class="ms-4"><a href="https://dashboard.useritium.fr" class="btn-super">Connexion / Inscription</a></li>
             </ul>
         </nav>
         <h1 class="text-center display-1 bold" style="text-shadow: 1px 1px 2px black;">Compte Useritium<br>
-            <a class="btn btn-light" style="color: black; font-size: 14px;" href="connect.php">Connexion / Inscription</a></h1>
+            <a class="btn btn-light" style="color: black; font-size: 14px;" href="https://dashboard.useritium.fr">Connexion / Inscription</a></h1>
     </div>
-
-
-<?php
-
-    } else if($page ==2 || $page == 4 || $page == 5){
-
-?>
-      <nav class="d-flex align-items-center justify-content-between">
-            <a id="logo" href="." style="
-                        text-align: center;
-                        width: 100%;
-                        font-family: 'Inter', sans-serif;
-                        text-transform: uppercase;
-                        font-size: 18px;
-                        letter-spacing: 3px;
-                        font-weight: bold;">
-                Useritium <small style="font-size: 10px">Par Tyrolium</small></a>
-            <ul class="d-flex" style="margin: unset;display: none!important;">
-                <li class="ms-4"><a href="index.php">Accueil</a></li>
-                <?php if(!$isLogged){ ?>
-                <li class="ms-4"><a href="connect.php" class="btn-super">Connexion / Inscription</a></li>
-                <?php } else { ?>
-                <li class="ms-4"><a href="panel.php" class="btn-super">Panel</a></li>
-                <li class="ms-4"><a style="text-decoration: underline;" href="?modeDeco=on">Déconnexion</a></li>
-                <?php } ?>
-            </ul>
-        </nav>
-        
 <?php
 
     } else if ($page == 999999) {
@@ -59,12 +26,7 @@
                 <a id="logo" href="#"><img src="assets/logo.png" alt="logo useritium"></a>
                 <ul class="d-flex" style="margin: unset;">
                     <li class="ms-4"><a href="index.php">Accueil</a></li>
-                    <?php if(!$isLogged){ ?>
-                        <li class="ms-4"><a href="connect.php" class="btn-super">Connexion / Inscription</a></li>
-                    <?php } else { ?>
-                        <li class="ms-4"><a href="panel.php" class="btn-super">Panel</a></li>
-                        <li class="ms-4"><a style="text-decoration: underline;" href="?modeDeco=on">Déconnexion</a></li>
-                    <?php } ?>
+                        <li class="ms-4"><a href="https://dashboard.useritium.fr" class="btn-super">Connexion / Inscription</a></li>
                 </ul>
             </nav>
         </div>

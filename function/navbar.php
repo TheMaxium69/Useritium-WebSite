@@ -1,5 +1,5 @@
 <?php
-function navbar($page, $isLogged)
+function navbar($page)
 {
 
     require_once "./composant/navbar.phtml";
