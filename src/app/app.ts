@@ -38,7 +38,8 @@ export class App {
                 { label: 'Services',   ancre: 'prestations',   icon: 'ri-briefcase-line' },
                 { label: 'Gaming',     ancre: 'gaming',        icon: 'ri-gamepad-line' },
               ] },
-            { label: 'Independence', ancre: 'independence',  icon: 'ri-shield-check-line' }
+            { label: 'Independence', ancre: 'independence',  icon: 'ri-shield-check-line' },
+              { label: 'Access Useritium', href: 'https://dashboard.useritium.fr', icon: 'ri-rocket-line' },
           ]
           : [
             { label: 'Accueil',         link: '/',              icon: 'ri-home-line' },
@@ -48,7 +49,8 @@ export class App {
                 { label: 'Prestation',  ancre: 'prestations',   icon: 'ri-briefcase-line' },
                 { label: 'Gaming',      ancre: 'gaming',        icon: 'ri-gamepad-line' },
               ] },
-            { label: 'Indépendance',    ancre: 'independence',  icon: 'ri-shield-check-line' }
+            { label: 'Indépendance',    ancre: 'independence',  icon: 'ri-shield-check-line' },
+              { label: 'Accéder à Useritium', href: 'https://dashboard.useritium.fr', icon: 'ri-rocket-line' },
           ]
   );
 }

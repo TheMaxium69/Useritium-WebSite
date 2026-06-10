@@ -23,8 +23,8 @@ export class Home {
 
     @ViewChild('header') headerRef!: ElementRef<HTMLElement>;
 
-    public url_Useritium_login = "";
-    public url_Useritium_singup = "";
+    public url_Useritium_login = "https://dashboard.useritium.fr/";
+    public url_Useritium_singup = "https://dashboard.useritium.fr/?w=s";
 
 
     /* ─── Mouse tracking ───────────────────────────────────────────────── */
