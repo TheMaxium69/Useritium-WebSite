@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
         {
             provide: TYRO_RELAY_URL,
             useValue: isDevMode()
-                ? 'http://localhost:9001/relay.html'  // port de tyrolium-website en dev
+                ? 'http://192.168.1.81:9001/relay.html'  // port de tyrolium-website en dev
                 : TYRO_RELAY_PAGE_URL,
         },
     ],
