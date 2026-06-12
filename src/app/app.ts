@@ -20,8 +20,8 @@ export class App {
 
   public PROJECT_CONTENT = computed(() =>
       this.langService.lang() === 'en'
-          ? `<strong>Useritium</strong> is the <strong>free universal French account</strong> by Tyrolium. One identity for the entire Tyrolium ecosystem — hosted in France by SolidServ.`
-          : `<strong>Useritium</strong> est le <strong>compte universel français gratuit</strong> de Tyrolium. Une identité pour tout l'écosystème Tyrolium — hébergé en France par SolidServ.`
+          ? `<strong>Useritium</strong> is the <strong>free universal French account</strong> by Tyrolium. One identity for the entire Tyrolium ecosystem - hosted in France by SolidServ.`
+          : `<strong>Useritium</strong> est le <strong>compte universel français gratuit</strong> de Tyrolium. Une identité pour tout l'écosystème Tyrolium - hébergé en France par SolidServ.`
   );
 
   readonly lang = this.langService.lang;
