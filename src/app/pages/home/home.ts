@@ -61,7 +61,7 @@ export class Home {
             tagIcon: 'ri-building-4-line',
             color: '#0533c8',
             desc: 'La holding technologique française. Développement, infrastructure, incubation - la maison mère de toutes les filiales.',
-            descEn: 'The French tech holding. Development, infrastructure, incubation - the parent company of all projects.',
+            descEn: 'The French tech holding. Development, infrastructure, incubation - the parent company of all subsidiaries.',
             link: 'https://tyrolium.fr',
         },
         {
@@ -91,7 +91,7 @@ export class Home {
             tagIcon: 'ri-gamepad-line',
             color: '#7c3aed',
             desc: 'Le studio de jeu-vidéo de Tyrolium. Créez votre profil pour accéder aux jeux du studio et retrouvez vos amis.',
-            descEn: 'Tyrolium\'s video game studio. Create your gamer profile, manage your games and find your friends.',
+            descEn: 'Tyrolium\'s video game studio. Create your profile to access the studio\'s games and find your friends.',
             link: 'https://tyrociel.fr',
         },
         {
@@ -101,7 +101,7 @@ export class Home {
             tagIcon: 'ri-server-fill',
             color: '#059669',
             desc: 'Le serveur Minecraft original de Tyrolium. Gérez votre compte, vos achats de grade et cosmétiques.',
-            descEn: 'Tyrolium\'s original Minecraft server. Find your saves and history from your account.',
+            descEn: 'Tyrolium\'s original Minecraft server. Manage your account, rank and cosmetic purchases.',
             link: 'https://tyroserv.fr',
         },
         {
@@ -121,7 +121,7 @@ export class Home {
             tagIcon: 'ri-trophy-line',
             color: '#dc2626',
             desc: 'La plateforme gaming de l\'écosystème Tyrolium. Votre collection, temps de jeu, historique d\'achat - tout via votre compte.',
-            descEn: 'The gaming platform of the Tyrolium ecosystem. Competitions, rankings, community - all via your account.',
+            descEn: 'The gaming platform of the Tyrolium ecosystem. Your collection, playtime, purchase history - all via your account.',
             link: 'https://gamenium.fr',
         },
     ];
@@ -157,7 +157,7 @@ export class Home {
             title: 'Documents & Notes',
             titleEn: 'Documents & Notes',
             desc: 'Rédigez, organisez, partagez. Notes, documents et présentations synchronisés partout.',
-            descEn: 'Write, organise, share. Notes, spreadsheets and presentations synced everywhere.',
+            descEn: 'Write, organise, share. Notes, documents and presentations synced everywhere.',
         },
         {
             icon: 'ri-customer-service-2-line',
