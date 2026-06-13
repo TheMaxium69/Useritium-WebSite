@@ -60,8 +60,8 @@ export class Home {
             tag: 'Holding',
             tagIcon: 'ri-building-4-line',
             color: '#0533c8',
-            desc: 'La holding technologique française. Développement, infrastructure, incubation — la maison mère de tous les projets.',
-            descEn: 'The French tech holding. Development, infrastructure, incubation — the parent company of all projects.',
+            desc: 'La holding technologique française. Développement, infrastructure, incubation - la maison mère de toutes les filiales.',
+            descEn: 'The French tech holding. Development, infrastructure, incubation - the parent company of all projects.',
             link: 'https://tyrolium.fr',
         },
         {
@@ -70,8 +70,8 @@ export class Home {
             tag: 'Hébergement',
             tagIcon: 'ri-server-line',
             color: '#bf0000',
-            desc: 'Hébergement souverain français. Vos serveurs, vos bases de données, votre infrastructure — 100% sur le territoire français.',
-            descEn: 'French sovereign hosting. Your servers, databases, infrastructure — 100% on French territory.',
+            desc: 'Hébergement souverain français. Vos serveurs, vos bases de données, votre infrastructure - 100% sur le territoire français.',
+            descEn: 'French sovereign hosting. Your servers, databases, infrastructure - 100% on French territory.',
             link: 'https://solidserv.fr',
         },
         {
@@ -90,7 +90,7 @@ export class Home {
             tag: 'Studio gaming',
             tagIcon: 'ri-gamepad-line',
             color: '#7c3aed',
-            desc: 'Le studio de jeu-vidéo de Tyrolium. Créez votre profil gamer, gérez vos jeux et retrouvez vos amis.',
+            desc: 'Le studio de jeu-vidéo de Tyrolium. Créez votre profil pour accedez au jeu du studio et retrouvez vos amis.',
             descEn: 'Tyrolium\'s video game studio. Create your gamer profile, manage your games and find your friends.',
             link: 'https://tyrociel.fr',
         },
@@ -100,7 +100,7 @@ export class Home {
             tag: 'Serveur gaming',
             tagIcon: 'ri-server-fill',
             color: '#059669',
-            desc: 'Le serveur Minecraft original de Tyrolium. Retrouvez vos sauvegardes et votre historique depuis votre compte.',
+            desc: 'Le serveur Minecraft original de Tyrolium. Gerez votre compte, vos achat de grade et cosmetique.',
             descEn: 'Tyrolium\'s original Minecraft server. Find your saves and history from your account.',
             link: 'https://tyroserv.fr',
         },
@@ -120,8 +120,8 @@ export class Home {
             tag: 'Gaming',
             tagIcon: 'ri-trophy-line',
             color: '#dc2626',
-            desc: 'La plateforme gaming de l\'écosystème Tyrolium. Compétitions, classements, communauté — tout via votre compte.',
-            descEn: 'The gaming platform of the Tyrolium ecosystem. Competitions, rankings, community — all via your account.',
+            desc: 'La plateforme gaming de l\'écosystème Tyrolium. Votre collection, temps de jeu, historique d\'achat - tout via votre compte.',
+            descEn: 'The gaming platform of the Tyrolium ecosystem. Competitions, rankings, community - all via your account.',
             link: 'https://gamenium.fr',
         },
     ];
@@ -132,7 +132,7 @@ export class Home {
             gradient: 'linear-gradient(135deg, #0533c8, #3b82f6)',
             title: 'Connexion universelle (SSO)',
             titleEn: 'Universal sign-in (SSO)',
-            desc: 'Un identifiant unique pour tous les sites Tyrolium et partenaires. Fini les dizaines de mots de passe.',
+            desc: 'Un identifiant unique pour tous les sites de Tyrolium et de ces partenaires. Fini les dizaines de mots de passe.',
             descEn: 'One identity for all Tyrolium sites and partners. No more dozens of passwords.',
         },
         {
@@ -156,7 +156,7 @@ export class Home {
             gradient: 'linear-gradient(135deg, #7c3aed, #a78bfa)',
             title: 'Documents & Notes',
             titleEn: 'Documents & Notes',
-            desc: 'Rédigez, organisez, partagez. Notes, tableaux et présentations synchronisés partout.',
+            desc: 'Rédigez, organisez, partagez. Notes, documents et présentations synchronisés partout.',
             descEn: 'Write, organise, share. Notes, spreadsheets and presentations synced everywhere.',
         },
         {
@@ -164,7 +164,7 @@ export class Home {
             gradient: 'linear-gradient(135deg, #059669, #34d399)',
             title: 'Panel de prestations',
             titleEn: 'Service dashboard',
-            desc: 'Suivez en temps réel l\'avancement de vos projets Tyrolium. Communication directe avec nos équipes.',
+            desc: 'Suivez en temps réel l\'avancement de vos projets avec Tyrolium. Communication directe avec nos équipes.',
             descEn: 'Track your Tyrolium projects in real time. Direct communication with our teams.',
         },
         {
@@ -172,8 +172,8 @@ export class Home {
             gradient: 'linear-gradient(135deg, #d97706, #fbbf24)',
             title: 'Données chiffrées & RGPD',
             titleEn: 'Encrypted data & GDPR',
-            desc: 'Vos données ne seront jamais vendues. RGPD, open source, transparent — votre confiance est notre priorité.',
-            descEn: 'Your data will never be sold. GDPR, open source, transparent — your trust is our priority.',
+            desc: 'Vos données ne seront jamais vendues. RGPD, open source, transparent - votre confiance est notre priorité.',
+            descEn: 'Your data will never be sold. GDPR, open source, transparent - your trust is our priority.',
         },
     ];
 

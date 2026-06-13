@@ -40,8 +40,8 @@
 
             <p class="us-header__subtitle">
                 {{ lang() === 'en'
-                ? 'One account. Every Tyrolium project and all its partners. Your data stays in France — encrypted, open source and yours.'
-                : 'Un seul compte. Tous les projets Tyrolium et ses partenaires. Vos données restent en France — chiffrées, open source et vous appartiennent.' }}
+                ? 'One account. Every Tyrolium project and all its partners. Your data stays in France : encrypted, open source and yours.'
+                : 'Un seul compte. Tous les projets Tyrolium et ses partenaires. Vos données restent en France : chiffrées, open source et vous appartiennent.' }}
             </p>
 
             <div class="us-header__actions">
@@ -57,7 +57,7 @@
 
             <div class="us-header__stats">
                 <div class="us-hstat">
-                    <span class="us-hstat__num">7+</span>
+                    <span class="us-hstat__num">8+</span>
                     <span class="us-hstat__label">{{ lang() === 'en' ? 'connected projects' : 'projets connectés' }}</span>
                 </div>
                 <div class="us-hstat__sep"></div>
@@ -143,8 +143,8 @@
         <h2 class="us-title">{{ lang() === 'en' ? 'One account for the entire ecosystem' : 'Un compte pour tout l\'écosystème' }}</h2>
         <p class="us-intro">
             {{ lang() === 'en'
-            ? 'Useritium is the key that unlocks every Tyrolium project and its partners. Create your account once, access everything.'
-            : 'Useritium est la clé qui ouvre chaque projet Tyrolium et ses partenaires. Créez votre compte une fois, accédez à tout.' }}
+            ? 'Useritium connects every subsidiary of Tyrolium and its partners. Create your account once, access everything.'
+            : 'Useritium relie chaque filiale de Tyrolium et ses partenaires. Créez votre compte une fois, accédez à tout.' }}
         </p>
 
         <div class="us-ecosystem__grid">
@@ -178,7 +178,7 @@
             }
 
             <!-- Partner CTA card -->
-            <div class="us-eco-card us-eco-card--partner">
+            <a href="https://tyrolium.fr/contact?from=useritium" target="_blank" class="us-eco-card us-eco-card--partner">
                 <div class="us-eco-card__header">
                     <div class="us-eco-card__logo us-eco-card__logo--partner">
                         <i class="ri-links-line"></i>
@@ -197,14 +197,14 @@
                     : 'Useritium se connecte à toutes les plateformes partenaires de Tyrolium. Intégrez le SSO directement à votre propre site ou application.' }}
                 </p>
                 <div class="us-eco-card__footer" style="border-top-color: rgba(5,51,200,0.18)">
-                    <a href="https://tyrolium.fr/contact?from=useritium" target="_blank" class="us-eco-partner-btn">
+                    <span class="us-eco-partner-btn">
                         <i class="ri-plug-line"></i>
                         {{ lang() === 'en' ? 'Integrate Useritium' : 'Intégrer Useritium' }}
-                    </a>
+                    </span>
                     <i class="ri-external-link-line" style="font-size: 0.8rem; color: #0533c8; opacity: 0.45;"></i>
                 </div>
                 <div class="us-eco-card__accent" style="background: linear-gradient(90deg, #0533c8, #bf0000);"></div>
-            </div>
+            </a>
         </div>
     </div>
 </section>
@@ -252,14 +252,14 @@
                 </h2>
                 <p class="us-prestations__text">
                     {{ lang() === 'en'
-                    ? 'Your Useritium account is the gateway to all Tyrolium services. Order, track progress, communicate with our teams — everything from a single dashboard.'
-                    : 'Votre compte Useritium est la porte d\'entrée de tous les services Tyrolium. Commandez, suivez l\'avancement, communiquez avec nos équipes — tout depuis un seul tableau de bord.' }}
+                    ? 'Your Useritium account is the gateway to all Tyrolium services. Order, track progress, communicate with our teams - everything from a single dashboard.'
+                    : 'Votre compte Useritium est la porte d\'entrée de tous les services de Tyrolium. Commandez, suivez l\'avancement, communiquez avec nos équipes - tout depuis un seul tableau de bord.' }}
                 </p>
 
                 <a href="https://tyrolium.fr" target="_blank" class="us-prestations__cta">
                     <img src="assets/tyrolium-ui/projects/Tyrolium.png" alt="Tyrolium" class="us-prestations__logo">
                     <div>
-                        <strong>{{ lang() === 'en' ? 'Discover Tyrolium services' : 'Découvrir les prestations Tyrolium' }}</strong>
+                        <strong>{{ lang() === 'en' ? 'Discover Tyrolium services' : 'Découvrir les prestations de Tyrolium' }}</strong>
                         <span>{{ lang() === 'en' ? 'Development · Infrastructure · Incubator' : 'Développement · Infrastructure · Incubateur' }}</span>
                     </div>
                     <i class="ri-external-link-line"></i>
@@ -379,8 +379,8 @@
                 </h2>
                 <p class="us-gaming__desc">
                     {{ lang() === 'en'
-                    ? 'Your Useritium account connects directly to TyroCiel — the Tyrolium game studio. Manage your library, cloud saves, friends list and gaming servers from a single dashboard.'
-                    : 'Votre compte Useritium se connecte directement à TyroCiel — le studio de jeux vidéo de Tyrolium. Gérez votre bibliothèque, vos sauvegardes cloud, votre liste d\'amis et vos serveurs gaming depuis un seul tableau de bord.' }}
+                    ? 'Your Useritium account connects directly to TyroCiel - the Tyrolium game studio. Manage your library, cloud saves, friends list and gaming servers from a single dashboard.'
+                    : 'Votre compte Useritium se connecte directement à TyroCiel - le studio de jeux vidéo de Tyrolium. Gérez votre bibliothèque, vos sauvegardes cloud, votre liste d\'amis et vos serveurs gaming depuis un seul tableau de bord.' }}
                 </p>
 
                 <ul class="us-gaming__list">
@@ -440,8 +440,8 @@
                 </h2>
                 <p class="us-independence__text">
                     {{ lang() === 'en'
-                    ? 'Useritium is a project of Tyrolium, the French tech holding. 100% self-funded, we build what we believe in, on our timeline, according to our vision. No investors, no shareholders — only passion and craftsmanship. Your account is never a means of income for a third party.'
-                    : 'Useritium est un projet de Tyrolium, la holding technologique française. 100% auto-financé, nous construisons ce que nous croyons, à notre rythme, selon notre vision. Pas d\'investisseurs, pas d\'actionnaires — seulement passion et savoir-faire. Votre compte n\'est jamais un moyen de revenu pour un tiers.' }}
+                    ? 'Useritium is a project of Tyrolium, the French tech holding. 100% self-funded, we build what we believe in, on our timeline, according to our vision. No investors, no shareholders - only passion and craftsmanship. Your account is never a means of income for a third party.'
+                    : 'Useritium est une filiale de Tyrolium, la holding technologique française. 100% auto-financé, nous construisons ce que nous croyons, à notre rythme, selon notre vision. Pas d\'investisseurs, pas d\'actionnaires. Seulement de la passion et du savoir-faire. Votre compte n\'est jamais un moyen de revenu pour un tiers.' }}
                 </p>
 
                 <div class="us-independence__badges">
@@ -474,7 +474,7 @@
 <tyro-ui-cta
         [title]="lang() === 'en' ? 'Your digital life,<br>your rules.' : 'Votre vie numérique,<br>vos règles.'"
         [label]="lang() === 'en' ? 'Ready to take back control?' : 'Prêt à reprendre le contrôle ?'"
-        [content]="lang() === 'en' ? 'Create your free Useritium account in seconds. No credit card, no commitment — hosted in France, encrypted, open source.' : 'Créez votre compte Useritium gratuit en quelques secondes. Sans carte bancaire, sans engagement — hébergé en France, chiffré, open source.'"
+        [content]="lang() === 'en' ? 'Create your free Useritium account in seconds. No credit card, no commitment - hosted in France, encrypted, open source.' : 'Créez votre compte Useritium gratuit en quelques secondes. Sans carte bancaire, sans engagement - hébergé en France, chiffré, open source.'"
         [btn]="lang() === 'en' ? 'Create my account' : 'Créer mon compte'"
         [btnIcon]="'<i class=\'ri-user-add-line\'></i>'"
         [btnLink]="url_Useritium_singup"
