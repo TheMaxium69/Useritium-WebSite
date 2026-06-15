@@ -46,7 +46,7 @@ export class App {
             { label: 'Écosystème',      ancre: 'ecosystem',     icon: 'ri-apps-line' },
             { label: 'Fonctionnalités', ancre: 'features',      icon: 'ri-star-line',   children: [
                 { label: 'Productivité',   ancre: 'features',      icon: 'ri-mail-line' },
-                { label: 'Prestation',  ancre: 'prestations',   icon: 'ri-briefcase-line' },
+                { label: 'Prestations',  ancre: 'prestations',   icon: 'ri-briefcase-line' },
                 { label: 'Gaming',      ancre: 'gaming',        icon: 'ri-gamepad-line' },
               ] },
             { label: 'Indépendance',    ancre: 'independence',  icon: 'ri-shield-check-line' },
