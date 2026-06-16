@@ -1,10 +1,10 @@
 import {Component, computed, inject, ViewEncapsulation} from '@angular/core';
-import {ITyroUiNavbarPages, TyroUiFooter, TyroUiLangService, TyroUiNavbar} from 'tyrolium-ui';
+import {ITyroUiNavbarPages, TyroUiFooter, TyroUiLangService, TyroUiNavbar, TyroUiEasterEgg } from 'tyrolium-ui';
 import {RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  imports: [TyroUiNavbar, TyroUiFooter, RouterOutlet],
+  imports: [TyroUiNavbar, TyroUiFooter, RouterOutlet, TyroUiEasterEgg],
   templateUrl: './app.html',
   styleUrl: './app.css',
   encapsulation: ViewEncapsulation.None,
