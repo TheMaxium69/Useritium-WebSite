@@ -1,16 +1,1 @@
-# Ide
-.idea/
-
-# Lib
-fontawesome-5.15.4/
-
-# file/
-db.php
-salt.php
-
-api/private/
-
-# Other files and folders
-
-# file/
 .DS_Store
