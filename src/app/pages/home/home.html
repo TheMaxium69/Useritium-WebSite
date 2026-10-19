@@ -152,7 +152,7 @@
                 <a [href]="proj.link" target="_blank" rel="noopener noreferrer" class="us-eco-card">
                     <div class="us-eco-card__header">
                         <div class="us-eco-card__logo">
-                            <img [src]="proj.logo" [alt]="proj.name">
+                            <img loading="lazy" decoding="async" [src]="proj.logo" [alt]="proj.name">
                         </div>
                         <div class="us-eco-card__meta">
                             <h3 class="us-eco-card__name">{{ proj.name }}</h3>
@@ -257,7 +257,7 @@
                 </p>
 
                 <a href="https://tyrolium.fr" target="_blank" rel="noopener noreferrer" class="us-prestations__cta">
-                    <img src="assets/tyrolium-ui/projects/Tyrolium.png" alt="Tyrolium" class="us-prestations__logo">
+                    <img loading="lazy" decoding="async" src="assets/tyrolium-ui/projects/Tyrolium.png" alt="Tyrolium" class="us-prestations__logo">
                     <div>
                         <strong>{{ lang() === 'en' ? 'Discover Tyrolium services' : 'Découvrir les prestations de Tyrolium' }}</strong>
                         <span>{{ lang() === 'en' ? 'Development · Infrastructure · Incubator' : 'Développement · Infrastructure · Incubateur' }}</span>
@@ -329,7 +329,7 @@
             <div class="us-gaming__panel">
                 <div class="us-gaming__panel-bg"></div>
                 <div class="us-gaming__panel-content">
-                    <img src="assets/tyrolium-ui/projects/TyroCiel.png" alt="TyroCiel" class="us-gaming__logo">
+                    <img loading="lazy" decoding="async" src="assets/tyrolium-ui/projects/TyroCiel.png" alt="TyroCiel" class="us-gaming__logo">
                     <span class="us-gaming__studio">TyroCiel Studio</span>
                     <div class="us-gaming__panel-stats">
                         <div class="us-gaming__pstat">
@@ -365,7 +365,7 @@
                         </div>
                     </div>
                     <div class="us-gaming__partner">
-                        <img src="assets/tyrolium-ui/projects/TyroServ.png" alt="TyroServ">
+                        <img loading="lazy" decoding="async" src="assets/tyrolium-ui/projects/TyroServ.png" alt="TyroServ">
                         <span>TyroServ {{ lang() === 'en' ? 'included' : 'inclus' }}</span>
                     </div>
                 </div>
@@ -415,7 +415,7 @@
                 </ul>
 
                 <a href="https://tyrociel.fr" target="_blank" rel="noopener noreferrer" class="us-gaming__link">
-                    <img src="assets/tyrolium-ui/projects/TyroCiel.png" alt="TyroCiel">
+                    <img loading="lazy" decoding="async" src="assets/tyrolium-ui/projects/TyroCiel.png" alt="TyroCiel">
                     <span>{{ lang() === 'en' ? 'Discover TyroCiel' : 'Découvrir TyroCiel' }}</span>
                     <i class="ri-external-link-line"></i>
                 </a>
