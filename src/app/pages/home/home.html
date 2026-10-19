@@ -149,7 +149,7 @@
 
         <div class="us-ecosystem__grid">
             @for (proj of ecosystem; track proj.name) {
-                <a [href]="proj.link" target="_blank" class="us-eco-card">
+                <a [href]="proj.link" target="_blank" rel="noopener noreferrer" class="us-eco-card">
                     <div class="us-eco-card__header">
                         <div class="us-eco-card__logo">
                             <img [src]="proj.logo" [alt]="proj.name">
@@ -178,7 +178,7 @@
             }
 
             <!-- Partner CTA card -->
-            <a href="https://tyrolium.fr/contact?from=useritium" target="_blank" class="us-eco-card us-eco-card--partner">
+            <a href="https://tyrolium.fr/contact?from=useritium" target="_blank" rel="noopener noreferrer" class="us-eco-card us-eco-card--partner">
                 <div class="us-eco-card__header">
                     <div class="us-eco-card__logo us-eco-card__logo--partner">
                         <i class="ri-links-line"></i>
@@ -256,7 +256,7 @@
                     : 'Votre compte Useritium est la porte d\'entrée de tous les services de Tyrolium. Commandez, suivez l\'avancement, communiquez avec nos équipes - tout depuis un seul tableau de bord.' }}
                 </p>
 
-                <a href="https://tyrolium.fr" target="_blank" class="us-prestations__cta">
+                <a href="https://tyrolium.fr" target="_blank" rel="noopener noreferrer" class="us-prestations__cta">
                     <img src="assets/tyrolium-ui/projects/Tyrolium.png" alt="Tyrolium" class="us-prestations__logo">
                     <div>
                         <strong>{{ lang() === 'en' ? 'Discover Tyrolium services' : 'Découvrir les prestations de Tyrolium' }}</strong>
@@ -414,7 +414,7 @@
                     </li>
                 </ul>
 
-                <a href="https://tyrociel.fr" target="_blank" class="us-gaming__link">
+                <a href="https://tyrociel.fr" target="_blank" rel="noopener noreferrer" class="us-gaming__link">
                     <img src="assets/tyrolium-ui/projects/TyroCiel.png" alt="TyroCiel">
                     <span>{{ lang() === 'en' ? 'Discover TyroCiel' : 'Découvrir TyroCiel' }}</span>
                     <i class="ri-external-link-line"></i>
